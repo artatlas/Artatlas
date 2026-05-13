@@ -345,7 +345,7 @@ footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:fl
 
 <div class="modal-bg" id="exh-modal" onclick="closeModal('exh-modal')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-img" id="modal-exh-img-wrap" style="position:relative"><div id="modal-exh-img-inner" style="width:100%;height:100%"></div><div class="modal-img-overlay"></div></div>
+    <div class="modal-img" id="modal-exh-grad"><div id="modal-exh-inner" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px"></div><div class="modal-img-overlay"></div></div>
     <button class="modal-close" onclick="closeModal('exh-modal')">x</button>
     <div class="modal-body">
       <div id="modal-exh-chip"></div>
@@ -391,32 +391,8 @@ function chip(label){
   return '<span class="chip" style="'+s+'">'+label+'</span>';
 }
 
-const GRADS = [
-  "linear-gradient(145deg,#e8c4a0,#d4956a,#c07840)",
-  "linear-gradient(135deg,#2d4a6b,#1a3a5a,#3d6080)",
-  "linear-gradient(150deg,#8b3a4a,#6b2035,#a04060)",
-  "linear-gradient(160deg,#8b2020,#6b3010,#c04820)",
-  "linear-gradient(140deg,#2a2a2a,#1a1a1a,#383838)",
-  "linear-gradient(135deg,#c87840,#a85830,#e0a060)",
-  "linear-gradient(145deg,#6b8060,#4a6040,#8a9870)",
-  "linear-gradient(150deg,#5a6878,#3a4858,#7a8898)",
-  "linear-gradient(140deg,#3a1a4a,#1a0a2a,#5a2a6a)",
-  "linear-gradient(145deg,#8b6a20,#6b4a10,#a87830)",
-  "linear-gradient(135deg,#c8c0b8,#a8a098,#e0d8d0)",
-  "linear-gradient(150deg,#c0908a,#a07070,#d0a8a0)",
-  "linear-gradient(145deg,#2a4030,#1a3020,#3a5040)",
-  "linear-gradient(140deg,#b89040,#987020,#d0a850)",
-  "linear-gradient(135deg,#d4a820,#b88010,#e8c040)",
-  "linear-gradient(150deg,#1a2840,#0a1828,#2a3850)"
-];
-const GRAD_TEXT = [
-  "rgba(255,255,255,0.75)","rgba(255,255,255,0.75)","rgba(255,255,255,0.75)",
-  "rgba(255,255,255,0.75)","rgba(255,255,255,0.55)","rgba(255,255,255,0.75)",
-  "rgba(255,255,255,0.75)","rgba(255,255,255,0.75)","rgba(255,255,255,0.65)",
-  "rgba(255,255,255,0.75)","rgba(0,0,0,0.45)","rgba(255,255,255,0.75)",
-  "rgba(255,255,255,0.75)","rgba(255,255,255,0.75)","rgba(0,0,0,0.5)",
-  "rgba(255,255,255,0.75)"
-];
+const GRADS=["linear-gradient(145deg,#e8c4a0,#d4956a,#c07840)","linear-gradient(135deg,#2d4a6b,#1a3a5a,#3d6080)","linear-gradient(150deg,#8b3a4a,#6b2035,#a04060)","linear-gradient(160deg,#8b2020,#6b3010,#c04820)","linear-gradient(140deg,#2a2a2a,#1a1a1a,#383838)","linear-gradient(135deg,#c87840,#a85830,#e0a060)","linear-gradient(145deg,#6b8060,#4a6040,#8a9870)","linear-gradient(150deg,#5a6878,#3a4858,#7a8898)","linear-gradient(140deg,#3a1a4a,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#8b6a20,#6b4a10,#a87830)","linear-gradient(135deg,#b8b0a8,#989088,#d0c8c0)","linear-gradient(150deg,#c0908a,#a07070,#d0a8a0)","linear-gradient(145deg,#2a4030,#1a3020,#3a5040)","linear-gradient(140deg,#b89040,#987020,#d0a850)","linear-gradient(135deg,#d4a820,#b88010,#e8c040)","linear-gradient(150deg,#1a2840,#0a1828,#2a3850)"];
+
 const EXH = [
   {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,img:"https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=900&q=80",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence."},
   {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists."},
@@ -472,25 +448,28 @@ function showPage(p){
 }
 
 function makeExhCard(e, ratio){
+  const g=GRADS[e.id-1]||GRADS[0];
   return '<div class="exh-card" onclick="openExh('+e.id+')">'
-    +'<div class="exh-img '+ratio+'" style="position:relative">'
-    +'<div style="position:absolute;inset:0;background:"+GRADS[e.id-1]+";display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px">'
-    +'<div style="width:20px;height:1px;background:"+GRAD_TEXT[e.id-1]+""></div>'
-    +'<div style="font-family:EB Garamond,serif;font-size:12px;font-style:italic;color:"+GRAD_TEXT[e.id-1]+";text-align:center">"+e.city+"</div>'
+    +'<div class="exh-img '+ratio+'" style="position:relative;background:'+g+'">'
+    +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px">'
+    +'<div style="width:24px;height:1px;background:rgba(255,255,255,0.4)"></div>'
+    +'<div style="font-family:EB Garamond,serif;font-size:13px;font-style:italic;color:rgba(255,255,255,0.8);text-align:center">'+e.city+'</div>'
+    +'<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.45)">'+e.tag+'</div>'
     +'</div>'
-    +'<div class="exh-overlay" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%)"></div>'
+    +'<div class="exh-overlay"></div>'
     +(e.must?'<div class="must-badge">Must-see</div>':'')
     +'<div class="exh-bottom"><div class="exh-bottom-title">'+e.title+'</div><div class="exh-bottom-city">'+e.city+'</div></div>'
     +'</div></div>';
 }
 
 function makeExhCard3(e){
+  const g=GRADS[e.id-1]||GRADS[0];
   return '<div class="exh-card" onclick="openExh('+e.id+')" style="background:#fff;box-shadow:0 1px 8px rgba(0,0,0,0.06)">'
-    +'<div class="exh-img exh-img-3" style="position:relative">'
-    +'<div style="position:absolute;inset:0;background:"+GRADS[e.id-1]+";display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px">'
-    +'<div style="width:28px;height:1px;background:"+GRAD_TEXT[e.id-1]+""></div>'
-    +'<div style="font-family:EB Garamond,serif;font-size:17px;font-style:italic;color:"+GRAD_TEXT[e.id-1]+";text-align:center;line-height:1.3">"+e.venue+"</div>'
-    +'<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:"+GRAD_TEXT[e.id-1]+";opacity:0.6">"+e.city+"</div>'
+    +'<div class="exh-img exh-img-3" style="position:relative;background:'+g+'">'
+    +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px">'
+    +'<div style="width:32px;height:1px;background:rgba(255,255,255,0.4)"></div>'
+    +'<div style="font-family:EB Garamond,serif;font-size:17px;font-style:italic;color:rgba(255,255,255,0.85);text-align:center;line-height:1.3">'+e.venue+'</div>'
+    +'<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">'+e.city+'</div>'
     +'</div>'
     +(e.must?'<div class="must-badge">Must-see</div>':'')
     +'</div>'
@@ -519,9 +498,9 @@ function renderOppPreview(){
 function renderFilmStrip(){
   const items = [...EXH,...EXH.slice(0,5)];
   document.getElementById("film-strip").innerHTML = items.map(e=>'<div class="strip-item" onclick="openExh('+e.id+')">'
-    +'<div class="strip-item-img" style="background:"+GRADS[e.id-1]+";display:flex;align-items:center;justify-content:center">'
-      +'<div style="font-family:EB Garamond,serif;font-size:12px;font-style:italic;color:"+GRAD_TEXT[e.id-1]+";text-align:center;padding:10px;line-height:1.4">"+e.city+"</div>'
-      +'</div>'
+    +'<div class="strip-item-img" style="background:'+GRADS[e.id-1]+';display:flex;align-items:center;justify-content:center">'
+    +'<div style="font-family:EB Garamond,serif;font-size:12px;font-style:italic;color:rgba(255,255,255,0.75);text-align:center;padding:10px;line-height:1.4">'+e.city+'</div>'
+    +'</div>'
     +'<div class="strip-caption"><div class="strip-title">'+e.title+'</div><div class="strip-city">'+e.city+'</div></div>'
     +'</div>').join("");
 }
@@ -562,14 +541,12 @@ function searchOpp(v){ oppSearch=v.toLowerCase(); renderOppTable(); }
 
 function openExh(id){
   const e = EXH.find(x=>x.id===id);
-  const mi = e.id-1;
-  document.getElementById("modal-exh-img-wrap").style.background = GRADS[mi];
-  document.getElementById("modal-exh-img-inner").innerHTML =
-    '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;height:100%;padding:24px">'
-    +'<div style="font-family:EB Garamond,Georgia,serif;font-size:32px;font-style:italic;color:'+GRAD_TEXT[mi]+';text-align:center;line-height:1.2">'+e.title+'</div>'
-    +'<div style="width:40px;height:1px;background:'+GRAD_TEXT[mi]+'"></div>'
-    +'<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:'+GRAD_TEXT[mi]+';opacity:0.65">'+e.city+' &middot; '+e.country+'</div>'
-    +'</div>';
+  const mg=GRADS[e.id-1]||GRADS[0];
+  document.getElementById("modal-exh-grad").style.background=mg;
+  document.getElementById("modal-exh-inner").innerHTML=
+    '<div style="font-family:EB Garamond,serif;font-size:30px;font-style:italic;color:rgba(255,255,255,0.88);text-align:center;line-height:1.2">'+e.title+'</div>'
+    +'<div style="width:40px;height:1px;background:rgba(255,255,255,0.4)"></div>'
+    +'<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55)">'+e.city+' &middot; '+e.country+'</div>';
   document.getElementById("modal-exh-chip").innerHTML = chip(e.tag);
   document.getElementById("modal-exh-title").textContent = e.title;
   document.getElementById("modal-exh-sub").textContent = e.venue+" - "+e.city+", "+e.country;
