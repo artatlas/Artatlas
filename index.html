@@ -163,6 +163,7 @@ footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:fl
     <a class="nav-link" id="nav-exhibitions" onclick="showPage('exhibitions')">Exhibitions</a>
     <a class="nav-link" id="nav-opportunities" onclick="showPage('opportunities')">Opportunities</a>
     <a class="nav-link" id="nav-about" onclick="showPage('about')">About</a>
+    <a class="nav-link" id="nav-legal" onclick="showPage('legal')" style="font-size:10px">Legal</a>
     <button class="btn" onclick="document.getElementById('nl').scrollIntoView({behavior:'smooth'});showPage('home')">Subscribe</button>
   </div>
 </nav>
@@ -337,6 +338,7 @@ footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:fl
     <span class="footer-link" onclick="showPage('exhibitions')">Exhibitions</span>
     <span class="footer-link" onclick="showPage('opportunities')">Opportunities</span>
     <span class="footer-link" onclick="showPage('about')">About</span>
+    <span class="footer-link" onclick="showPage('legal')">Legal & Privacy</span>
   </div>
   <span class="footer-copy">2026 - Artatlas</span>
 </footer>
@@ -353,6 +355,7 @@ footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:fl
       <p class="modal-sub" id="modal-exh-sub"></p>
       <p class="modal-desc" id="modal-exh-desc"></p>
       <div class="modal-grid" id="modal-exh-grid"></div>
+      <a class="apply-btn" id="modal-exh-apply" href="#" target="_blank" style="display:none">Visit museum website</a>
     </div>
   </div>
 </div>
@@ -370,6 +373,65 @@ footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:fl
       <div class="modal-grid modal-grid2" id="modal-opp-grid"></div>
       <a class="apply-btn" id="modal-opp-apply" href="#" target="_blank">Apply now</a>
     </div>
+  </div>
+</div>
+
+<!-- LEGAL PAGE -->
+
+<div id="page-legal" class="page">
+  <div style="max-width:800px;margin:0 auto;padding:100px 32px 80px">
+    <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:12px">Legal</div>
+    <h1 style="font-family:EB Garamond,Georgia,serif;font-size:clamp(36px,5vw,56px);font-style:italic;font-weight:400;color:#111;margin-bottom:48px;line-height:1.1">Terms & Privacy</h1>
+
+```
+<div style="font-family:Inter,sans-serif;font-size:11px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Last updated: May 2026</div>
+<div style="width:40px;height:1px;background:#e0e0e0;margin-bottom:40px"></div>
+
+<!-- Terms of Use -->
+<h2 style="font-family:EB Garamond,Georgia,serif;font-size:26px;font-style:italic;font-weight:400;color:#111;margin-bottom:16px">Terms of Use</h2>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">By accessing and using Artatlas ("the Platform"), you agree to the following terms. If you do not agree, please do not use the Platform.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">1. Nature of the Service</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas is an informational platform that aggregates publicly available artistic opportunities (residencies, grants, open calls) and exhibitions. All information is provided for informational purposes only. Artatlas does not guarantee the accuracy, completeness or currency of any listing.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">2. No Liability for Third-Party Content</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas links to and references third-party organisations, institutions and websites. We are not responsible for the content, accuracy, or practices of these third parties. Any application or interaction with a third party is solely between you and that party. Artatlas shall not be liable for any loss or damage arising from your reliance on any listed opportunity or exhibition.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">3. Intellectual Property</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">The Artatlas name, logo, design and original content are the property of Artatlas. You may not reproduce, distribute or create derivative works without prior written permission. Opportunity and exhibition descriptions are aggregated from public sources and remain the property of their respective owners.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">4. Disclaimer</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:40px">The Platform is provided "as is" without warranties of any kind, express or implied. Artatlas makes no representations that the Platform will be uninterrupted or error-free.</p>
+
+<div style="width:100%;height:1px;background:#f0f0f0;margin:48px 0"></div>
+
+<!-- Privacy Policy -->
+<h2 style="font-family:EB Garamond,Georgia,serif;font-size:26px;font-style:italic;font-weight:400;color:#111;margin-bottom:16px">Privacy Policy</h2>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas is committed to protecting your privacy in accordance with the General Data Protection Regulation (GDPR, Regulation EU 2016/679) and applicable French law.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">1. Data We Collect</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We collect only your <strong>email address</strong> when you voluntarily subscribe to our newsletter. We do not collect names, location data, browsing behaviour, or any other personal information. We do not use cookies for tracking.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">2. Purpose of Processing</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Your email address is used solely to send you the Artatlas weekly newsletter. The legal basis for this processing is your freely given, specific and informed consent (Article 6(1)(a) GDPR).</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">3. Data Retention</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We retain your email address for as long as you remain subscribed. Upon unsubscription, your data is deleted within 30 days.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">4. Your Rights</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Under GDPR, you have the right to: access the data we hold about you; request its deletion; withdraw your consent at any time by unsubscribing. To exercise any of these rights, you may unsubscribe directly from any newsletter email.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">5. Data Sharing</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We do not sell, rent or share your personal data with any third party. Your email address is used exclusively for Artatlas communications.</p>
+
+<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">6. Contact</h3>
+<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">For any questions regarding your data or this policy, you may contact us at the email address provided on this platform. You also have the right to lodge a complaint with the CNIL (Commission Nationale de l'Informatique et des Libertes) at <a href="https://www.cnil.fr" target="_blank" style="color:#111">www.cnil.fr</a>.</p>
+
+<div style="background:#f9f9f9;padding:24px 28px;margin-top:40px">
+  <p style="font-family:EB Garamond,Georgia,serif;font-size:16px;font-style:italic;color:#888;line-height:1.7">Artatlas is operated as a personal project. It is not a registered commercial entity. The platform is free to use and does not generate revenue at this stage.</p>
+</div>
+```
+
   </div>
 </div>
 
@@ -394,21 +456,21 @@ function chip(label){
 const GRADS=["linear-gradient(145deg,#e8c4a0,#d4956a,#c07840)","linear-gradient(135deg,#2d4a6b,#1a3a5a,#3d6080)","linear-gradient(150deg,#8b3a4a,#6b2035,#a04060)","linear-gradient(160deg,#8b2020,#6b3010,#c04820)","linear-gradient(140deg,#2a2a2a,#1a1a1a,#383838)","linear-gradient(135deg,#c87840,#a85830,#e0a060)","linear-gradient(145deg,#6b8060,#4a6040,#8a9870)","linear-gradient(150deg,#5a6878,#3a4858,#7a8898)","linear-gradient(140deg,#3a1a4a,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#8b6a20,#6b4a10,#a87830)","linear-gradient(135deg,#b8b0a8,#989088,#d0c8c0)","linear-gradient(150deg,#c0908a,#a07070,#d0a8a0)","linear-gradient(145deg,#2a4030,#1a3020,#3a5040)","linear-gradient(140deg,#b89040,#987020,#d0a850)","linear-gradient(135deg,#d4a820,#b88010,#e8c040)","linear-gradient(150deg,#1a2840,#0a1828,#2a3850)"];
 
 const EXH = [
-  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,img:"https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=900&q=80",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence."},
-  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists."},
-  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,img:"https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=900&q=80",desc:"One of the largest European retrospectives devoted to Kahlo's work."},
-  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,img:"https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=900&q=80",desc:"Over 70 works in dialogue with Fra Angelico at the Museo di San Marco."},
-  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,img:"https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&q=80",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia."},
-  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1536924430914-91f9e2041b83?w=900&q=80",desc:"The most comprehensive retrospective of Emin's 40-year career."},
-  {id:7,title:"Cezanne",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"25 Jan - 25 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80",desc:"80 oils and watercolours focusing on Cezanne's final years."},
-  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,img:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80",desc:"First major European Whistler retrospective in 30 years."},
-  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1565098940896-e70f27eb76d3?w=900&q=80",desc:"Voidal, mirrored and wax sculptures. One of the year's most immersive shows."},
-  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80",desc:"All nine known painted portraits by van Eyck together for the first time."},
-  {id:11,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=900&q=80",desc:"A monumental dialogue. Two giants of Western sculpture side by side."},
-  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,img:"https://images.unsplash.com/photo-1555448248-2571daf6344b?w=900&q=80",desc:"First major Cassatt retrospective at a French national museum."},
-  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&q=80",desc:"First two-person show of Lassnig and Munch - united in expressiveness."},
-  {id:14,title:"Beauty & Ugliness in the Renaissance",venue:"Bozar",city:"Brussels",country:"Belgium",dates:"20 Feb - 14 Jun 2026",tag:"Renaissance",must:false,img:"https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=900&q=80",desc:"Botticelli, Titian, Da Vinci - beauty standards in the 15th century."},
-  {id:15,title:"Yellow - Beyond Van Gogh",venue:"Van Gogh Museum",city:"Amsterdam",country:"Netherlands",dates:"13 Feb - 17 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1617791160588-241658ad2b08?w=900&q=80",desc:"Van Gogh's sunflowers as departure point. Yellow across art and culture around 1900."},
+  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,img:"https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=900&q=80",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
+  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists.",url:"https://www.labiennale.org/en/art/2026"},
+  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,img:"https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=900&q=80",desc:"One of the largest European retrospectives devoted to Kahlo's work.",url:"https://www.tate.org.uk/whats-on/tate-modern"},
+  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,img:"https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=900&q=80",desc:"Over 70 works in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
+  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,img:"https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&q=80",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia.",url:"https://www.gallerieaccademia.it"},
+  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1536924430914-91f9e2041b83?w=900&q=80",desc:"The most comprehensive retrospective of Emin's 40-year career.",url:"https://www.tate.org.uk/whats-on/tate-modern"},
+  {id:7,title:"Cezanne",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"25 Jan - 25 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80",desc:"80 oils and watercolours focusing on Cezanne's final years.",url:"https://www.fondationbeyeler.ch"},
+  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,img:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80",desc:"First major European Whistler retrospective in 30 years.",url:"https://www.tate.org.uk/whats-on/tate-britain"},
+  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1565098940896-e70f27eb76d3?w=900&q=80",desc:"Voidal, mirrored and wax sculptures. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk/venues/hayward-gallery"},
+  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80",desc:"All nine known painted portraits by van Eyck together for the first time.",url:"https://www.nationalgallery.org.uk"},
+  {id:11,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=900&q=80",desc:"A monumental dialogue. Two giants of Western sculpture side by side.",url:"https://www.louvre.fr"},
+  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,img:"https://images.unsplash.com/photo-1555448248-2571daf6344b?w=900&q=80",desc:"First major Cassatt retrospective at a French national museum.",url:"https://www.musee-orsay.fr"},
+  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&q=80",desc:"First two-person show of Lassnig and Munch - united in expressiveness.",url:"https://www.hamburger-kunsthalle.de"},
+  {id:14,title:"Beauty & Ugliness in the Renaissance",venue:"Bozar",city:"Brussels",country:"Belgium",dates:"20 Feb - 14 Jun 2026",tag:"Renaissance",must:false,img:"https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=900&q=80",desc:"Botticelli, Titian, Da Vinci - beauty standards in the 15th century.",url:"https://www.bozar.be"},
+  {id:15,title:"Yellow - Beyond Van Gogh",venue:"Van Gogh Museum",city:"Amsterdam",country:"Netherlands",dates:"13 Feb - 17 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1617791160588-241658ad2b08?w=900&q=80",desc:"Van Gogh's sunflowers as departure point. Yellow across art and culture around 1900.",url:"https://www.vangoghmuseum.nl"},
   {id:16,title:"Metamorphoses",venue:"Rijksmuseum",city:"Amsterdam",country:"Netherlands",dates:"6 Feb - 25 May 2026",tag:"Old Masters",must:false,img:"https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80",desc:"History, religion, freedom through the Rijksmuseum's finest galleries."}
 ];
 
@@ -441,7 +503,8 @@ function showPage(p){
   document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
   document.getElementById("page-"+p).classList.add("active");
   document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
-  document.getElementById("nav-"+p).classList.add("active");
+  const navEl = document.getElementById("nav-"+p);
+  if(navEl) navEl.classList.add("active");
   window.scrollTo(0,0);
   if(p==="exhibitions") renderExhGrid();
   if(p==="opportunities") renderOppTable();
@@ -555,6 +618,9 @@ function openExh(id){
     '<div class="modal-cell"><div class="modal-cell-label">Dates</div><div class="modal-cell-val">'+e.dates+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">City</div><div class="modal-cell-val">'+e.city+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">Status</div><div class="modal-cell-val">Open now</div></div>';
+  const applyBtn = document.getElementById("modal-exh-apply");
+  if(e.url){ applyBtn.href=e.url; applyBtn.style.display="block"; }
+  else { applyBtn.style.display="none"; }
   document.getElementById("exh-modal").classList.add("open");
 }
 
