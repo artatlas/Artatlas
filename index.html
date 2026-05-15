@@ -4,438 +4,601 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artatlas</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Artatlas — Every opportunity. Every exhibition.</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#fff;color:#111;font-family:'EB Garamond',Georgia,serif;-webkit-font-smoothing:antialiased}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;background:rgba(255,255,255,0.97);border-bottom:1px solid #f0f0f0;display:flex;align-items:center;padding:0 32px;justify-content:space-between}
-.logo{font-size:22px;font-style:italic;cursor:pointer;color:#111;text-decoration:none}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-link{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;cursor:pointer;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
-.nav-link:hover,.nav-link.active{color:#111;border-bottom-color:#111}
-.btn{background:#111;color:#fff;border:none;padding:9px 22px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer}
-.page{display:none;padding-top:60px}
-.page.active{display:block}
-.hero{background:linear-gradient(135deg,#f5ede2 0%,#ecdfd0 40%,#e2d4c8 100%);min-height:100vh;display:flex;align-items:center;padding:80px 32px}
-.hero-inner{max-width:700px}
-.hero-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(100,75,50,0.55);margin-bottom:20px}
-.hero h1{font-size:clamp(46px,7vw,88px);font-weight:400;font-style:italic;line-height:1.06;color:#1e1408;margin-bottom:20px}
-.hero h1 span{color:#8b5e3c}
-.hero p{font-size:20px;line-height:1.8;color:rgba(60,40,20,0.6);max-width:420px;margin-bottom:40px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
-.btn-dark{background:#1e1408;color:#f5ede2;border:none;padding:13px 32px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer}
-.btn-light{background:transparent;color:#1e1408;border:1px solid rgba(30,20,8,0.35);padding:12px 32px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer}
-.stats{display:flex;gap:0;padding-top:32px;border-top:1px solid rgba(100,75,50,0.18);flex-wrap:wrap}
-.stat{flex:1 1 100px;padding-right:24px;border-right:1px solid rgba(100,75,50,0.15)}
-.stat:last-child{border-right:none;padding-left:24px}
-.stat-n{font-size:44px;font-style:italic;color:#1e1408;line-height:1}
-.stat-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(100,75,50,0.5);margin-top:6px}
-.banner{background:#1e1408;padding:14px 32px;display:flex;align-items:center;gap:16px}
-.banner-dot{width:6px;height:6px;border-radius:50%;background:#e74c3c;animation:pulse 2s infinite;flex-shrink:0}
-.banner-text{font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,237,226,0.75)}
-.banner-text strong{color:#f5ede2}
-.banner-link{font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,237,226,0.5);cursor:pointer;margin-left:auto;border-bottom:1px solid rgba(245,237,226,0.25)}
-.section{padding:80px 32px;max-width:1320px;margin:0 auto}
-.section-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:10px}
-.section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;flex-wrap:wrap;gap:12px}
-.section-header h2{font-size:clamp(28px,4vw,46px);font-style:italic;font-weight:400;color:#111}
-.see-all{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;cursor:pointer;border-bottom:1px solid #ddd;padding-bottom:1px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.exh-card{cursor:pointer;background:#fff;transition:transform 0.28s,box-shadow 0.28s}
-.exh-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.1)}
-.exh-img{overflow:hidden;position:relative}
-.exh-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s}
-.exh-card:hover .exh-img img{transform:scale(1.04)}
-.exh-img-4{aspect-ratio:3/4}
-.exh-img-3{aspect-ratio:4/3}
-.exh-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 55%)}
-.exh-info{padding:16px 16px 20px}
-.exh-title{font-size:19px;font-style:italic;line-height:1.3;color:#111;margin-bottom:4px}
-.exh-venue{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:10px}
-.exh-dates{font-family:'Inter',sans-serif;font-size:10px;color:#aaa;border-top:1px solid #f5f5f5;padding-top:9px}
-.exh-bottom{position:absolute;bottom:0;left:0;right:0;padding:14px}
-.exh-bottom-title{font-size:17px;font-style:italic;color:#fff;line-height:1.3;margin-bottom:4px}
-.exh-bottom-city{font-family:'Inter',sans-serif;font-size:9px;color:rgba(255,255,255,0.6)}
-.must-badge{position:absolute;top:10px;left:10px;background:#1e1408;color:#f5ede2;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;padding:4px 9px}
-.opp-card{background:#fff;padding:24px 22px;cursor:pointer;transition:outline 0.15s;outline:1px solid transparent;display:flex;flex-direction:column;height:100%}
-.opp-card:hover{outline-color:#111}
-.opp-header{display:flex;justify-content:space-between;margin-bottom:12px}
-.opp-title{font-size:18px;font-style:italic;line-height:1.35;color:#111;margin-bottom:6px}
-.opp-org{font-family:'Inter',sans-serif;font-size:11px;color:#bbb;margin-bottom:16px}
-.opp-footer{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#999;border-top:1px solid #f0f0f0;padding-top:12px;margin-top:auto}
-.urgent{color:#c0392b;font-weight:500}
-.chip{display:inline-block;padding:2px 8px;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:500;line-height:1.7}
-.strip{background:#1e1408;padding:48px 0;overflow:hidden}
-.strip-inner{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
-.strip-inner::-webkit-scrollbar{display:none}
-.strip-item{flex-shrink:0;width:190px;cursor:pointer;position:relative}
-.strip-item-img{aspect-ratio:2/3;overflow:hidden}
-.strip-item-img img{width:100%;height:100%;object-fit:cover;opacity:0.6;transition:opacity 0.3s,transform 0.45s;display:block}
-.strip-item:hover img{opacity:0.95;transform:scale(1.05)}
-.strip-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 10px;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent)}
-.strip-title{font-size:12px;font-style:italic;color:#fff;line-height:1.3}
-.strip-city{font-family:'Inter',sans-serif;font-size:8px;color:rgba(255,255,255,0.4);margin-top:3px}
-.nl-section{background:#fff;padding:80px 32px}
-.nl-box{border:1px solid #ebebeb;padding:40px 36px}
-.nl-quote{font-size:20px;font-style:italic;color:#111;line-height:1.5;margin-bottom:28px}
-.nl-input{width:100%;background:transparent;border:none;border-bottom:1px solid #e0e0e0;padding:10px 0;font-size:17px;font-family:'EB Garamond',serif;color:#111;font-style:italic;margin-bottom:20px;outline:none}
-.nl-btn{width:100%;background:#111;color:#fff;border:none;padding:13px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer}
-.nl-fine{font-family:'Inter',sans-serif;font-size:9px;color:#ccc;letter-spacing:0.1em;text-transform:uppercase;margin-top:14px;text-align:center}
-.modal-bg{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:16px}
-.modal-bg.open{display:flex}
-.modal{background:#fff;width:100%;max-width:700px;max-height:90vh;overflow-y:auto;position:relative}
-.modal-img{aspect-ratio:16/8;overflow:hidden;position:relative}
-.modal-img img{width:100%;height:100%;object-fit:cover;display:block}
-.modal-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.5),transparent 50%)}
-.modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.4);border:none;color:#fff;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
-.modal-body{padding:28px 32px 36px}
-.modal-title{font-size:30px;font-style:italic;font-weight:400;line-height:1.15;margin:12px 0 4px;color:#111}
-.modal-sub{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:18px}
-.modal-desc{font-size:17px;line-height:1.9;color:#555;margin-bottom:24px}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#ebebeb}
-.modal-cell{background:#fff;padding:14px 18px}
-.modal-cell-label{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:#ccc;margin-bottom:5px}
-.modal-cell-val{font-size:15px;font-style:italic;color:#111}
-.modal-grid2{grid-template-columns:1fr 1fr}
-.apply-btn{display:block;background:#111;color:#fff;border:none;padding:13px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;text-align:center;text-decoration:none;margin-top:20px;width:100%}
-.about-dark{background:#1e1408;padding:130px 32px 72px}
-.about-dark h1{font-size:clamp(36px,6vw,68px);font-style:italic;font-weight:400;color:#fff;max-width:560px;line-height:1.1}
-.about-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px}
-.about-body{padding:72px 32px;max-width:1320px;margin:0 auto}
-.about-text{font-size:18px;line-height:1.85;color:#666;margin-bottom:20px}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.stat-box{padding:28px 22px}
-.stat-box-light{background:#f9f9f9}
-.stat-box-dark{background:#1e1408}
-.stat-box-n{font-size:42px;font-style:italic;line-height:1;margin-bottom:8px}
-.stat-box-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.16em;text-transform:uppercase}
-.values-dark{background:#1e1408;padding:56px 32px}
-.values-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.value-item{padding:32px 24px;border-top:1px solid #2e2010}
-.value-num{font-family:'Inter',sans-serif;font-size:9px;color:#444;letter-spacing:0.14em;margin-bottom:8px}
-.value-name{font-size:22px;font-style:italic;color:#fff;margin-bottom:8px;font-weight:400}
-.value-desc{font-size:15px;color:#666;line-height:1.75}
-footer{border-top:1px solid #f0f0f0;background:#fff;padding:36px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:1320px;margin:0 auto}
-.footer-logo{font-size:21px;font-style:italic;color:#111}
-.footer-links{display:flex;gap:24px}
-.footer-link{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#ccc;cursor:pointer}
-.footer-copy{font-family:'Inter',sans-serif;font-size:10px;color:#ddd}
-.opp-table{width:100%;border-collapse:collapse}
-.opp-table th{text-align:left;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:#ccc;padding:0 0 14px;border-bottom:1px solid #f0f0f0;font-weight:400}
-.opp-table tr{border-bottom:1px solid #f5f5f5;cursor:pointer}
-.opp-table tr:hover{background:#fafafa}
-.opp-table td{padding:17px 12px 17px 0;vertical-align:top}
-.opp-table td:last-child{padding-left:12px}
-.opp-row-title{font-size:18px;font-style:italic;color:#111;line-height:1.3;margin-bottom:2px;display:flex;align-items:center;gap:8px}
-.opp-row-org{font-family:'Inter',sans-serif;font-size:10px;color:#bbb}
-.urgent-dot{width:6px;height:6px;border-radius:50%;background:#c0392b;display:inline-block;flex-shrink:0}
-.search-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid #f0f0f0;padding-bottom:18px;margin-bottom:36px}
-.search-input{margin-left:auto;border:none;border-bottom:1px solid #e0e0e0;padding:6px 0;font-size:15px;font-family:'EB Garamond',serif;color:#111;width:180px;font-style:italic;background:transparent;outline:none}
-.pill-btn{cursor:pointer;padding:6px 16px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:500;border:1px solid #e8e8e8;background:transparent;color:#888}
-.pill-btn.on{border-color:#111;background:#111;color:#fff}
-.page-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:12px}
-.page-title{font-size:clamp(40px,6vw,72px);font-style:italic;font-weight:400;color:#111;margin-bottom:8px}
-.page-sub{font-size:18px;color:#aaa;margin-bottom:44px}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-@media(max-width:960px){
-  .grid4{grid-template-columns:1fr 1fr}
-  .grid3{grid-template-columns:1fr 1fr}
-  .grid2{grid-template-columns:1fr;gap:40px}
-  .hero-side{display:none}
-  .values-grid{grid-template-columns:1fr 1fr}
-  .nav-links a:not(.btn){display:none}
+:root {
+  --ink: #1e1408;
+  --terra: #8b5e3c;
+  --cream: #f5ede2;
+  --parch: #ecdfd0;
+  --warm: #e2d4c8;
+  --white: #ffffff;
+  --off: #f9f9f9;
+  --red: #c0392b;
+  --muted: #aaa;
+  --light: #e8e0d8;
+  --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', sans-serif;
 }
-@media(max-width:560px){
-  .grid3,.grid4{grid-template-columns:1fr}
-  .section{padding:60px 20px}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--ink); font-family: var(--serif); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: var(--ink); color: var(--cream); }
+
+/* ── SITE ────────────────────────────────────────────── */
+#site { opacity: 1; }
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 500; height: 60px;
+background: transparent; border-bottom: none;
+backdrop-filter: blur(0); transition: all 0.35s ease;
+display: flex; align-items: center; padding: 0 36px;
+justify-content: space-between;
+}
+nav.scrolled { background: rgba(255,255,255,0.97); border-bottom: 1px solid #f0ece4; backdrop-filter: blur(12px); }
+.nav-logo { font-family: var(–display); font-size: 24px; font-style: italic; font-weight: 300; color: var(–ink); cursor: pointer; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-link { font-family: var(–sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); cursor: pointer; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: all 0.2s; }
+.nav-link:hover, .nav-link.active { color: var(–ink); border-bottom-color: var(–ink); }
+.nav-cta { background: var(–ink); color: var(–cream); border: none; padding: 8px 20px; font-family: var(–sans); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.8; }
+
+/* ── PAGES ───────────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── FADE IN ─────────────────────────────────────────── */
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-up.in { opacity: 1; transform: none; }
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero {
+background: linear-gradient(135deg, var(–cream) 0%, var(–parch) 40%, var(–warm) 100%);
+min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+align-items: center; padding: 120px 60px 80px; max-width: 1400px; margin: 0 auto;
+position: relative;
+}
+.hero::before {
+content: ‘’; position: absolute; top: -10%; right: -5%; width: 50vw; height: 50vw;
+border-radius: 50%; background: rgba(200,170,130,0.1); pointer-events: none;
+}
+.hero-eyebrow { font-family: var(–sans); font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(100,75,50,0.5); margin-bottom: 22px; }
+.hero-h1 { font-family: var(–display); font-size: clamp(50px, 7vw, 92px); font-weight: 300; font-style: italic; line-height: 1.04; color: var(–ink); margin-bottom: 22px; }
+.hero-h1 span { color: var(–terra); }
+.hero-p { font-size: 19px; line-height: 1.85; color: rgba(60,40,20,0.6); max-width: 400px; margin-bottom: 40px; font-weight: 400; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+.btn-dark { background: var(–ink); color: var(–cream); border: none; padding: 13px 32px; font-family: var(–sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+.btn-dark:hover { opacity: 0.82; }
+.btn-outline { background: transparent; color: var(–ink); border: 1px solid rgba(30,20,8,0.3); padding: 12px 32px; font-family: var(–sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { background: var(–ink); color: var(–cream); border-color: var(–ink); }
+.hero-stats { display: flex; gap: 0; padding-top: 28px; border-top: 1px solid rgba(100,75,50,0.15); }
+.hero-stat { flex: 1; padding-right: 24px; border-right: 1px solid rgba(100,75,50,0.12); }
+.hero-stat:last-child { border-right: none; padding-left: 24px; padding-right: 0; }
+.hero-stat-n { font-family: var(–display); font-size: 46px; font-style: italic; font-weight: 300; color: var(–ink); line-height: 1; }
+.hero-stat-l { font-family: var(–sans); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(100,75,50,0.45); margin-top: 6px; }
+.hero-cards { position: relative; height: 520px; }
+.hero-card { position: absolute; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hero-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(60,35,10,0.2); }
+.hero-card-1 { top: 0; right: 0; width: 72%; height: 66%; }
+.hero-card-2 { bottom: 0; left: 0; width: 55%; height: 48%; outline: 6px solid var(–cream); }
+.hero-card-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; padding: 20px; }
+.hero-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.65), transparent 55%); }
+.hero-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; }
+.hero-card-title { font-family: var(–display); font-size: 16px; font-style: italic; color: #fff; line-height: 1.3; }
+.hero-card-city { font-family: var(–sans); font-size: 9px; color: rgba(255,255,255,0.55); margin-top: 3px; letter-spacing: 0.08em; }
+.hero-tag { position: absolute; top: -8px; right: -8px; background: var(–ink); color: var(–cream); padding: 10px 16px; }
+.hero-tag-n { font-family: var(–display); font-size: 26px; font-style: italic; }
+.hero-tag-l { font-family: var(–sans); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,237,226,0.45); margin-top: 2px; }
+
+/* ── BANNER ──────────────────────────────────────────── */
+.banner { background: var(–ink); padding: 13px 60px; display: flex; align-items: center; gap: 14px; }
+.banner-dot { width: 6px; height: 6px; border-radius: 50%; background: var(–red); animation: pulse 2s infinite; flex-shrink: 0; }
+.banner-text { font-family: var(–sans); font-size: 11px; color: rgba(245,237,226,0.7); letter-spacing: 0.06em; }
+.banner-text strong { color: var(–cream); font-weight: 500; }
+.banner-link { font-family: var(–sans); font-size: 10px; color: rgba(245,237,226,0.45); cursor: pointer; margin-left: auto; border-bottom: 1px solid rgba(245,237,226,0.2); padding-bottom: 1px; letter-spacing: 0.12em; text-transform: uppercase; }
+.banner-link:hover { color: var(–cream); border-color: var(–cream); }
+
+/* ── SECTIONS ────────────────────────────────────────── */
+.sec { padding: 80px 60px; max-width: 1400px; margin: 0 auto; }
+.sec-white { background: var(–white); }
+.sec-off { background: var(–off); }
+.sec-label { font-family: var(–sans); font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(–muted); margin-bottom: 10px; }
+.sec-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; }
+.sec-title { font-family: var(–display); font-size: clamp(28px, 4vw, 46px); font-style: italic; font-weight: 300; color: var(–ink); }
+.sec-more { font-family: var(–sans); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); cursor: pointer; border-bottom: 1px solid #ddd; padding-bottom: 1px; transition: color 0.2s; }
+.sec-more:hover { color: var(–ink); border-color: var(–ink); }
+
+/* ── CARDS ───────────────────────────────────────────── */
+.grid4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+
+.exh-card { cursor: pointer; background: var(–white); transition: transform 0.28s ease, box-shadow 0.28s ease; }
+.exh-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.exh-card-top { position: relative; overflow: hidden; }
+.exh-card-top-4 { aspect-ratio: 3/4; }
+.exh-card-top-3 { aspect-ratio: 4/3; }
+.exh-grad { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; transition: transform 0.5s ease; }
+.exh-card:hover .exh-grad { transform: scale(1.04); }
+.exh-grad-line { width: 24px; height: 0.5px; background: rgba(255,255,255,0.4); }
+.exh-grad-city { font-family: var(–display); font-size: 13px; font-style: italic; color: rgba(255,255,255,0.82); text-align: center; line-height: 1.3; }
+.exh-grad-tag { font-family: var(–sans); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+.exh-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, transparent 55%); }
+.must-badge { position: absolute; top: 10px; left: 10px; background: var(–ink); color: var(–cream); font-family: var(–sans); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 9px; }
+.exh-bottom { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 14px 16px; }
+.exh-bottom-title { font-family: var(–display); font-size: 17px; font-style: italic; color: #fff; line-height: 1.3; margin-bottom: 3px; }
+.exh-bottom-city { font-family: var(–sans); font-size: 9px; color: rgba(255,255,255,0.55); letter-spacing: 0.07em; }
+.exh-info { padding: 16px 16px 20px; }
+.exh-title { font-family: var(–display); font-size: 20px; font-style: italic; line-height: 1.3; color: var(–ink); margin-bottom: 4px; }
+.exh-venue { font-family: var(–sans); font-size: 10px; color: var(–muted); letter-spacing: 0.04em; margin-bottom: 10px; }
+.exh-dates { font-family: var(–sans); font-size: 9px; color: #bbb; border-top: 1px solid #f5f5f5; padding-top: 9px; letter-spacing: 0.05em; }
+
+/* ── OPP CARDS ───────────────────────────────────────── */
+.opp-card { background: var(–white); padding: 24px 22px; cursor: pointer; transition: outline 0.15s; outline: 1px solid transparent; display: flex; flex-direction: column; height: 100%; }
+.opp-card:hover { outline-color: var(–ink); }
+.opp-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.opp-title { font-family: var(–display); font-size: 19px; font-style: italic; line-height: 1.35; color: var(–ink); margin-bottom: 6px; }
+.opp-org { font-family: var(–sans); font-size: 10px; color: var(–muted); margin-bottom: 14px; }
+.opp-footer { font-family: var(–sans); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: #999; border-top: 1px solid #f0f0f0; padding-top: 12px; margin-top: auto; }
+
+/* ── CHIP ────────────────────────────────────────────── */
+.chip { display: inline-block; padding: 2px 8px; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-family: var(–sans); font-weight: 500; line-height: 1.7; }
+
+/* ── FILM STRIP ──────────────────────────────────────── */
+.strip-wrap { background: var(–ink); padding: 48px 0; overflow: hidden; }
+.strip { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.strip::-webkit-scrollbar { display: none; }
+.strip-item { flex-shrink: 0; width: 180px; cursor: pointer; position: relative; }
+.strip-item-bg { aspect-ratio: 2/3; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; }
+.strip-item:hover .strip-item-bg { opacity: 0.7; }
+.strip-item-city { font-family: var(–display); font-size: 12px; font-style: italic; color: rgba(255,255,255,0.7); text-align: center; padding: 10px; line-height: 1.4; }
+.strip-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; background: linear-gradient(to top, rgba(0,0,0,0.88), transparent); }
+.strip-title { font-family: var(–display); font-size: 12px; font-style: italic; color: #fff; line-height: 1.3; }
+.strip-city-label { font-family: var(–sans); font-size: 8px; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 0.07em; }
+
+/* ── NEWSLETTER ──────────────────────────────────────── */
+.nl-box { border: 1px solid #eae4dc; padding: 40px 36px; }
+.nl-quote { font-family: var(–display); font-size: 21px; font-style: italic; color: var(–ink); line-height: 1.5; margin-bottom: 28px; font-weight: 300; }
+.nl-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid #ddd; padding: 10px 0; font-size: 17px; font-family: var(–display); color: var(–ink); font-style: italic; margin-bottom: 20px; outline: none; }
+.nl-btn { width: 100%; background: var(–ink); color: var(–cream); border: none; padding: 13px; font-family: var(–sans); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+.nl-btn:hover { opacity: 0.85; }
+.nl-fine { font-family: var(–sans); font-size: 9px; color: #ccc; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 14px; text-align: center; }
+
+/* ── TABLE ───────────────────────────────────────────── */
+.opp-table { width: 100%; border-collapse: collapse; }
+.opp-table th { text-align: left; font-family: var(–sans); font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: #ccc; padding: 0 0 14px; border-bottom: 1px solid #f0f0f0; font-weight: 400; }
+.opp-table tr { border-bottom: 1px solid #f5f5f5; cursor: pointer; transition: background 0.15s; }
+.opp-table tr:hover { background: #fafafa; }
+.opp-table td { padding: 17px 12px 17px 0; vertical-align: top; }
+.opp-table td:last-child { padding-left: 12px; }
+.opp-row-title { font-family: var(–display); font-size: 19px; font-style: italic; color: var(–ink); line-height: 1.3; margin-bottom: 2px; display: flex; align-items: center; gap: 8px; }
+.opp-row-org { font-family: var(–sans); font-size: 10px; color: var(–muted); }
+.urgent-dot { width: 6px; height: 6px; border-radius: 50%; background: var(–red); display: inline-block; flex-shrink: 0; animation: pulse 2s infinite; }
+
+/* ── MODAL ───────────────────────────────────────────── */
+.modal-bg { display: none; position: fixed; inset: 0; z-index: 700; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(6px); }
+.modal-bg.open { display: flex; animation: fadeIn 0.2s ease; }
+.modal { background: var(–white); width: 100%; max-width: 720px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.28s ease; }
+.modal-grad { aspect-ratio: 16/8; position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; padding: 28px; }
+.modal-grad-title { font-family: var(–display); font-size: 34px; font-style: italic; color: rgba(255,255,255,0.9); text-align: center; line-height: 1.2; font-weight: 300; }
+.modal-grad-line { width: 40px; height: 0.5px; background: rgba(255,255,255,0.4); }
+.modal-grad-sub { font-family: var(–sans); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.modal-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.45), transparent 50%); }
+.modal-close { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.35); border: none; color: #fff; width: 32px; height: 32px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
+.modal-body { padding: 28px 32px 36px; }
+.modal-title { font-family: var(–display); font-size: 30px; font-style: italic; font-weight: 300; line-height: 1.15; margin: 12px 0 4px; color: var(–ink); }
+.modal-sub { font-family: var(–sans); font-size: 10px; color: var(–muted); margin-bottom: 18px; letter-spacing: 0.05em; }
+.modal-desc { font-family: var(–display); font-size: 17px; line-height: 1.9; color: #555; margin-bottom: 24px; font-weight: 300; }
+.modal-cells { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #ebebeb; margin-bottom: 20px; }
+.modal-cell { background: var(–white); padding: 14px 18px; }
+.modal-cell-2 { grid-template-columns: 1fr 1fr; }
+.modal-cell-label { font-family: var(–sans); font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #ccc; margin-bottom: 5px; }
+.modal-cell-val { font-family: var(–display); font-size: 16px; font-style: italic; color: var(–ink); }
+.apply-btn { display: block; background: var(–ink); color: var(–cream); padding: 13px; font-family: var(–sans); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; text-align: center; text-decoration: none; border: none; width: 100%; transition: opacity 0.2s; }
+.apply-btn:hover { opacity: 0.82; }
+
+/* ── ABOUT ───────────────────────────────────────────── */
+.about-dark { background: var(–ink); padding: 130px 60px 72px; }
+.about-dark h1 { font-family: var(–display); font-size: clamp(36px,6vw,68px); font-style: italic; font-weight: 300; color: #fff; max-width: 540px; line-height: 1.1; }
+.about-label { font-family: var(–sans); font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+.about-text { font-family: var(–display); font-size: 18px; line-height: 1.9; color: #666; margin-bottom: 20px; font-weight: 300; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.stat-box { padding: 28px 22px; }
+.stat-n { font-family: var(–display); font-size: 42px; font-style: italic; line-height: 1; margin-bottom: 8px; }
+.stat-l { font-family: var(–sans); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; }
+.values-strip { background: var(–ink); padding: 56px 60px; }
+.values-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.value-item { padding: 32px 24px; border-top: 1px solid #2e2010; }
+.value-num { font-family: var(–sans); font-size: 9px; color: #444; letter-spacing: 0.14em; margin-bottom: 8px; }
+.value-name { font-family: var(–display); font-size: 22px; font-style: italic; color: #fff; margin-bottom: 8px; font-weight: 300; }
+.value-desc { font-family: var(–display); font-size: 15px; color: #666; line-height: 1.75; }
+
+/* ── LEGAL ───────────────────────────────────────────── */
+.legal-body { max-width: 780px; margin: 0 auto; padding: 100px 36px 80px; }
+.legal-h2 { font-family: var(–display); font-size: 26px; font-style: italic; font-weight: 300; color: var(–ink); margin-bottom: 16px; }
+.legal-h3 { font-family: var(–sans); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #888; margin: 28px 0 10px; }
+.legal-p { font-family: var(–display); font-size: 17px; line-height: 1.9; color: #555; margin-bottom: 14px; font-weight: 300; }
+.legal-divider { width: 100%; height: 1px; background: #f0f0f0; margin: 48px 0; }
+.legal-note { background: #f9f9f9; padding: 24px 28px; margin-top: 40px; }
+
+/* ── FILTERS ─────────────────────────────────────────── */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid #f0ece4; padding-bottom: 18px; margin-bottom: 36px; }
+.pill { cursor: pointer; padding: 6px 16px; font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; font-family: var(–sans); font-weight: 500; border: 1px solid #e0d8cc; background: transparent; color: #888; transition: all 0.15s; }
+.pill.on { border-color: var(–ink); background: var(–ink); color: var(–cream); }
+.search-inp { margin-left: auto; border: none; border-bottom: 1px solid #e0d8cc; padding: 6px 0; font-size: 15px; font-family: var(–display); color: var(–ink); width: 180px; font-style: italic; background: transparent; outline: none; }
+.result-count { font-family: var(–sans); font-size: 9px; color: #ccc; letter-spacing: 0.08em; }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer { border-top: 1px solid #ede8e0; background: var(–white); }
+.footer-inner { max-width: 1400px; margin: 0 auto; padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-family: var(–display); font-size: 22px; font-style: italic; font-weight: 300; color: var(–ink); }
+.footer-links { display: flex; gap: 24px; }
+.footer-link { font-family: var(–sans); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #ccc; cursor: pointer; transition: color 0.2s; }
+.footer-link:hover { color: var(–ink); }
+.footer-copy { font-family: var(–sans); font-size: 9px; color: #ddd; }
+
+/* ── SEARCH BAR ──────────────────────────────────────── */
+.page-eyebrow { font-family: var(–sans); font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(–muted); margin-bottom: 12px; }
+.page-h1 { font-family: var(–display); font-size: clamp(40px,6vw,72px); font-style: italic; font-weight: 300; color: var(–ink); margin-bottom: 8px; }
+.page-sub { font-family: var(–display); font-size: 18px; color: var(–muted); margin-bottom: 44px; font-weight: 300; }
+
+/* ── ANIMATIONS ──────────────────────────────────────── */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideUp { from{transform:translateY(18px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:1024px){
+.hero{grid-template-columns:1fr;padding:100px 36px 60px}.hero-cards{display:none}
+.grid4{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr;gap:40px}
+.values-grid{grid-template-columns:1fr 1fr}.sec{padding:60px 36px}.banner{padding:13px 36px}
+.about-dark{padding:100px 36px 60px}.values-strip{padding:48px 36px}
+}
+@media(max-width:600px){
+.grid3,.grid4{grid-template-columns:1fr}.hero{padding:90px 20px 60px}.sec{padding:56px 20px}
+.banner{padding:12px 20px}.modal-cells{grid-template-columns:1fr 1fr}.nav-links .nav-link{display:none}
+.footer-inner{padding:28px 20px}.about-dark{padding:90px 20px 56px}.values-strip{padding:40px 20px}
+.values-grid{grid-template-columns:1fr 1fr}.legal-body{padding:90px 20px 60px}
 }
 </style>
+
 </head>
 <body>
 
-<nav>
-  <a class="logo" onclick="showPage('home')">Artatlas</a>
-  <div class="nav-links">
-    <a class="nav-link" id="nav-home" onclick="showPage('home')">Home</a>
-    <a class="nav-link" id="nav-exhibitions" onclick="showPage('exhibitions')">Exhibitions</a>
-    <a class="nav-link" id="nav-opportunities" onclick="showPage('opportunities')">Opportunities</a>
-    <a class="nav-link" id="nav-about" onclick="showPage('about')">About</a>
-    <a class="nav-link" id="nav-legal" onclick="showPage('legal')" style="font-size:10px">Legal</a>
-    <button class="btn" onclick="document.getElementById('nl').scrollIntoView({behavior:'smooth'});showPage('home')">Subscribe</button>
-  </div>
-</nav>
+<!-- ── SITE ──────────────────────────────────────────── -->
 
-<!-- HOME -->
-
-<div id="page-home" class="page active">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-label">The platform for artists & art lovers</div>
-      <h1>Every<br>opportunity.<br><span>Every exhibition.</span></h1>
-      <p>Residencies, grants, open calls and the world's best exhibitions - curated weekly, free forever.</p>
-      <div class="hero-btns">
-        <button class="btn-dark" onclick="showPage('exhibitions')">Explore exhibitions</button>
-        <button class="btn-light" onclick="showPage('opportunities')">Find opportunities</button>
-      </div>
-      <div class="stats">
-        <div class="stat"><div class="stat-n">16</div><div class="stat-l">Exhibitions on view</div></div>
-        <div class="stat" style="padding-left:24px"><div class="stat-n">20</div><div class="stat-l">Open opportunities</div></div>
-        <div class="stat" style="padding-left:24px;border-right:none"><div class="stat-n">4</div><div class="stat-l">Closing this month</div></div>
-      </div>
+<div id="site" class="visible">
+  <nav id="nav">
+    <span class="nav-logo" onclick="showPage('home')">Artatlas</span>
+    <div class="nav-links">
+      <span class="nav-link active" id="nl-home" onclick="showPage('home')">Home</span>
+      <span class="nav-link" id="nl-exhibitions" onclick="showPage('exhibitions')">Exhibitions</span>
+      <span class="nav-link" id="nl-opportunities" onclick="showPage('opportunities')">Opportunities</span>
+      <span class="nav-link" id="nl-about" onclick="showPage('about')">About</span>
+      <span class="nav-link" id="nl-legal" onclick="showPage('legal')" style="font-size:9px">Legal</span>
+      <button class="nav-cta" onclick="showPage('home');setTimeout(()=>document.getElementById('newsletter')&&document.getElementById('newsletter').scrollIntoView({behavior:'smooth'}),80)">Subscribe</button>
     </div>
-  </div>
+  </nav>
 
-  <div class="banner">
-    <div class="banner-dot"></div>
-    <span class="banner-text"><strong>4 opportunities</strong> closing before June</span>
-    <span class="banner-link" onclick="showPage('opportunities')">View all</span>
-  </div>
+  <!-- HOME -->
 
-  <!-- Must-see -->
-
-  <div style="background:#fff;padding:80px 32px">
-    <div style="max-width:1320px;margin:0 auto">
-      <div class="section-header">
-        <div><div class="section-label">Editor's selection</div><h2 style="font-size:clamp(28px,4vw,46px);font-style:italic;font-weight:400;color:#111">Must-see right now</h2></div>
-        <span class="see-all" onclick="showPage('exhibitions')">All exhibitions</span>
-      </div>
-      <div class="grid4" id="must-see-grid"></div>
-    </div>
-  </div>
-
-  <!-- Opportunities preview -->
-
-  <div style="background:#f9f9f9;padding:80px 32px">
-    <div style="max-width:1320px;margin:0 auto">
-      <div class="section-header">
-        <div><div class="section-label">For artists</div><h2 style="font-size:clamp(28px,4vw,46px);font-style:italic;font-weight:400;color:#111">Closing soon</h2></div>
-        <span class="see-all" onclick="showPage('opportunities')">All opportunities</span>
-      </div>
-      <div class="grid3" id="opp-preview"></div>
-    </div>
-  </div>
-
-  <!-- Film strip -->
-
-  <div class="strip"><div class="strip-inner" id="film-strip"></div></div>
-
-  <!-- Newsletter -->
-
-  <div class="nl-section" id="nl">
-    <div style="max-width:1320px;margin:0 auto">
-      <div class="grid2">
+  <div id="page-home" class="page active">
+    <div style="background:linear-gradient(135deg,var(--cream) 0%,var(--parch) 40%,var(--warm) 100%);position:relative;overflow:hidden">
+      <div class="hero fade-up">
         <div>
-          <div class="section-label">Weekly digest</div>
-          <h2 style="font-size:clamp(28px,4vw,50px);font-style:italic;font-weight:400;color:#111;line-height:1.1;margin-bottom:20px">Never miss an<br>opportunity.</h2>
-          <p style="font-size:18px;line-height:1.8;color:#888;max-width:380px">Every Monday - the 5 best opportunities closing that week, exhibitions worth seeing, and what the art world is talking about.</p>
+          <div class="hero-eyebrow">The platform for artists &amp; art lovers</div>
+          <h1 class="hero-h1">Every<br>opportunity.<br><span>Every exhibition.</span></h1>
+          <p class="hero-p">Residencies, grants, open calls and the world's best exhibitions &mdash; curated weekly, free forever.</p>
+          <div class="hero-btns">
+            <button class="btn-dark" onclick="showPage('exhibitions')">Explore exhibitions</button>
+            <button class="btn-outline" onclick="showPage('opportunities')">Find opportunities</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hero-stat-n">16</div><div class="hero-stat-l">Exhibitions on view</div></div>
+            <div class="hero-stat" style="padding-left:24px"><div class="hero-stat-n">20</div><div class="hero-stat-l">Open opportunities</div></div>
+            <div class="hero-stat" style="padding-left:24px;border-right:none"><div class="hero-stat-n">4</div><div class="hero-stat-l">Closing this month</div></div>
+          </div>
         </div>
-        <div>
-          <div class="nl-box" id="nl-box">
-            <div class="nl-quote">"The first thing I open on Monday morning."</div>
-            <input class="nl-input" type="email" id="nl-email" placeholder="Your email address">
-            <button class="nl-btn" onclick="subscribeNl()">Subscribe free</button>
-            <div class="nl-fine">No spam - Unsubscribe anytime</div>
+        <div class="hero-cards">
+          <div class="hero-card hero-card-1" onclick="openExh(1)" style="background:linear-gradient(145deg,#e8c4a0,#d4956a,#c07840)">
+            <div class="hero-card-inner">
+              <div style="width:20px;height:0.5px;background:rgba(255,255,255,0.4)"></div>
+              <div style="font-family:var(--display);font-size:13px;font-style:italic;color:rgba(255,255,255,0.75);text-align:center">Paris</div>
+            </div>
+            <div class="hero-card-overlay"></div>
+            <div class="hero-card-info"><div class="hero-card-title">Matisse. 1941&ndash;1954</div><div class="hero-card-city">Grand Palais &middot; Paris</div></div>
+          </div>
+          <div class="hero-card hero-card-2" onclick="openExh(4)" style="background:linear-gradient(160deg,#8b2020,#6b3010,#c04820)">
+            <div class="hero-card-inner">
+              <div style="font-family:var(--display);font-size:12px;font-style:italic;color:rgba(255,255,255,0.7);text-align:center">Florence</div>
+            </div>
+            <div class="hero-card-overlay"></div>
+            <div class="hero-card-info"><div class="hero-card-title">Rothko in Florence</div><div class="hero-card-city">Palazzo Strozzi</div></div>
+          </div>
+          <div class="hero-tag">
+            <div style="font-family:var(--sans);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,237,226,0.45);margin-bottom:4px">Must-see</div>
+            <div class="hero-tag-n">7</div>
+            <div class="hero-tag-l">shows</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- EXHIBITIONS -->
-
-<div id="page-exhibitions" class="page">
-  <div style="max-width:1320px;margin:0 auto;padding:100px 32px 80px">
-    <div class="page-label">What to see</div>
-    <h1 class="page-title">Exhibitions</h1>
-    <p class="page-sub">The shows worth seeing right now.</p>
-    <div class="search-bar">
-      <button class="pill-btn on" onclick="filterCity(this,'All')">All</button>
-      <button class="pill-btn" onclick="filterCity(this,'Paris')">Paris</button>
-      <button class="pill-btn" onclick="filterCity(this,'London')">London</button>
-      <button class="pill-btn" onclick="filterCity(this,'Venice')">Venice</button>
-      <button class="pill-btn" onclick="filterCity(this,'Florence')">Florence</button>
-      <button class="pill-btn" onclick="filterCity(this,'Basel')">Basel</button>
-      <input class="search-input" placeholder="Search..." oninput="searchExh(this.value)">
+    <div class="banner">
+      <div class="banner-dot"></div>
+      <span class="banner-text"><strong>4 opportunities</strong> closing before June &mdash; don't miss them</span>
+      <span class="banner-link" onclick="showPage('opportunities')">View all</span>
     </div>
-    <div class="grid3" id="exh-grid"></div>
-  </div>
-</div>
-
-<!-- OPPORTUNITIES -->
-
-<div id="page-opportunities" class="page">
-  <div style="max-width:1320px;margin:0 auto;padding:100px 32px 80px">
-    <div class="page-label">For artists</div>
-    <h1 class="page-title">Opportunities</h1>
-    <p class="page-sub">Grants, residencies and open calls - verified weekly.</p>
-    <div class="search-bar">
-      <button class="pill-btn on" onclick="filterType(this,'All')">All</button>
-      <button class="pill-btn" onclick="filterType(this,'Grant')">Grant</button>
-      <button class="pill-btn" onclick="filterType(this,'Residency')">Residency</button>
-      <button class="pill-btn" onclick="filterType(this,'Open Call')">Open Call</button>
-      <input class="search-input" placeholder="Search..." oninput="searchOpp(this.value)">
-      <span id="opp-count" style="font-family:'Inter',sans-serif;font-size:10px;color:#ccc"></span>
-    </div>
-    <table class="opp-table">
-      <thead><tr>
-        <th>Opportunity</th>
-        <th>Award</th>
-        <th>Type</th>
-        <th>Location</th>
-        <th>Deadline</th>
-      </tr></thead>
-      <tbody id="opp-table-body"></tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ABOUT -->
-
-<div id="page-about" class="page">
-  <div class="about-dark">
-    <div style="max-width:1320px;margin:0 auto">
-      <div class="about-label">About Artatlas</div>
-      <h1>Built for artists.<br>Loved by art.</h1>
-    </div>
-  </div>
-  <div class="about-body">
-    <div class="grid2">
-      <div>
-        <p class="about-text">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
-        <p class="about-text">We built the platform we wished existed. A single place where artists find residencies, grants and open calls, and where art lovers discover the exhibitions worth travelling for.</p>
-        <p class="about-text">Updated every week. Free forever.</p>
-      </div>
-      <div>
-        <div class="stats-grid">
-          <div class="stat-box stat-box-light"><div class="stat-box-n" style="color:#111">16</div><div class="stat-box-l" style="color:#bbb">Exhibitions</div></div>
-          <div class="stat-box stat-box-light"><div class="stat-box-n" style="color:#111">20</div><div class="stat-box-l" style="color:#bbb">Opportunities</div></div>
-          <div class="stat-box stat-box-light"><div class="stat-box-n" style="color:#111">20+</div><div class="stat-box-l" style="color:#bbb">Countries</div></div>
-          <div class="stat-box stat-box-dark"><div class="stat-box-n" style="color:#fff">Free</div><div class="stat-box-l" style="color:#555">Always</div></div>
+    <div class="sec-white"><div class="sec fade-up">
+      <div class="sec-header"><div><div class="sec-label">Editor's selection</div><div class="sec-title">Must-see right now</div></div><span class="sec-more" onclick="showPage('exhibitions')">All exhibitions &rarr;</span></div>
+      <div class="grid4" id="must-grid"></div>
+    </div></div>
+    <div class="sec-off"><div class="sec fade-up">
+      <div class="sec-header"><div><div class="sec-label">For artists</div><div class="sec-title">Closing soon</div></div><span class="sec-more" onclick="showPage('opportunities')">All opportunities &rarr;</span></div>
+      <div class="grid3" id="opp-preview"></div>
+    </div></div>
+    <div class="strip-wrap"><div class="strip" id="film-strip"></div></div>
+    <div class="sec-white"><div class="sec fade-up" id="newsletter">
+      <div class="grid2">
+        <div>
+          <div class="sec-label">Weekly digest</div>
+          <div class="sec-title" style="line-height:1.1;margin-bottom:20px">Never miss an<br>opportunity.</div>
+          <p style="font-family:var(--display);font-size:18px;line-height:1.85;color:#888;max-width:360px;font-weight:300">Every Monday &mdash; the 5 best opportunities closing that week, the exhibitions worth travelling for, and what the art world is talking about.</p>
         </div>
-        <div style="background:#f9f9f9;padding:28px 22px;margin-top:2px">
-          <p style="font-size:20px;font-style:italic;line-height:1.6;color:#333">"Art should not be reserved for those with the right connections. Information is a lever for equality."</p>
+        <div>
+          <div class="nl-box" id="nl-box">
+            <div class="nl-quote">&ldquo;The first thing I open on Monday morning.&rdquo;</div>
+            <input class="nl-input" type="email" id="nl-email" placeholder="Your email address">
+            <button class="nl-btn" onclick="subscribeNl()">Subscribe free</button>
+            <div class="nl-fine">No spam &middot; Unsubscribe anytime</div>
+          </div>
         </div>
       </div>
-    </div>
+    </div></div>
   </div>
-  <div class="values-dark">
-    <div class="values-grid">
-      <div class="value-item"><div class="value-num">01</div><div class="value-name">Free</div><div class="value-desc">No paywalls. No subscription. Full access, always.</div></div>
-      <div class="value-item"><div class="value-num">02</div><div class="value-name">Verified</div><div class="value-desc">Every opportunity is checked. Expired entries removed weekly.</div></div>
-      <div class="value-item"><div class="value-num">03</div><div class="value-name">Complete</div><div class="value-desc">All disciplines, all countries - Brooklyn to Lagos to Basel.</div></div>
-      <div class="value-item"><div class="value-num">04</div><div class="value-name">Independent</div><div class="value-desc">No sponsors. No paid placement. Curation is ours alone.</div></div>
-    </div>
-  </div>
-</div>
 
-<footer>
-  <span class="footer-logo">Artatlas</span>
-  <div class="footer-links">
-    <span class="footer-link" onclick="showPage('exhibitions')">Exhibitions</span>
-    <span class="footer-link" onclick="showPage('opportunities')">Opportunities</span>
-    <span class="footer-link" onclick="showPage('about')">About</span>
-    <span class="footer-link" onclick="showPage('legal')">Legal & Privacy</span>
-  </div>
-  <span class="footer-copy">2026 - Artatlas</span>
-</footer>
+  <!-- EXHIBITIONS -->
 
-<!-- MODALS -->
-
-<div class="modal-bg" id="exh-modal" onclick="closeModal('exh-modal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-img" id="modal-exh-grad"><div id="modal-exh-inner" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px"></div><div class="modal-img-overlay"></div></div>
-    <button class="modal-close" onclick="closeModal('exh-modal')">x</button>
-    <div class="modal-body">
-      <div id="modal-exh-chip"></div>
-      <h2 class="modal-title" id="modal-exh-title"></h2>
-      <p class="modal-sub" id="modal-exh-sub"></p>
-      <p class="modal-desc" id="modal-exh-desc"></p>
-      <div class="modal-grid" id="modal-exh-grid"></div>
-      <a class="apply-btn" id="modal-exh-apply" href="#" target="_blank" style="display:none">Visit museum website</a>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="opp-modal" onclick="closeModal('opp-modal')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-body">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-        <div id="modal-opp-chip"></div>
-        <button style="background:none;border:none;font-size:22px;color:#ccc;cursor:pointer" onclick="closeModal('opp-modal')">x</button>
+  <div id="page-exhibitions" class="page">
+    <div class="sec" style="padding-top:100px">
+      <div class="page-eyebrow">What to see</div>
+      <div class="page-h1">Exhibitions</div>
+      <div class="page-sub">The shows worth seeing right now &mdash; across Europe and beyond.</div>
+      <div class="filter-bar">
+        <button class="pill on" onclick="filterCity(this,'All')">All</button>
+        <button class="pill" onclick="filterCity(this,'Paris')">Paris</button>
+        <button class="pill" onclick="filterCity(this,'London')">London</button>
+        <button class="pill" onclick="filterCity(this,'Venice')">Venice</button>
+        <button class="pill" onclick="filterCity(this,'Florence')">Florence</button>
+        <button class="pill" onclick="filterCity(this,'Basel')">Basel</button>
+        <button class="pill" onclick="filterCity(this,'Amsterdam')">Amsterdam</button>
+        <input class="search-inp" placeholder="Search&hellip;" oninput="searchExh(this.value)">
       </div>
-      <h2 class="modal-title" id="modal-opp-title"></h2>
-      <p class="modal-sub" id="modal-opp-sub"></p>
-      <p class="modal-desc" id="modal-opp-desc"></p>
-      <div class="modal-grid modal-grid2" id="modal-opp-grid"></div>
-      <a class="apply-btn" id="modal-opp-apply" href="#" target="_blank">Apply now</a>
+      <div class="grid3" id="exh-grid"></div>
     </div>
   </div>
-</div>
 
-<!-- LEGAL PAGE -->
+  <!-- OPPORTUNITIES -->
 
-<div id="page-legal" class="page">
-  <div style="max-width:800px;margin:0 auto;padding:100px 32px 80px">
-    <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:12px">Legal</div>
-    <h1 style="font-family:EB Garamond,Georgia,serif;font-size:clamp(36px,5vw,56px);font-style:italic;font-weight:400;color:#111;margin-bottom:48px;line-height:1.1">Terms & Privacy</h1>
+  <div id="page-opportunities" class="page">
+    <div class="sec" style="padding-top:100px">
+      <div class="page-eyebrow">For artists</div>
+      <div class="page-h1">Opportunities</div>
+      <div class="page-sub">Grants, residencies and open calls &mdash; verified weekly.</div>
+      <div class="filter-bar">
+        <button class="pill on" onclick="filterType(this,'All')">All</button>
+        <button class="pill" onclick="filterType(this,'Grant')">Grant</button>
+        <button class="pill" onclick="filterType(this,'Residency')">Residency</button>
+        <button class="pill" onclick="filterType(this,'Open Call')">Open Call</button>
+        <input class="search-inp" placeholder="Search&hellip;" oninput="searchOpp(this.value)">
+        <span class="result-count" id="opp-count"></span>
+      </div>
+      <table class="opp-table">
+        <thead><tr>
+          <th>Opportunity</th><th>Award</th><th>Type</th><th>Location</th><th>Deadline</th>
+        </tr></thead>
+        <tbody id="opp-body"></tbody>
+      </table>
+    </div>
+  </div>
 
-```
-<div style="font-family:Inter,sans-serif;font-size:11px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Last updated: May 2026</div>
-<div style="width:40px;height:1px;background:#e0e0e0;margin-bottom:40px"></div>
+  <!-- ABOUT -->
 
-<!-- Terms of Use -->
-<h2 style="font-family:EB Garamond,Georgia,serif;font-size:26px;font-style:italic;font-weight:400;color:#111;margin-bottom:16px">Terms of Use</h2>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">By accessing and using Artatlas ("the Platform"), you agree to the following terms. If you do not agree, please do not use the Platform.</p>
+  <div id="page-about" class="page">
+    <div class="about-dark">
+      <div style="max-width:1400px;margin:0 auto">
+        <div class="about-label">About Artatlas</div>
+        <h1 style="font-family:var(--display);font-size:clamp(36px,6vw,68px);font-style:italic;font-weight:300;color:#fff;max-width:540px;line-height:1.1">Built for artists.<br>Loved by art.</h1>
+      </div>
+    </div>
+    <div class="sec fade-up">
+      <div class="grid2">
+        <div>
+          <p class="about-text">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
+          <p class="about-text">We built the platform we wished existed. A single place where artists find residencies, grants and open calls, and where art lovers discover the exhibitions worth travelling for.</p>
+          <p class="about-text">Updated every week. Free forever.</p>
+        </div>
+        <div>
+          <div class="stat-grid">
+            <div class="stat-box" style="background:#f9f9f9"><div class="stat-n" style="color:var(--ink)">16</div><div class="stat-l" style="color:#bbb">Exhibitions</div></div>
+            <div class="stat-box" style="background:#f9f9f9"><div class="stat-n" style="color:var(--ink)">20</div><div class="stat-l" style="color:#bbb">Opportunities</div></div>
+            <div class="stat-box" style="background:#f9f9f9"><div class="stat-n" style="color:var(--ink)">20+</div><div class="stat-l" style="color:#bbb">Countries</div></div>
+            <div class="stat-box" style="background:var(--ink)"><div class="stat-n" style="color:#fff">Free</div><div class="stat-l" style="color:#555">Always</div></div>
+          </div>
+          <div style="background:#f9f9f9;padding:28px 22px;margin-top:2px">
+            <p style="font-family:var(--display);font-size:20px;font-style:italic;line-height:1.6;color:#333;font-weight:300">&ldquo;Art should not be reserved for those with the right connections. Information is a lever for equality.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="values-strip">
+      <div class="values-grid">
+        <div class="value-item"><div class="value-num">01</div><div class="value-name">Free</div><div class="value-desc">No paywalls. No subscription. Full access, always.</div></div>
+        <div class="value-item"><div class="value-num">02</div><div class="value-name">Verified</div><div class="value-desc">Every opportunity is checked. Expired entries removed weekly.</div></div>
+        <div class="value-item"><div class="value-num">03</div><div class="value-name">Complete</div><div class="value-desc">All disciplines, all countries &mdash; Brooklyn to Lagos to Basel.</div></div>
+        <div class="value-item"><div class="value-num">04</div><div class="value-name">Independent</div><div class="value-desc">No sponsors. No paid placement. Curation is ours alone.</div></div>
+      </div>
+    </div>
+  </div>
 
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">1. Nature of the Service</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas is an informational platform that aggregates publicly available artistic opportunities (residencies, grants, open calls) and exhibitions. All information is provided for informational purposes only. Artatlas does not guarantee the accuracy, completeness or currency of any listing.</p>
+  <!-- LEGAL -->
 
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">2. No Liability for Third-Party Content</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas links to and references third-party organisations, institutions and websites. We are not responsible for the content, accuracy, or practices of these third parties. Any application or interaction with a third party is solely between you and that party. Artatlas shall not be liable for any loss or damage arising from your reliance on any listed opportunity or exhibition.</p>
+  <div id="page-legal" class="page">
+    <div class="legal-body">
+      <div class="page-eyebrow">Legal</div>
+      <div class="page-h1">Terms &amp; Privacy</div>
+      <div style="font-family:var(--sans);font-size:10px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Last updated: May 2026</div>
+      <div style="width:40px;height:1px;background:#e0e0e0;margin-bottom:40px"></div>
+      <h2 class="legal-h2">Terms of Use</h2>
+      <p class="legal-p">By accessing and using Artatlas (&ldquo;the Platform&rdquo;), you agree to the following terms. If you do not agree, please do not use the Platform.</p>
+      <h3 class="legal-h3">1. Nature of the Service</h3>
+      <p class="legal-p">Artatlas is an informational platform that aggregates publicly available artistic opportunities and exhibitions. All information is provided for informational purposes only. Artatlas does not guarantee the accuracy, completeness or currency of any listing.</p>
+      <h3 class="legal-h3">2. No Liability for Third-Party Content</h3>
+      <p class="legal-p">Artatlas links to and references third-party organisations and websites. We are not responsible for the content, accuracy, or practices of these third parties. Any application or interaction with a third party is solely between you and that party. Artatlas shall not be liable for any loss or damage arising from your reliance on any listed opportunity or exhibition.</p>
+      <h3 class="legal-h3">3. Intellectual Property</h3>
+      <p class="legal-p">The Artatlas name, design and original content are the property of Artatlas. You may not reproduce or distribute without prior written permission. All third-party names, trademarks and content remain the property of their respective owners. Artatlas is not affiliated with or endorsed by any listed institution.</p>
+      <h3 class="legal-h3">4. Disclaimer</h3>
+      <p class="legal-p">The Platform is provided &ldquo;as is&rdquo; without warranties of any kind. Artatlas makes no representations that the Platform will be uninterrupted or error-free.</p>
+      <div class="legal-divider"></div>
+      <h2 class="legal-h2">Privacy Policy</h2>
+      <p class="legal-p">Artatlas is committed to protecting your privacy in accordance with the General Data Protection Regulation (GDPR, Regulation EU 2016/679) and applicable French law.</p>
+      <h3 class="legal-h3">1. Data We Collect</h3>
+      <p class="legal-p">We collect only your email address when you voluntarily subscribe to our newsletter. We do not collect names, location data, browsing behaviour, or any other personal information. We do not use tracking cookies.</p>
+      <h3 class="legal-h3">2. Purpose of Processing</h3>
+      <p class="legal-p">Your email address is used solely to send you the Artatlas weekly newsletter. The legal basis for this processing is your freely given, specific and informed consent (Article 6(1)(a) GDPR).</p>
+      <h3 class="legal-h3">3. Data Retention</h3>
+      <p class="legal-p">We retain your email address for as long as you remain subscribed. Upon unsubscription, your data is deleted within 30 days.</p>
+      <h3 class="legal-h3">4. Your Rights</h3>
+      <p class="legal-p">Under GDPR, you have the right to access the data we hold about you, request its deletion, and withdraw your consent at any time by unsubscribing directly from any newsletter email.</p>
+      <h3 class="legal-h3">5. Data Sharing</h3>
+      <p class="legal-p">We do not sell, rent or share your personal data with any third party. Your email address is used exclusively for Artatlas communications.</p>
+      <h3 class="legal-h3">6. Contact</h3>
+      <p class="legal-p">For any questions regarding your personal data or this policy, please contact us via the newsletter. We will respond within a reasonable timeframe.</p>
+      <div class="legal-note">
+        <p style="font-family:var(--display);font-size:16px;font-style:italic;color:#888;line-height:1.7;font-weight:300">Artatlas is operated as an independent personal project. It is not a registered commercial entity. The platform is free to use and does not generate revenue at this stage.</p>
+      </div>
+    </div>
+  </div>
 
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">3. Intellectual Property</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">The Artatlas name, logo, design and original content are the property of Artatlas. You may not reproduce, distribute or create derivative works without prior written permission. Opportunity and exhibition descriptions are aggregated from public sources and remain the property of their respective owners.</p>
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">Artatlas</span>
+      <div class="footer-links">
+        <span class="footer-link" onclick="showPage('exhibitions')">Exhibitions</span>
+        <span class="footer-link" onclick="showPage('opportunities')">Opportunities</span>
+        <span class="footer-link" onclick="showPage('about')">About</span>
+        <span class="footer-link" onclick="showPage('legal')">Legal &amp; Privacy</span>
+      </div>
+      <span class="footer-copy">2026 &middot; Artatlas</span>
+    </div>
+  </footer>
 
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">4. Disclaimer</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:40px">The Platform is provided "as is" without warranties of any kind, express or implied. Artatlas makes no representations that the Platform will be uninterrupted or error-free.</p>
+  <!-- MODALS -->
 
-<div style="width:100%;height:1px;background:#f0f0f0;margin:48px 0"></div>
+  <div class="modal-bg" id="exh-modal" onclick="closeModal('exh-modal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-grad" id="modal-exh-grad">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <div class="modal-grad-title" id="modal-exh-grad-title"></div>
+          <div class="modal-grad-line"></div>
+          <div class="modal-grad-sub" id="modal-exh-grad-sub"></div>
+        </div>
+        <div class="modal-overlay"></div>
+        <button class="modal-close" onclick="closeModal('exh-modal')">&#x2715;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-exh-chip"></div>
+        <h2 class="modal-title" id="modal-exh-title"></h2>
+        <p class="modal-sub" id="modal-exh-sub"></p>
+        <p class="modal-desc" id="modal-exh-desc"></p>
+        <div class="modal-cells" id="modal-exh-cells"></div>
+        <a class="apply-btn" id="modal-exh-link" href="#" target="_blank">Visit museum website &rarr;</a>
+      </div>
+    </div>
+  </div>
 
-<!-- Privacy Policy -->
-<h2 style="font-family:EB Garamond,Georgia,serif;font-size:26px;font-style:italic;font-weight:400;color:#111;margin-bottom:16px">Privacy Policy</h2>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Artatlas is committed to protecting your privacy in accordance with the General Data Protection Regulation (GDPR, Regulation EU 2016/679) and applicable French law.</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">1. Data We Collect</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We collect only your <strong>email address</strong> when you voluntarily subscribe to our newsletter. We do not collect names, location data, browsing behaviour, or any other personal information. We do not use cookies for tracking.</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">2. Purpose of Processing</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Your email address is used solely to send you the Artatlas weekly newsletter. The legal basis for this processing is your freely given, specific and informed consent (Article 6(1)(a) GDPR).</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">3. Data Retention</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We retain your email address for as long as you remain subscribed. Upon unsubscription, your data is deleted within 30 days.</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">4. Your Rights</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">Under GDPR, you have the right to: access the data we hold about you; request its deletion; withdraw your consent at any time by unsubscribing. To exercise any of these rights, you may unsubscribe directly from any newsletter email.</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">5. Data Sharing</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">We do not sell, rent or share your personal data with any third party. Your email address is used exclusively for Artatlas communications.</p>
-
-<h3 style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:28px 0 10px">6. Contact</h3>
-<p style="font-family:EB Garamond,Georgia,serif;font-size:17px;line-height:1.85;color:#555;margin-bottom:16px">For any questions regarding your personal data or this policy, please contact us via the newsletter. We will respond within a reasonable timeframe.</p>
-
-<div style="background:#f9f9f9;padding:24px 28px;margin-top:40px">
-  <p style="font-family:EB Garamond,Georgia,serif;font-size:16px;font-style:italic;color:#888;line-height:1.7">Artatlas is operated as a personal project. It is not a registered commercial entity. The platform is free to use and does not generate revenue at this stage.</p>
-</div>
-```
-
+  <div class="modal-bg" id="opp-modal" onclick="closeModal('opp-modal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-body">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+          <div id="modal-opp-chip"></div>
+          <button style="background:none;border:none;font-size:22px;color:#ccc;cursor:pointer" onclick="closeModal('opp-modal')">&#x2715;</button>
+        </div>
+        <h2 class="modal-title" id="modal-opp-title"></h2>
+        <p class="modal-sub" id="modal-opp-sub"></p>
+        <p class="modal-desc" id="modal-opp-desc"></p>
+        <div class="modal-cells modal-cell-2" id="modal-opp-cells"></div>
+        <a class="apply-btn" id="modal-opp-link" href="#" target="_blank" style="margin-top:20px">Apply now &rarr;</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
+// ── DATA ─────────────────────────────────────────────
+const GRADS = [
+  "linear-gradient(145deg,#e8c4a0,#d4956a,#b87040)",
+  "linear-gradient(135deg,#2d4a6b,#1a3a5a,#3d6080)",
+  "linear-gradient(150deg,#8b3a4a,#6b2035,#a04060)",
+  "linear-gradient(160deg,#8b2020,#6b3010,#c04820)",
+  "linear-gradient(140deg,#2a2a2a,#1a1a1a,#3a3a3a)",
+  "linear-gradient(135deg,#c87840,#a85830,#e0a060)",
+  "linear-gradient(145deg,#6b8060,#4a6040,#8a9870)",
+  "linear-gradient(150deg,#5a6878,#3a4858,#7a8898)",
+  "linear-gradient(140deg,#3a1a4a,#1a0a2a,#5a2a6a)",
+  "linear-gradient(145deg,#8b6a20,#6b4a10,#a87830)",
+  "linear-gradient(135deg,#b8b0a8,#989088,#d0c8c0)",
+  "linear-gradient(150deg,#b08080,#907060,#c8a098)",
+  "linear-gradient(145deg,#2a4030,#1a3020,#3a5040)",
+  "linear-gradient(140deg,#b09040,#907020,#c8a850)",
+  "linear-gradient(135deg,#c8a020,#a87810,#e0b830)",
+  "linear-gradient(150deg,#1a2840,#0a1828,#283850)"
+];
+
+const EXH = [
+  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
+  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists.",url:"https://www.labiennale.org/en/art/2026"},
+  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,desc:"One of the largest European retrospectives devoted to Kahlo's self-portraits, symbolic imagery and political fire.",url:"https://www.tate.org.uk"},
+  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,desc:"Over 70 works in dialogue with Fra Angelico at the Museo di San Marco. A rare encounter between two masters.",url:"https://www.palazzostrozzi.org"},
+  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia.",url:"https://www.gallerieaccademia.it"},
+  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,desc:"The most comprehensive retrospective of Emin's 40-year career. More than 90 works.",url:"https://www.tate.org.uk"},
+  {id:7,title:"Cezanne",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"25 Jan - 25 May 2026",tag:"Post-Impressionism",must:false,desc:"80 oils and watercolours focusing on Cezanne's final years. Mont Sainte-Victoire, bathers, Provencal landscapes.",url:"https://www.fondationbeyeler.ch"},
+  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,desc:"First major European Whistler retrospective in 30 years. Nocturnes alongside rarely-seen early works.",url:"https://www.tate.org.uk"},
+  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,desc:"Voidal, mirrored and wax sculptures. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk"},
+  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,desc:"All nine known painted portraits by van Eyck together for the first time in history.",url:"https://www.nationalgallery.org.uk"},
+  {id:11,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,desc:"A monumental dialogue across five sections. Two giants of Western sculpture side by side.",url:"https://www.louvre.fr"},
+  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,desc:"First major Cassatt retrospective at a French national museum. 100 years since her death.",url:"https://www.musee-orsay.fr"},
+  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,desc:"First two-person show of Lassnig and Munch - united in their wildly expressive approaches to the body.",url:"https://www.hamburger-kunsthalle.de"},
+  {id:14,title:"Beauty & Ugliness in the Renaissance",venue:"Bozar",city:"Brussels",country:"Belgium",dates:"20 Feb - 14 Jun 2026",tag:"Renaissance",must:false,desc:"Botticelli, Titian, Da Vinci, Michelangelo - how standards of beauty shifted across the 15th century.",url:"https://www.bozar.be"},
+  {id:15,title:"Yellow - Beyond Van Gogh",venue:"Van Gogh Museum",city:"Amsterdam",country:"Netherlands",dates:"13 Feb - 17 May 2026",tag:"Post-Impressionism",must:false,desc:"Van Gogh's sunflowers as departure point. Yellow across art, fashion, music around 1900.",url:"https://www.vangoghmuseum.nl"},
+  {id:16,title:"Metamorphoses",venue:"Rijksmuseum",city:"Amsterdam",country:"Netherlands",dates:"6 Feb - 25 May 2026",tag:"Old Masters",must:false,desc:"History, religion, freedom and eroticism through the Rijksmuseum's finest galleries.",url:"https://www.rijksmuseum.nl"}
+];
+
+const OPP = [
+  {id:1,title:"The Hopper Prize",org:"The Hopper Prize",deadline:"12 May 2026",type:"Grant",award:"$4,500",country:"International",urgent:true,desc:"Six grants totalling $13,000. All media eligible. 30-artist shortlist and Instagram feature to 165k followers.",url:"https://hopperprize.org"},
+  {id:2,title:"SaveArtSpace - Wild & Free",org:"SaveArtSpace",deadline:"7 May 2026",type:"Open Call",award:"NYC billboard",country:"USA",urgent:true,desc:"Public art on NYC billboard space opening 26 June. Theme: nature, mythology and civilisation.",url:"https://saveartspace.org"},
+  {id:3,title:"Fundacion Botin Art Grants",org:"Fundacion Botin",deadline:"8 May 2026",type:"Grant",award:"23,000 EUR each",country:"International",urgent:true,desc:"Six scholarships covering nine months plus medical insurance. One reserved for Spanish resident under 30.",url:"https://fundacionbotin.org"},
+  {id:4,title:"Scenerium 2026 Art Award",org:"Gallerium",deadline:"15 May 2026",type:"Open Call",award:"Artsy + Catalogue",country:"International",urgent:true,desc:"For artists capturing essence of place. Artsy feature, global promotion, catalogue, editorial reviews.",url:"https://gallerium.art"},
+  {id:5,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",type:"Grant",award:"$10,000",country:"International",urgent:false,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes.",url:"https://osgf.org"},
+  {id:6,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:false,desc:"Open to all media, geared toward emerging artists. International visibility and prize money.",url:"https://yicca.org"},
+  {id:7,title:"Headlands Center Residency",org:"Headlands Center for the Arts",deadline:"1 Jun 2026",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"50 fully sponsored residencies per year. Studio, meals, housing, travel. Sausalito, California.",url:"https://headlands.org"},
+  {id:8,title:"Artflow Prize",org:"Artflow Studio",deadline:"31 May 2026",type:"Open Call",award:"200 GBP + Exhibition",country:"International",urgent:false,desc:"Cash prize, group exhibition, published interview and Artsy promotional feature.",url:"https://artflowstudio.com"},
+  {id:9,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship or needing to complete a body of work.",url:"https://pkf.org"},
+  {id:10,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
+  {id:11,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Uninterrupted time on 20,000 Wyoming acres. Open to all disciplines internationally.",url:"https://ucross.org"},
+  {id:12,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June - October 2026 in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
+  {id:13,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists aged 21+.",url:"https://studioprogram.org"},
+  {id:14,title:"De Ateliers - Two-Year Program",org:"De Ateliers",deadline:"Rolling",type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program in Amsterdam with weekly studio conversations with international tutors.",url:"https://de-ateliers.nl"},
+  {id:15,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators and cultural professionals in the EU.",url:"https://on-the-move.org"},
+  {id:16,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe.",url:"https://goethe.de"},
+  {id:17,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. Apply July 2026 for the 2027 edition.",url:"https://releartsfoundation.org"},
+  {id:18,title:"Earthwise - Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices. Fifth edition.",url:"https://earthwise.dk"},
+  {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 stipend included.",url:"https://creative-capital.org"},
+  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Open calls four times a year.",url:"https://proyectoace.org"}
+];
+
 const CHIPS = {
   "Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a",
   "Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22",
@@ -444,80 +607,33 @@ const CHIPS = {
   "Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a",
   "Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00",
   "Old Masters":"background:#f5ede8;color:#5a2e1a","Photography":"background:#e8f5f2;color:#1a4a40",
-  "Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a",
-  "Open Call":"background:#f5e8f5;color:#5a1a6b"
+  "Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"
 };
+function chip(l){const s=CHIPS[l]||"background:#f0f0f0;color:#444";return'<span class="chip" style="'+s+'">'+l+'</span>';}
 
-function chip(label){
-  const s = CHIPS[label]||"background:#f0f0f0;color:#444";
-  return '<span class="chip" style="'+s+'">'+label+'</span>';
+// ── SITE INIT ────────────────────────────────────────
+window.addEventListener('load', initSite);
+function initSite(){
+  renderMustGrid();renderOppPreview();renderFilmStrip();
+  document.addEventListener("scroll",()=>{
+    document.getElementById("nav").classList.toggle("scrolled",window.scrollY>50);
+    document.querySelectorAll(".fade-up").forEach(el=>{
+      if(el.getBoundingClientRect().top<window.innerHeight*0.9)el.classList.add("in");
+    });
+  });
+  setTimeout(()=>document.querySelectorAll(".fade-up").forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight*0.9)el.classList.add("in");
+  }),100);
 }
 
-const GRADS=["linear-gradient(145deg,#e8c4a0,#d4956a,#c07840)","linear-gradient(135deg,#2d4a6b,#1a3a5a,#3d6080)","linear-gradient(150deg,#8b3a4a,#6b2035,#a04060)","linear-gradient(160deg,#8b2020,#6b3010,#c04820)","linear-gradient(140deg,#2a2a2a,#1a1a1a,#383838)","linear-gradient(135deg,#c87840,#a85830,#e0a060)","linear-gradient(145deg,#6b8060,#4a6040,#8a9870)","linear-gradient(150deg,#5a6878,#3a4858,#7a8898)","linear-gradient(140deg,#3a1a4a,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#8b6a20,#6b4a10,#a87830)","linear-gradient(135deg,#b8b0a8,#989088,#d0c8c0)","linear-gradient(150deg,#c0908a,#a07070,#d0a8a0)","linear-gradient(145deg,#2a4030,#1a3020,#3a5040)","linear-gradient(140deg,#b89040,#987020,#d0a850)","linear-gradient(135deg,#d4a820,#b88010,#e8c040)","linear-gradient(150deg,#1a2840,#0a1828,#2a3850)"];
-
-const EXH = [
-  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,img:"https://images.unsplash.com/photo-1541367777708-7905fe3296c0?w=900&q=80",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
-  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=900&q=80",desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists.",url:"https://www.labiennale.org/en/art/2026"},
-  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,img:"https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=900&q=80",desc:"One of the largest European retrospectives devoted to Kahlo's work.",url:"https://www.tate.org.uk/whats-on/tate-modern"},
-  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,img:"https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=900&q=80",desc:"Over 70 works in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
-  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,img:"https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=900&q=80",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia.",url:"https://www.gallerieaccademia.it"},
-  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,img:"https://images.unsplash.com/photo-1536924430914-91f9e2041b83?w=900&q=80",desc:"The most comprehensive retrospective of Emin's 40-year career.",url:"https://www.tate.org.uk/whats-on/tate-modern"},
-  {id:7,title:"Cezanne",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"25 Jan - 25 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80",desc:"80 oils and watercolours focusing on Cezanne's final years.",url:"https://www.fondationbeyeler.ch"},
-  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,img:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=900&q=80",desc:"First major European Whistler retrospective in 30 years.",url:"https://www.tate.org.uk/whats-on/tate-britain"},
-  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1565098940896-e70f27eb76d3?w=900&q=80",desc:"Voidal, mirrored and wax sculptures. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk/venues/hayward-gallery"},
-  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80",desc:"All nine known painted portraits by van Eyck together for the first time.",url:"https://www.nationalgallery.org.uk"},
-  {id:11,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=900&q=80",desc:"A monumental dialogue. Two giants of Western sculpture side by side.",url:"https://www.louvre.fr"},
-  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,img:"https://images.unsplash.com/photo-1555448248-2571daf6344b?w=900&q=80",desc:"First major Cassatt retrospective at a French national museum.",url:"https://www.musee-orsay.fr"},
-  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=900&q=80",desc:"First two-person show of Lassnig and Munch - united in expressiveness.",url:"https://www.hamburger-kunsthalle.de"},
-  {id:14,title:"Beauty & Ugliness in the Renaissance",venue:"Bozar",city:"Brussels",country:"Belgium",dates:"20 Feb - 14 Jun 2026",tag:"Renaissance",must:false,img:"https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=900&q=80",desc:"Botticelli, Titian, Da Vinci - beauty standards in the 15th century.",url:"https://www.bozar.be"},
-  {id:15,title:"Yellow - Beyond Van Gogh",venue:"Van Gogh Museum",city:"Amsterdam",country:"Netherlands",dates:"13 Feb - 17 May 2026",tag:"Post-Impressionism",must:false,img:"https://images.unsplash.com/photo-1617791160588-241658ad2b08?w=900&q=80",desc:"Van Gogh's sunflowers as departure point. Yellow across art and culture around 1900.",url:"https://www.vangoghmuseum.nl"},
-  {id:16,title:"Metamorphoses",venue:"Rijksmuseum",city:"Amsterdam",country:"Netherlands",dates:"6 Feb - 25 May 2026",tag:"Old Masters",must:false,img:"https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80",desc:"History, religion, freedom through the Rijksmuseum's finest galleries."}
-];
-
-const OPP = [
-  {id:1,title:"The Hopper Prize",org:"The Hopper Prize",deadline:"12 May 2026",type:"Grant",award:"$4,500",country:"International",urgent:true,desc:"Six grants totalling $13,000. All media eligible. 30-artist shortlist and Instagram feature.",url:"https://hopperprize.org"},
-  {id:2,title:"SaveArtSpace - Wild & Free",org:"SaveArtSpace",deadline:"7 May 2026",type:"Open Call",award:"NYC billboard",country:"USA",urgent:true,desc:"Public art on NYC billboard space opening 26 June. Theme: nature, mythology and civilisation.",url:"https://saveartspace.org"},
-  {id:3,title:"Fundacion Botin Art Grants",org:"Fundacion Botin",deadline:"8 May 2026",type:"Grant",award:"23,000 EUR each",country:"International",urgent:true,desc:"Six scholarships covering nine months plus medical insurance.",url:"https://fundacionbotin.org"},
-  {id:4,title:"Scenerium 2026 Art Award",org:"Gallerium",deadline:"15 May 2026",type:"Open Call",award:"Artsy + Catalogue",country:"International",urgent:true,desc:"For artists capturing essence of place. Artsy feature, catalogue, editorial reviews.",url:"https://gallerium.art"},
-  {id:5,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",type:"Grant",award:"$10,000",country:"International",urgent:false,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes.",url:"https://osgf.org"},
-  {id:6,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:false,desc:"Open to all media, geared toward emerging artists. International visibility and prize money.",url:"https://yicca.org"},
-  {id:7,title:"Headlands Center Residency",org:"Headlands Center for the Arts",deadline:"1 Jun 2026",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"50 fully sponsored residencies per year. Studio, meals, housing, travel. Sausalito CA.",url:"https://headlands.org"},
-  {id:8,title:"Artflow Prize",org:"Artflow Studio",deadline:"31 May 2026",type:"Open Call",award:"200 GBP + Exhibition",country:"International",urgent:false,desc:"Cash prize, group exhibition, published interview and Artsy promotional feature.",url:"https://artflowstudio.com"},
-  {id:9,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship.",url:"https://pkf.org"},
-  {id:10,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events.",url:"https://gottliebfoundation.org"},
-  {id:11,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Uninterrupted time on 20,000 Wyoming acres. Open to all disciplines.",url:"https://ucross.org"},
-  {id:12,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June - October 2026 in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
-  {id:13,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists.",url:"https://studioprogram.org"},
-  {id:14,title:"De Ateliers - Two-Year Program",org:"De Ateliers",deadline:"Rolling",type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program in Amsterdam with international tutors.",url:"https://de-ateliers.nl"},
-  {id:15,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators in the EU.",url:"https://on-the-move.org"},
-  {id:16,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists working between Sub-Saharan Africa and Europe.",url:"https://goethe.de"},
-  {id:17,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. Apply July 2026 for 2027 edition.",url:"https://releartsfoundation.org"},
-  {id:18,title:"Earthwise - Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices.",url:"https://earthwise.dk"},
-  {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto. Roundtrip flight and $800 stipend included.",url:"https://creative-capital.org"},
-  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Open calls four times a year.",url:"https://proyectoace.org"}
-];
-
-let cityFilter = "All", typeFilter = "All", exhSearch = "", oppSearch = "";
-
-function showPage(p){
-  document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
-  document.getElementById("page-"+p).classList.add("active");
-  document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
-  const navEl = document.getElementById("nav-"+p);
-  if(navEl) navEl.classList.add("active");
-  window.scrollTo(0,0);
-  if(p==="exhibitions") renderExhGrid();
-  if(p==="opportunities") renderOppTable();
-}
-
-function makeExhCard(e, ratio){
-  const g=GRADS[e.id-1]||GRADS[0];
-  return '<div class="exh-card" onclick="openExh('+e.id+')">'
-    +'<div class="exh-img '+ratio+'" style="position:relative;background:'+g+'">'
-    +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px">'
-    +'<div style="width:24px;height:1px;background:rgba(255,255,255,0.4)"></div>'
-    +'<div style="font-family:EB Garamond,serif;font-size:13px;font-style:italic;color:rgba(255,255,255,0.8);text-align:center">'+e.city+'</div>'
-    +'<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.45)">'+e.tag+'</div>'
+// ── RENDER ───────────────────────────────────────────
+function gradCard(e,ratio){
+  return'<div class="exh-card" onclick="openExh('+e.id+')">'
+    +'<div class="exh-card-top exh-card-top-'+ratio+'">'
+    +'<div class="exh-grad" style="background:'+GRADS[e.id-1]+'">'
+    +'<div class="exh-grad-line"></div>'
+    +'<div class="exh-grad-city">'+e.city+'</div>'
+    +'<div class="exh-grad-tag">'+e.tag+'</div>'
     +'</div>'
     +'<div class="exh-overlay"></div>'
     +(e.must?'<div class="must-badge">Must-see</div>':'')
@@ -525,134 +641,126 @@ function makeExhCard(e, ratio){
     +'</div></div>';
 }
 
-function makeExhCard3(e){
-  const g=GRADS[e.id-1]||GRADS[0];
-  return '<div class="exh-card" onclick="openExh('+e.id+')" style="background:#fff;box-shadow:0 1px 8px rgba(0,0,0,0.06)">'
-    +'<div class="exh-img exh-img-3" style="position:relative;background:'+g+'">'
-    +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px">'
-    +'<div style="width:32px;height:1px;background:rgba(255,255,255,0.4)"></div>'
-    +'<div style="font-family:EB Garamond,serif;font-size:17px;font-style:italic;color:rgba(255,255,255,0.85);text-align:center;line-height:1.3">'+e.venue+'</div>'
-    +'<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)">'+e.city+'</div>'
+function gradCard3(e){
+  return'<div class="exh-card" onclick="openExh('+e.id+')" style="box-shadow:0 1px 8px rgba(0,0,0,0.06)">'
+    +'<div class="exh-card-top exh-card-top-3">'
+    +'<div class="exh-grad" style="background:'+GRADS[e.id-1]+'">'
+    +'<div class="exh-grad-line" style="width:28px"></div>'
+    +'<div class="exh-grad-city" style="font-size:16px">'+e.venue+'</div>'
+    +'<div class="exh-grad-tag">'+e.city+'</div>'
     +'</div>'
     +(e.must?'<div class="must-badge">Must-see</div>':'')
     +'</div>'
     +'<div class="exh-info">'
-    +'<div style="display:flex;justify-content:space-between;margin-bottom:9px">'+chip(e.tag)+'</div>'
+    +'<div style="margin-bottom:8px">'+chip(e.tag)+'</div>'
     +'<div class="exh-title">'+e.title+'</div>'
-    +'<div class="exh-venue">'+e.venue+' - '+e.city+'</div>'
+    +'<div class="exh-venue">'+e.venue+' &middot; '+e.city+'</div>'
     +'<div class="exh-dates">'+e.dates+'</div>'
     +'</div></div>';
 }
 
-function renderMustSee(){
-  const must = EXH.filter(e=>e.must).slice(0,4);
-  document.getElementById("must-see-grid").innerHTML = must.map(e=>makeExhCard(e,"exh-img-4")).join("");
+function renderMustGrid(){
+  document.getElementById("must-grid").innerHTML=EXH.filter(e=>e.must).slice(0,4).map(e=>gradCard(e,4)).join("");
 }
 
 function renderOppPreview(){
-  document.getElementById("opp-preview").innerHTML = OPP.slice(0,6).map(o=>'<div class="opp-card" onclick="openOpp('+o.id+')">'
-    +'<div class="opp-header">'+chip(o.type)+'<span style="font-family:Inter,sans-serif;font-size:10px;'+(o.urgent?"color:#c0392b;font-weight:500":"color:#bbb")+'">'+o.deadline+'</span></div>'
+  document.getElementById("opp-preview").innerHTML=OPP.slice(0,6).map(o=>'<div class="opp-card" onclick="openOpp('+o.id+')">'
+    +'<div class="opp-card-header">'+chip(o.type)+'<span style="font-family:var(--sans);font-size:10px;'+(o.urgent?"color:var(--red);font-weight:500":"color:var(--muted)")+'">'+o.deadline+'</span></div>'
     +'<div class="opp-title">'+o.title+'</div>'
     +'<div class="opp-org">'+o.org+'</div>'
-    +'<div class="opp-footer">'+o.award+' - '+o.country+'</div>'
+    +'<div class="opp-footer">'+o.award+' &middot; '+o.country+'</div>'
     +'</div>').join("");
 }
 
 function renderFilmStrip(){
-  const items = [...EXH,...EXH.slice(0,5)];
-  document.getElementById("film-strip").innerHTML = items.map(e=>'<div class="strip-item" onclick="openExh('+e.id+')">'
-    +'<div class="strip-item-img" style="background:'+GRADS[e.id-1]+';display:flex;align-items:center;justify-content:center">'
-    +'<div style="font-family:EB Garamond,serif;font-size:12px;font-style:italic;color:rgba(255,255,255,0.75);text-align:center;padding:10px;line-height:1.4">'+e.city+'</div>'
+  document.getElementById("film-strip").innerHTML=[...EXH,...EXH.slice(0,6)].map(e=>'<div class="strip-item" onclick="openExh('+e.id+')">'
+    +'<div class="strip-item-bg" style="background:'+GRADS[e.id-1]+'">'
+    +'<div class="strip-item-city">'+e.city+'</div>'
     +'</div>'
-    +'<div class="strip-caption"><div class="strip-title">'+e.title+'</div><div class="strip-city">'+e.city+'</div></div>'
+    +'<div class="strip-caption"><div class="strip-title">'+e.title+'</div><div class="strip-city-label">'+e.city+'</div></div>'
     +'</div>').join("");
 }
 
+let cityF="All",typeF="All",exhQ="",oppQ="";
+
 function renderExhGrid(){
-  const filtered = EXH.filter(e=>(cityFilter==="All"||e.city===cityFilter)&&(e.title+e.city+e.venue+e.tag).toLowerCase().includes(exhSearch));
-  document.getElementById("exh-grid").innerHTML = filtered.map(e=>makeExhCard3(e)).join("");
+  const f=EXH.filter(e=>(cityF==="All"||e.city===cityF)&&(e.title+e.city+e.venue+e.tag).toLowerCase().includes(exhQ));
+  document.getElementById("exh-grid").innerHTML=f.map(e=>gradCard3(e)).join("");
 }
 
 function renderOppTable(){
-  const filtered = OPP.filter(o=>(typeFilter==="All"||o.type===typeFilter)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oppSearch));
-  document.getElementById("opp-count").textContent = filtered.length+" results";
-  document.getElementById("opp-table-body").innerHTML = filtered.map(o=>'<tr onclick="openOpp('+o.id+')">'
+  const f=OPP.filter(o=>(typeF==="All"||o.type===typeF)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oppQ));
+  document.getElementById("opp-count").textContent=f.length+" results";
+  document.getElementById("opp-body").innerHTML=f.map(o=>'<tr onclick="openOpp('+o.id+')">'
     +'<td><div class="opp-row-title">'+o.title+(o.urgent?'<span class="urgent-dot"></span>':'')+'</div><div class="opp-row-org">'+o.org+'</div></td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#666;white-space:nowrap">'+o.award+'</td>'
-    +'<td>'+chip(o.type)+'</td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#aaa">'+o.country+'</td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#ccc":o.urgent?"#c0392b":"#555")+'">'+o.deadline+'</td>'
+    +'<td style="font-family:var(--sans);font-size:10px;color:#666;white-space:nowrap;padding:17px 12px">'+o.award+'</td>'
+    +'<td style="padding:17px 12px">'+chip(o.type)+'</td>'
+    +'<td style="font-family:var(--sans);font-size:10px;color:var(--muted);padding:17px 12px">'+o.country+'</td>'
+    +'<td style="font-family:var(--sans);font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#ccc":o.urgent?"var(--red)":"#555")+'">'+o.deadline+'</td>'
     +'</tr>').join("");
 }
 
-function filterCity(btn, city){
-  cityFilter = city;
-  document.querySelectorAll("#page-exhibitions .pill-btn").forEach(b=>b.classList.remove("on"));
-  btn.classList.add("on");
-  renderExhGrid();
-}
+function filterCity(btn,city){cityF=city;document.querySelectorAll("#page-exhibitions .pill").forEach(b=>b.classList.remove("on"));btn.classList.add("on");renderExhGrid();}
+function filterType(btn,type){typeF=type;document.querySelectorAll("#page-opportunities .pill").forEach(b=>b.classList.remove("on"));btn.classList.add("on");renderOppTable();}
+function searchExh(v){exhQ=v.toLowerCase();renderExhGrid();}
+function searchOpp(v){oppQ=v.toLowerCase();renderOppTable();}
 
-function filterType(btn, type){
-  typeFilter = type;
-  document.querySelectorAll("#page-opportunities .pill-btn").forEach(b=>b.classList.remove("on"));
-  btn.classList.add("on");
-  renderOppTable();
+function showPage(p){
+  document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
+  document.getElementById("page-"+p).classList.add("active");
+  document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
+  const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("active");
+  window.scrollTo(0,0);
+  if(p==="exhibitions")renderExhGrid();
+  if(p==="opportunities")renderOppTable();
+  setTimeout(()=>document.querySelectorAll(".fade-up").forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight*0.9)el.classList.add("in");
+  }),80);
 }
-
-function searchExh(v){ exhSearch=v.toLowerCase(); renderExhGrid(); }
-function searchOpp(v){ oppSearch=v.toLowerCase(); renderOppTable(); }
 
 function openExh(id){
-  const e = EXH.find(x=>x.id===id);
-  const mg=GRADS[e.id-1]||GRADS[0];
-  document.getElementById("modal-exh-grad").style.background=mg;
-  document.getElementById("modal-exh-inner").innerHTML=
-    '<div style="font-family:EB Garamond,serif;font-size:30px;font-style:italic;color:rgba(255,255,255,0.88);text-align:center;line-height:1.2">'+e.title+'</div>'
-    +'<div style="width:40px;height:1px;background:rgba(255,255,255,0.4)"></div>'
-    +'<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55)">'+e.city+' &middot; '+e.country+'</div>';
-  document.getElementById("modal-exh-chip").innerHTML = chip(e.tag);
-  document.getElementById("modal-exh-title").textContent = e.title;
-  document.getElementById("modal-exh-sub").textContent = e.venue+" - "+e.city+", "+e.country;
-  document.getElementById("modal-exh-desc").textContent = e.desc;
-  document.getElementById("modal-exh-grid").innerHTML =
+  const e=EXH.find(x=>x.id===id);
+  document.getElementById("modal-exh-grad").style.background=GRADS[e.id-1];
+  document.getElementById("modal-exh-grad-title").textContent=e.title;
+  document.getElementById("modal-exh-grad-sub").textContent=e.city+" \u00b7 "+e.country;
+  document.getElementById("modal-exh-chip").innerHTML=chip(e.tag);
+  document.getElementById("modal-exh-title").textContent=e.title;
+  document.getElementById("modal-exh-sub").textContent=e.venue+" \u2013 "+e.city+", "+e.country;
+  document.getElementById("modal-exh-desc").textContent=e.desc;
+  document.getElementById("modal-exh-cells").innerHTML=
     '<div class="modal-cell"><div class="modal-cell-label">Dates</div><div class="modal-cell-val">'+e.dates+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">City</div><div class="modal-cell-val">'+e.city+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">Status</div><div class="modal-cell-val">Open now</div></div>';
-  const applyBtn = document.getElementById("modal-exh-apply");
-  if(e.url){ applyBtn.href=e.url; applyBtn.style.display="block"; }
-  else { applyBtn.style.display="none"; }
+  document.getElementById("modal-exh-link").href=e.url||"#";
   document.getElementById("exh-modal").classList.add("open");
 }
 
 function openOpp(id){
-  const o = OPP.find(x=>x.id===id);
-  document.getElementById("modal-opp-chip").innerHTML = chip(o.type);
-  document.getElementById("modal-opp-title").textContent = o.title;
-  document.getElementById("modal-opp-sub").textContent = o.org;
-  document.getElementById("modal-opp-desc").textContent = o.desc;
-  document.getElementById("modal-opp-grid").innerHTML =
+  const o=OPP.find(x=>x.id===id);
+  document.getElementById("modal-opp-chip").innerHTML=chip(o.type);
+  document.getElementById("modal-opp-title").textContent=o.title;
+  document.getElementById("modal-opp-sub").textContent=o.org;
+  document.getElementById("modal-opp-desc").textContent=o.desc;
+  document.getElementById("modal-opp-cells").innerHTML=
     '<div class="modal-cell"><div class="modal-cell-label">Award</div><div class="modal-cell-val">'+o.award+'</div></div>'
-    +'<div class="modal-cell"><div class="modal-cell-label">Deadline</div><div class="modal-cell-val" style="color:'+(o.urgent?"#c0392b":"#111")+'">'+o.deadline+'</div></div>'
+    +'<div class="modal-cell"><div class="modal-cell-label">Deadline</div><div class="modal-cell-val" style="color:'+(o.urgent?"var(--red)":"var(--ink)")+'">'+o.deadline+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">Location</div><div class="modal-cell-val">'+o.country+'</div></div>'
     +'<div class="modal-cell"><div class="modal-cell-label">Type</div><div class="modal-cell-val">'+o.type+'</div></div>';
-  document.getElementById("modal-opp-apply").href = o.url;
+  document.getElementById("modal-opp-link").href=o.url||"#";
   document.getElementById("opp-modal").classList.add("open");
 }
 
-function closeModal(id){ document.getElementById(id).classList.remove("open"); }
+function closeModal(id){document.getElementById(id).classList.remove("open");}
 
 function subscribeNl(){
-  const email = document.getElementById("nl-email").value;
+  const email=document.getElementById("nl-email").value;
   if(email.includes("@")){
-    document.getElementById("nl-box").innerHTML = '<div style="text-align:center;padding:24px 0"><div style="font-size:28px;font-style:italic;color:#111;margin-bottom:8px">You\'re in.</div><div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.14em;text-transform:uppercase">Welcome to Artatlas</div></div>';
+    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:28px 0">'
+      +'<div style="font-family:var(--display);font-size:30px;font-style:italic;color:var(--ink);margin-bottom:8px">You\'re in. \u2736</div>'
+      +'<div style="font-family:var(--sans);font-size:10px;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase">Welcome to Artatlas</div>'
+      +'</div>';
   }
 }
-
-// Init
-renderMustSee();
-renderOppPreview();
-renderFilmStrip();
-showPage("home");
 </script>
 
 </body>
