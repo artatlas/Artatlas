@@ -51,7 +51,7 @@ min-height: 100vh; display: flex; align-items: center; justify-content: center;
 position: relative; overflow: hidden; flex-direction: column;
 background: linear-gradient(135deg, #4a9a8c 0%, #3a6b3a 30%, #d4a832 60%, #c8902a 85%, #c04a2a 100%);
 }
-#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .hero-veil {
 position: absolute; inset: 0;
 background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.38) 100%);
@@ -730,7 +730,7 @@ function reOpp(){
     +'</tr>').join("");
 }
 
-function fc(b,c){cF=c;document.querySelectorAll("#pg-exhibitions .pill").forEach(x=>x.classList.remove("on"));b.classList.add("on");reExh();}
+function fc(b,city){cF=city;document.querySelectorAll("#pg-exhibitions .pill").forEach(x=>x.classList.remove("on"));b.classList.add("on");reExh();}
 function ft(b,t){tF=t;document.querySelectorAll("#pg-opportunities .pill").forEach(x=>x.classList.remove("on"));b.classList.add("on");reOpp();}
 function se(v){eQ=v.toLowerCase();reExh();}
 function so(v){oQ=v.toLowerCase();reOpp();}
@@ -785,7 +785,6 @@ function nlSub(){
 (function(){
   const canvas = document.getElementById("hero-canvas");
   if(!canvas) return;
-  if(!canvas.offsetWidth) return;
   const ctx = canvas.getContext("2d");
 
   // Van Gogh palette from Wheat Fields at Auvers
@@ -806,9 +805,9 @@ function nlSub(){
   let t = 0;
 
   function resize(){
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-    initBlobs();
+    W = canvas.width = canvas.offsetWidth || window.innerWidth;
+    H = canvas.height = canvas.offsetHeight || window.innerHeight;
+    if(W>0 && H>0) initBlobs();
   }
 
   function initBlobs(){
@@ -831,6 +830,7 @@ function nlSub(){
   }
 
   function draw(){
+    if(!W||!H){ setTimeout(()=>{resize();draw();},200); return; }
     t += 0.008;
     ctx.clearRect(0, 0, W, H);
 
@@ -902,7 +902,7 @@ function nlSub(){
   }
 
   window.addEventListener("resize", resize);
-  requestAnimationFrame(()=>{ resize(); draw(); });
+  setTimeout(()=>{ resize(); if(W>0) draw(); }, 100);
 })();
 
 
