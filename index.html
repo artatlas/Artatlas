@@ -656,13 +656,17 @@ let cF="All",tF="All",eQ="",oQ="";
 
 function go(p){
   document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
-  document.getElementById("pg-"+p).classList.add("on");
+  const pg=document.getElementById("pg-"+p);
+  if(!pg) return;
+  pg.classList.add("on");
   document.querySelectorAll(".nav-item").forEach(e=>e.classList.remove("on"));
   const ni=document.getElementById("ni-"+p);if(ni)ni.classList.add("on");
-  window.scrollTo(0,0);
-  if(p==="exhibitions")reExh();
-  if(p==="opportunities")reOpp();
-  setTimeout(runFi,80);
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
+  window.scrollTo({top:0,left:0,behavior:"instant"});
+  if(p==="exhibitions") setTimeout(reExh,10);
+  if(p==="opportunities") setTimeout(reOpp,10);
+  setTimeout(runFi,100);
 }
 
 function runFi(){
