@@ -269,6 +269,7 @@ footer { border-top: 1px solid #f0f0f0; }
 /* ── FADE IN ── */
 .fi { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fi.in { opacity: 1; transform: none; }
+#pg-exhibitions .fi, #pg-opportunities .fi, #pg-about .fi, #pg-legal .fi { opacity: 1; transform: none; }
 
 /* ── ANIMATIONS ── */
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -439,7 +440,7 @@ footer { border-top: 1px solid #f0f0f0; }
         <input class="search-inp" placeholder="Search&hellip;" oninput="se(this.value)">
       </div>
     </div>
-    <div class="exh-grid fi" id="exh-grid"></div>
+    <div class="exh-grid" id="exh-grid"></div>
   </div>
 </div>
 
@@ -461,7 +462,7 @@ footer { border-top: 1px solid #f0f0f0; }
         <span class="result-count" id="ocount"></span>
       </div>
     </div>
-    <table class="opp-table">
+    <table class="opp-table" style="opacity:1">
       <thead><tr>
         <th>Opportunity</th><th>Award</th><th>Type</th><th>Location</th><th>Deadline</th>
       </tr></thead>
@@ -655,18 +656,21 @@ const LIVE_OPP=OPP.filter(o=>!isExpired(o.isoDeadline));
 let cF="All",tF="All",eQ="",oQ="";
 
 function go(p){
-  document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
-  const pg=document.getElementById("pg-"+p);
-  if(!pg) return;
-  pg.classList.add("on");
-  document.querySelectorAll(".nav-item").forEach(e=>e.classList.remove("on"));
-  const ni=document.getElementById("ni-"+p);if(ni)ni.classList.add("on");
-  document.body.scrollTop=0;
-  document.documentElement.scrollTop=0;
-  window.scrollTo({top:0,left:0,behavior:"instant"});
-  if(p==="exhibitions") setTimeout(reExh,10);
-  if(p==="opportunities") setTimeout(reOpp,10);
-  setTimeout(runFi,100);
+  try {
+    document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
+    const pg=document.getElementById("pg-"+p);
+    if(!pg) return;
+    pg.classList.add("on");
+    document.querySelectorAll(".nav-item").forEach(e=>e.classList.remove("on"));
+    const ni=document.getElementById("ni-"+p);if(ni)ni.classList.add("on");
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop=0;
+    window.scrollTo(0,0);
+    if(p==="exhibitions"){ reExh(); }
+    if(p==="opportunities"){ reOpp(); }
+    if(p==="home"){ reMust(); reOppPreview(); reStrip(); }
+    setTimeout(()=>document.querySelectorAll(".fi").forEach(el=>el.classList.add("in")),50);
+  } catch(e){ console.error("go error:",e); }
 }
 
 function runFi(){
@@ -714,8 +718,10 @@ function reMust(){
 }
 
 function reExh(){
+  const grid=document.getElementById("exh-grid");
+  if(!grid) return;
   const f=LIVE_EXH.filter(e=>(cF==="All"||e.city===cF)&&(e.title+e.city+e.venue+e.tag).toLowerCase().includes(eQ));
-  document.getElementById("exh-grid").innerHTML=f.map(e=>'<div class="exh-card" onclick="oe('+e.id+')">'
+  grid.innerHTML=f.map(e=>'<div class="exh-card" onclick="oe('+e.id+')">'
     +'<div class="exh-card-top">'
     +'<div class="exh-card-top-grad" style="background:'+G[e.id-1]+'">'
     +'<div class="exh-card-grad-line"></div>'
@@ -733,12 +739,14 @@ function reExh(){
 }
 
 function reOpp(){
+  const tbody=document.getElementById("obody");
+  if(!tbody) return;
   const f=LIVE_OPP.filter(o=>{
     if(tF==="Week") return closingThisWeek(o.isoDeadline)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oQ);
     return (tF==="All"||o.type===tF)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oQ);
   });
-  document.getElementById("ocount").textContent=f.length+" results";
-  document.getElementById("obody").innerHTML=f.map(o=>'<tr class="orow" onclick="oo('+o.id+')">'
+  const ocnt=document.getElementById("ocount"); if(ocnt) ocnt.textContent=f.length+" results";
+  tbody.innerHTML=f.map(o=>'<tr class="orow" onclick="oo('+o.id+')">'
     +'<td><div class="orow-title">'+o.title+(o.urgent?'<span class="udot"></span>':'')+'</div><div class="orow-org">'+o.org+'</div></td>'
     +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#666;white-space:nowrap;padding:20px 14px">'+o.award+'</td>'
     +'<td style="padding:20px 14px">'+ch(o.type)+'</td>'
@@ -831,9 +839,18 @@ const _s=document.createElement("style");
 _s.textContent=".urgent-pill{color:#c0392b;border-color:#c0392b}.urgent-pill.on{background:#c0392b!important;border-color:#c0392b!important;color:#fff!important}";
 document.head.appendChild(_s);
 
-// Init
-reMust();reOppPreview();reStrip();
-setTimeout(runFi,100);
+// Init - wait for DOM
+function initAll(){
+  try { reMust(); } catch(e){ console.error("reMust:",e); }
+  try { reOppPreview(); } catch(e){ console.error("reOppPreview:",e); }
+  try { reStrip(); } catch(e){ console.error("reStrip:",e); }
+  setTimeout(runFi,100);
+}
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded", initAll);
+} else {
+  initAll();
+}
 </script>
 
 </body>
