@@ -409,7 +409,7 @@ footer{border-top:1px solid #f0f0f0}
       <div class="mo-s" id="em-s"></div>
       <div class="mo-d" id="em-d"></div>
       <div class="mo-cells" id="em-cells"></div>
-      <a class="mo-cta" id="em-link" href="#" target="_blank">Visit museum website &rarr;</a>
+      <button class="mo-cta" id="em-link" onclick="openUrl('em')">Visit museum website &rarr;</button>
     </div>
   </div>
 </div>
@@ -425,7 +425,7 @@ footer{border-top:1px solid #f0f0f0}
       <div class="mo-s" id="om-s"></div>
       <div class="mo-d" id="om-d"></div>
       <div class="mo-cells mo-cells-2" id="om-cells"></div>
-      <a class="mo-cta" id="om-link" href="#" target="_blank" style="margin-top:20px">Apply now &rarr;</a>
+      <button class="mo-cta" id="om-link" onclick="openUrl('om')" style="margin-top:20px">Apply now &rarr;</button>
     </div>
   </div>
 </div>
@@ -493,29 +493,16 @@ const LIVE_OPP=OPP.filter(o=>!isExp(o.iso));
 let cF="All",tF="All",eQ="",oQ="";
 
 function go(p){
-  const cur = document.querySelector(".pg.on");
-  if(cur){
-    cur.style.opacity="0";
-    cur.style.transition="opacity 0.18s ease";
-  }
-  setTimeout(()=>{
-    document.querySelectorAll(".pg").forEach(e=>{e.classList.remove("on");e.style.opacity="";e.style.transition="";});
-    const pg=document.getElementById("pg-"+p);
-    if(!pg) return;
-    pg.style.opacity="0";
-    pg.classList.add("on");
-    document.querySelectorAll(".nav-link").forEach(e=>e.classList.remove("on"));
-    const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("on");
-    document.body.scrollTop=0;
-    document.documentElement.scrollTop=0;
-    requestAnimationFrame(()=>{
-      pg.style.transition="opacity 0.28s ease";
-      pg.style.opacity="1";
-      setTimeout(()=>{pg.style.opacity="";pg.style.transition="";},300);
-    });
-    if(p==="exhibitions")reExh();
-    if(p==="opportunities")reOpp();
-  }, cur ? 180 : 0);
+  document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
+  const pg=document.getElementById("pg-"+p);
+  if(!pg) return;
+  pg.classList.add("on");
+  document.querySelectorAll(".nav-link").forEach(e=>e.classList.remove("on"));
+  const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("on");
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
+  if(p==="exhibitions") reExh();
+  if(p==="opportunities") reOpp();
 }
 
 function fc(b,city){
@@ -600,6 +587,11 @@ function reOpp(){
   ).join("");
 }
 
+function openUrl(type){
+  const url = type==='em' ? window._emUrl : window._omUrl;
+  if(url && url !== '#') window.open(url, '_blank');
+}
+
 function oe(id){
   const e=EXH.find(x=>x.id===id);
   document.getElementById("em-grad").style.background=G[e.id-1];
@@ -613,7 +605,7 @@ function oe(id){
     '<div class="mo-cell"><div class="mo-cl">Dates</div><div class="mo-cv">'+e.dates+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">City</div><div class="mo-cv">'+e.city+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Status</div><div class="mo-cv">Open now</div></div>';
-  document.getElementById("em-link").href=e.url||"#";
+  window._emUrl = e.url||'#';
   document.getElementById("em").classList.add("open");
   document.body.style.overflow="hidden";
 }
@@ -629,7 +621,7 @@ function oo(id){
     +'<div class="mo-cell"><div class="mo-cl">Deadline</div><div class="mo-cv" style="color:'+(o.urgent?"#c0392b":"#111")+'">'+o.deadline+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Location</div><div class="mo-cv">'+o.country+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Type</div><div class="mo-cv">'+o.type+'</div></div>';
-  document.getElementById("om-link").href=o.url||"#";
+  window._omUrl = o.url||'#';
   document.getElementById("om").classList.add("open");
   document.body.style.overflow="hidden";
 }
