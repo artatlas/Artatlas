@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,14 +7,19 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PAGE TRANSITIONS ── */
+.pg { opacity: 1; transition: opacity 0.22s ease; }
+.pg.fading { opacity: 0; }
+
+
 body{background:#fff;color:#111;font-family:'EB Garamond',Georgia,serif;-webkit-font-smoothing:antialiased}
 nav{position:fixed;top:0;left:0;right:0;z-index:999;height:56px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;background:rgba(255,255,255,0.95);border-bottom:1px solid #f0f0f0;backdrop-filter:blur(10px)}
 .logo{font-size:20px;font-style:italic;cursor:pointer}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-link{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#999;cursor:pointer;transition:color 0.2s;border-bottom:1px solid transparent;padding-bottom:1px}
 .nav-link:hover,.nav-link.on{color:#111;border-bottom-color:#111}
-.pg{display:none;padding-top:56px}
-.pg.on{display:block}
+/* pg rules moved to transitions block */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;background:linear-gradient(135deg,#b8c8d8,#8aa8c0,#6888a8,#4a6888);background-size:300% 300%;animation:hs 14s ease infinite;position:relative}
 @keyframes hs{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hero-word{font-size:clamp(64px,12vw,160px);font-style:italic;color:#fff;line-height:1;letter-spacing:-0.02em;margin-bottom:16px}
@@ -179,9 +183,18 @@ footer{border-top:1px solid #f0f0f0}
   .foot{padding:28px 20px}
   .legal-body{padding:72px 20px}
 }
+
+/* ── PAGE TRANSITIONS ── */
+.pg{display:none;padding-top:56px;animation:none}
+.pg.on{display:block;animation:pg-in 0.45s ease both}
+@keyframes pg-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ── BRUSH INTRO ── */
 </style>
 </head>
 <body>
+
+<!-- BRUSH INTRO -->
 
 <nav>
   <span class="logo" onclick="go('home')">Artatlas</span>
@@ -195,7 +208,6 @@ footer{border-top:1px solid #f0f0f0}
 </nav>
 
 <!-- HOME -->
-
 <div id="pg-home" class="pg on">
   <div class="hero">
     <div class="hero-word">Artatlas</div>
@@ -205,7 +217,7 @@ footer{border-top:1px solid #f0f0f0}
       <button class="btn-o" onclick="go('opportunities')">Find opportunities</button>
     </div>
     <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">16</div><div class="hstat-l">Exhibitions</div></div>
+      <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Exhibitions</div></div>
       <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Opportunities</div></div>
       <div class="hstat"><div class="hstat-n">20+</div><div class="hstat-l">Countries</div></div>
       <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">Always</div></div>
@@ -253,7 +265,6 @@ footer{border-top:1px solid #f0f0f0}
 </div>
 
 <!-- EXHIBITIONS -->
-
 <div id="pg-exhibitions" class="pg">
   <div class="sec">
     <div class="pg-eye">What to see</div>
@@ -274,7 +285,6 @@ footer{border-top:1px solid #f0f0f0}
 </div>
 
 <!-- OPPORTUNITIES -->
-
 <div id="pg-opportunities" class="pg">
   <div class="sec">
     <div class="pg-eye">For artists</div>
@@ -299,7 +309,6 @@ footer{border-top:1px solid #f0f0f0}
 </div>
 
 <!-- ABOUT -->
-
 <div id="pg-about" class="pg">
   <div class="about-hero">
     <div class="about-label">About Artatlas</div>
@@ -336,7 +345,6 @@ footer{border-top:1px solid #f0f0f0}
 </div>
 
 <!-- LEGAL -->
-
 <div id="pg-legal" class="pg">
   <div class="legal-body">
     <div class="pg-eye">Legal</div>
@@ -386,7 +394,6 @@ footer{border-top:1px solid #f0f0f0}
 </footer>
 
 <!-- MODALS -->
-
 <div class="mb" id="em" onclick="cm('em')">
   <div class="mo" onclick="event.stopPropagation()">
     <div class="mo-grad" id="em-grad">
@@ -424,8 +431,8 @@ footer{border-top:1px solid #f0f0f0}
 </div>
 
 <script>
-const G=["linear-gradient(145deg,#e8c4a0,#c07840)","linear-gradient(135deg,#2d4a6b,#3d6080)","linear-gradient(150deg,#7a2a3a,#a04060)","linear-gradient(160deg,#8b2020,#c04820)","linear-gradient(140deg,#1a1a1a,#3a3a3a)","linear-gradient(135deg,#c87840,#e0a060)","linear-gradient(145deg,#4a6040,#8a9870)","linear-gradient(150deg,#3a4858,#7a8898)","linear-gradient(140deg,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#6b4a10,#a87830)","linear-gradient(135deg,#a8a098,#d0c8c0)","linear-gradient(150deg,#907060,#c8a098)","linear-gradient(145deg,#1a3020,#3a5040)","linear-gradient(140deg,#907020,#c8a850)","linear-gradient(135deg,#a87810,#e0b830)","linear-gradient(150deg,#0a1828,#283850)"];
-const CH={"Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a","Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22","Performance Art":"background:#f5ebe8;color:#5a1e18","Post-Impressionism":"background:#faf0e4;color:#5a3010","19th Century":"background:#f5f0e2;color:#4a3a10","Sculpture":"background:#eef5e8;color:#2a4a10","Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a","Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00","Old Masters":"background:#f5ede8;color:#5a2e1a","Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"};
+const G=["linear-gradient(145deg,#e8c4a0,#c07840)","linear-gradient(135deg,#2d4a6b,#3d6080)","linear-gradient(150deg,#7a2a3a,#a04060)","linear-gradient(160deg,#8b2020,#c04820)","linear-gradient(140deg,#1a1a1a,#3a3a3a)","linear-gradient(135deg,#c87840,#e0a060)","linear-gradient(145deg,#4a6040,#8a9870)","linear-gradient(150deg,#3a4858,#7a8898)","linear-gradient(140deg,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#6b4a10,#a87830)","linear-gradient(135deg,#a8a098,#d0c8c0)","linear-gradient(150deg,#907060,#c8a098)","linear-gradient(145deg,#1a3020,#3a5040)","linear-gradient(140deg,#907020,#c8a850)","linear-gradient(135deg,#a87810,#e0b830)","linear-gradient(150deg,#0a1828,#283850)","linear-gradient(145deg,#5a3a7a,#8a5aaa)","linear-gradient(140deg,#2a4a2a,#5a8a5a)","linear-gradient(135deg,#7a4a1a,#b07a3a)","linear-gradient(150deg,#1a3a4a,#3a6a7a)"];
+const CH={"Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a","Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22","Performance Art":"background:#f5ebe8;color:#5a1e18","Post-Impressionism":"background:#faf0e4;color:#5a3010","19th Century":"background:#f5f0e2;color:#4a3a10","Sculpture":"background:#eef5e8;color:#2a4a10","Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a","Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00","Old Masters":"background:#f5ede8;color:#5a2e1a","Medieval Art":"background:#f0ece0;color:#3a2e10","Design":"background:#e8f0e8;color:#1a3a1a","Street Art":"background:#ebebeb;color:#222","Drawing":"background:#f5f0e8;color:#3a3010","Symbolism":"background:#f0e8f5;color:#3a1a5a","Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"};
 function ch(l){const s=CH[l]||"background:#f0f0f0;color:#444";return'<span class="chip" style="'+s+'">'+l+'</span>';}
 
 const TODAY=new Date();TODAY.setHours(0,0,0,0);
@@ -433,46 +440,52 @@ function isExp(d){if(!d)return false;const x=new Date(d);x.setHours(0,0,0,0);ret
 function isCTW(d){if(!d)return false;const x=new Date(d);x.setHours(0,0,0,0);const df=(x-TODAY)/86400000;return df>=0&&df<=7;}
 
 const EXH=[
-  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
-  {id:2,title:"Venice Biennale",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The 61st International Art Exhibition, curated by Koyo Kouoh. 90 countries, 110 artists.",url:"https://www.labiennale.org"},
-  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,end:"2027-01-03",verified:"May 2026",desc:"One of the largest European retrospectives devoted to Kahlo's self-portraits and political fire.",url:"https://www.tate.org.uk"},
-  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,end:"2026-08-23",verified:"May 2026",desc:"Over 70 works in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
-  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia.",url:"https://www.gallerieaccademia.it"},
-  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,end:"2026-08-31",verified:"May 2026",desc:"The most comprehensive retrospective of Emin's career. More than 90 works across 40 years.",url:"https://www.tate.org.uk"},
-  {id:7,title:"Cezanne",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"25 Jan - 25 May 2026",tag:"Post-Impressionism",must:false,end:"2026-05-25",verified:"May 2026",desc:"80 oils and watercolours focusing on Cezanne's final years.",url:"https://www.fondationbeyeler.ch"},
-  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,end:"2026-09-27",verified:"May 2026",desc:"First major European Whistler retrospective in 30 years.",url:"https://www.tate.org.uk"},
-  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,end:"2026-10-18",verified:"May 2026",desc:"Voidal, mirrored and wax sculptures. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk"},
-  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,end:"2026-12-31",verified:"May 2026",desc:"All nine known painted portraits by van Eyck together for the first time in history.",url:"https://www.nationalgallery.org.uk"},
-  {id:11,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,end:"2026-12-31",verified:"May 2026",desc:"A monumental dialogue. Two giants of Western sculpture side by side.",url:"https://www.louvre.fr"},
-  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,end:"2027-01-31",verified:"May 2026",desc:"First major Cassatt retrospective at a French national museum.",url:"https://www.musee-orsay.fr"},
-  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,end:"2026-12-31",verified:"May 2026",desc:"First two-person show of Lassnig and Munch.",url:"https://www.hamburger-kunsthalle.de"},
-  {id:14,title:"Beauty & Ugliness in the Renaissance",venue:"Bozar",city:"Brussels",country:"Belgium",dates:"20 Feb - 14 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-14",verified:"May 2026",desc:"Botticelli, Titian, Da Vinci - beauty standards in the 15th century.",url:"https://www.bozar.be"},
-  {id:15,title:"Yellow - Beyond Van Gogh",venue:"Van Gogh Museum",city:"Amsterdam",country:"Netherlands",dates:"13 Feb - 17 May 2026",tag:"Post-Impressionism",must:false,end:"2026-05-17",verified:"May 2026",desc:"Van Gogh's sunflowers as departure point. Yellow across art around 1900.",url:"https://www.vangoghmuseum.nl"},
-  {id:16,title:"Metamorphoses",venue:"Rijksmuseum",city:"Amsterdam",country:"Netherlands",dates:"6 Feb - 25 May 2026",tag:"Old Masters",must:false,end:"2026-05-25",verified:"May 2026",desc:"History, religion and freedom through the Rijksmuseum's finest galleries.",url:"https://www.rijksmuseum.nl"}
+  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs including La Tristesse du roi, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
+  {id:2,title:"Venice Biennale — In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The 61st International Art Exhibition curated by the late Koyo Kouoh — the first African woman in the role. 90 countries, 110 artists.",url:"https://www.labiennale.org"},
+  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,end:"2027-01-03",verified:"May 2026",desc:"One of the largest European retrospectives devoted to Kahlo's work, exploring her visual language, identity and political fire.",url:"https://www.tate.org.uk"},
+  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 26 Jul 2026",tag:"Abstract Exp.",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 70 works from major international collections tracing Rothko's full career, in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
+  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia. New works in dialogue with Renaissance masterpieces.",url:"https://www.gallerieaccademia.it"},
+  {id:6,title:"Tracey Emin — 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,end:"2026-08-31",verified:"May 2026",desc:"The most comprehensive retrospective of Emin's career. More than 90 works erasing the boundary between public and personal life.",url:"https://www.tate.org.uk"},
+  {id:7,title:"Alexander Calder",venue:"Fondation Louis Vuitton",city:"Paris",country:"France",dates:"Spring - Autumn 2026",tag:"Sculpture",must:true,end:"2026-10-31",verified:"May 2026",desc:"Celebrating the 50th anniversary of Calder's death and the 100th of his arrival in France. Mobiles, stabiles, sculptures and paintings.",url:"https://www.fondationlouisvuitton.fr"},
+  {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,end:"2026-09-27",verified:"May 2026",desc:"The first major European Whistler retrospective in 30 years. Nocturnes, tonal paintings and rarely-seen early works.",url:"https://www.tate.org.uk"},
+  {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,end:"2026-10-18",verified:"May 2026",desc:"Voidal, mirrored and wax sculptures fill the Hayward. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk"},
+  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,end:"2026-12-31",verified:"May 2026",desc:"All nine known painted portraits by van Eyck together for the first and only time. Rarely travelled works, never seen side by side before.",url:"https://www.nationalgallery.org.uk"},
+  {id:11,title:"Bayeux Tapestry",venue:"British Museum",city:"London",country:"UK",dates:"Sep 2026 - Jul 2027",tag:"Medieval Art",must:true,end:"2027-07-31",verified:"May 2026",desc:"The 70-metre Bayeux Tapestry travels from France for the first time in nearly 1000 years. Depicting the Norman invasion of 1066.",url:"https://www.britishmuseum.org"},
+  {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,end:"2027-01-31",verified:"May 2026",desc:"First major Cassatt retrospective at a French national museum, marking 100 years since her death.",url:"https://www.musee-orsay.fr"},
+  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,end:"2026-12-31",verified:"May 2026",desc:"The first major two-person exhibition of Lassnig and Munch — united in their wildly expressive approach to the body and psyche.",url:"https://www.hamburger-kunsthalle.de"},
+  {id:14,title:"Wes Anderson Retrospective",venue:"Design Museum",city:"London",country:"UK",dates:"Until 26 Jul 2026",tag:"Design",must:false,end:"2026-07-26",verified:"May 2026",desc:"600+ objects from Anderson's films — storyboards, costumes, puppets, the Grand Budapest Hotel model. First major retrospective of the director.",url:"https://designmuseum.org"},
+  {id:15,title:"JR — Pont Neuf",venue:"Pont Neuf",city:"Paris",country:"France",dates:"Jun 2026",tag:"Street Art",must:true,end:"2026-06-30",verified:"May 2026",desc:"The world's largest immersive artwork unveiled on the Pont Neuf. JR's monumental tribute to Christo and Jeanne-Claude's 1985 wrapping.",url:"https://jr-art.net"},
+  {id:16,title:"Lucian Freud Drawings",venue:"Louisiana Museum of Modern Art",city:"Copenhagen",country:"Denmark",dates:"10 Jun - 27 Sep 2026",tag:"Drawing",must:false,end:"2026-09-27",verified:"May 2026",desc:"Freud's obsession with the human figure through intense sketches and dynamic drawings. Travelling from London's National Portrait Gallery.",url:"https://louisiana.dk"},
+  {id:17,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,end:"2026-12-31",verified:"May 2026",desc:"A monumental sculptural dialogue. Two giants of Western art side by side for the first time.",url:"https://www.louvre.fr"},
+  {id:18,title:"Tarot: Origins, Cards, Destiny",venue:"Accademia Carrara",city:"Bergamo",country:"Italy",dates:"27 Feb - 2 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-02",verified:"May 2026",desc:"The history of tarot from 15th-century Italy. Rare early decks, Renaissance court culture and artistic exchange.",url:"https://lacarrara.it"},
+  {id:19,title:"Symbolism",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"Mar - Jul 2026",tag:"Symbolism",must:false,end:"2026-07-31",verified:"May 2026",desc:"Symbolism as a rich and self-contained artistic world — presented as more than a marginal chapter in European art history.",url:"https://www.palazzostrozzi.org"},
+  {id:20,title:"Metamorphoses",venue:"Galleria Borghese",city:"Rome",country:"Italy",dates:"22 Jun - 20 Sep 2026",tag:"Old Masters",must:false,end:"2026-09-20",verified:"May 2026",desc:"Titian, Caravaggio, Rembrandt and Bourgeois — 80+ masterpieces exploring transformation, identity and the natural world. From the Rijksmuseum.",url:"https://galleriaborghese.it"}
 ];
 
 const OPP=[
-  {id:1,title:"The Hopper Prize",org:"The Hopper Prize",deadline:"12 May 2026",iso:"2026-05-12",type:"Grant",award:"$4,500",country:"International",urgent:true,desc:"Six grants totalling $13,000. All media eligible. 30-artist shortlist and Instagram feature.",url:"https://hopperprize.org"},
-  {id:2,title:"SaveArtSpace - Wild & Free",org:"SaveArtSpace",deadline:"7 May 2026",iso:"2026-05-07",type:"Open Call",award:"NYC billboard",country:"USA",urgent:true,desc:"Public art on NYC billboard space opening 26 June. Theme: nature, mythology and civilisation.",url:"https://saveartspace.org"},
-  {id:3,title:"Fundacion Botin Art Grants",org:"Fundacion Botin",deadline:"8 May 2026",iso:"2026-05-08",type:"Grant",award:"23,000 EUR",country:"International",urgent:true,desc:"Six scholarships covering nine months plus medical insurance.",url:"https://fundacionbotin.org"},
-  {id:4,title:"Scenerium 2026 Art Award",org:"Gallerium",deadline:"15 May 2026",iso:"2026-05-15",type:"Open Call",award:"Artsy + Catalogue",country:"International",urgent:true,desc:"For artists capturing essence of place. Artsy feature, catalogue, editorial reviews.",url:"https://gallerium.art"},
-  {id:5,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",iso:"2026-05-31",type:"Grant",award:"$10,000",country:"International",urgent:false,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes.",url:"https://osgf.org"},
-  {id:6,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:false,desc:"Open to all media. International visibility and prize money for emerging artists.",url:"https://yicca.org"},
-  {id:7,title:"Headlands Center Residency",org:"Headlands Center for the Arts",deadline:"1 Jun 2026",iso:"2026-06-01",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"50 fully sponsored residencies per year. Studio, meals, housing, travel. Sausalito, California.",url:"https://headlands.org"},
-  {id:8,title:"Artflow Prize",org:"Artflow Studio",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"200 GBP + Exhibition",country:"International",urgent:false,desc:"Cash prize, group exhibition, published interview and Artsy feature.",url:"https://artflowstudio.com"},
-  {id:9,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship.",url:"https://pkf.org"},
-  {id:10,title:"Gottlieb Foundation Emergency Grant",org:"Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events.",url:"https://gottliebfoundation.org"},
-  {id:11,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Uninterrupted time on 20,000 Wyoming acres. Open to all disciplines.",url:"https://ucross.org"},
-  {id:12,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",iso:null,type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June - October 2026 in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
-  {id:13,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",iso:null,type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months.",url:"https://studioprogram.org"},
-  {id:14,title:"De Ateliers Amsterdam",org:"De Ateliers",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program in Amsterdam.",url:"https://de-ateliers.nl"},
-  {id:15,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators in the EU.",url:"https://on-the-move.org"},
-  {id:16,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists working between Sub-Saharan Africa and Europe.",url:"https://goethe.de"},
-  {id:17,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",iso:"2026-07-31",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. Apply July 2026 for 2027 edition.",url:"https://releartsfoundation.org"},
-  {id:18,title:"Earthwise - Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices.",url:"https://earthwise.dk"},
-  {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto. Roundtrip flight and $800 stipend.",url:"https://creative-capital.org"},
-  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires.",url:"https://proyectoace.org"}
+  {id:1,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Spring cycle open May 1 - July 15. Uninterrupted time on 20,000 Wyoming acres. Studio, housing, meals included. All disciplines, international applicants welcome.",url:"https://ucross.org"},
+  {id:2,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",iso:"2026-05-31",type:"Grant",award:"$10,000",country:"International",urgent:true,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes. 2-5 week stay at Oak Spring, Virginia.",url:"https://osgf.org"},
+  {id:3,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:true,desc:"Open to all media, geared toward emerging artists. International visibility and prize money. Online exhibition.",url:"https://yicca.org"},
+  {id:4,title:"Headlands Center Residency",org:"Headlands Center for the Arts",deadline:"1 Jun 2026",iso:"2026-06-01",type:"Residency",award:"Fully funded",country:"USA",urgent:true,desc:"50 fully sponsored residencies per year. Studio, chef-prepared meals, housing, travel and living expenses. Sausalito, California.",url:"https://headlands.org"},
+  {id:5,title:"Artflow Prize",org:"Artflow Studio",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"200 GBP + Exhibition",country:"International",urgent:true,desc:"Cash prize, group exhibition, published interview and Artsy promotional feature. One of the most accessible international prizes.",url:"https://artflowstudio.com"},
+  {id:6,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators and cultural professionals in EU member states.",url:"https://on-the-move.org"},
+  {id:7,title:"Earthwise — Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices. Fifth edition. Studio, housing and meals included.",url:"https://earthwise.dk"},
+  {id:8,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",iso:"2026-07-31",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. 2027 edition — apply July 2026. One of the most competitive opportunities on the continent.",url:"https://releartsfoundation.org"},
+  {id:9,title:"Craft 1o1 Summer Program",org:"Arts Letters & Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts, construction and mechanics. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
+  {id:10,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship or needing to complete a body of work. Grant size reflects need and exhibition history.",url:"https://pkf.org"},
+  {id:11,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for painters, printmakers and sculptors facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
+  {id:12,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",iso:null,type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June, July, August and October 2026. Five-artist cohort in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
+  {id:13,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",iso:null,type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists aged 21+, US residents. Highly competitive.",url:"https://studioprogram.org"},
+  {id:14,title:"De Ateliers Amsterdam",org:"De Ateliers",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program. Studio space, structured tutoring and weekly conversations with international tutors. For highly motivated early-career artists.",url:"https://de-ateliers.nl"},
+  {id:15,title:"Kala Art Institute Residency",org:"Kala Art Institute",deadline:"Rolling",iso:null,type:"Residency",award:"Subsidised studio",country:"USA",urgent:false,desc:"Subsidised residencies through the Artist-in-Residence program and fully funded residencies through fellowships. Berkeley, California.",url:"https://kala.org"},
+  {id:16,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe. Rolling applications via national offices.",url:"https://goethe.de"},
+  {id:17,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 USD meal stipend.",url:"https://creative-capital.org"},
+  {id:18,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"},
+  {id:19,title:"Emptiness 2026 Art Awards",org:"Exhibizone",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Artsy feature + Catalogue",country:"International",urgent:false,desc:"5th edition of this juried international call. Theme: solitude, serenity and existential depth. Artsy feature, catalogue and editorial reviews.",url:"https://exhibizone.com/emptiness"},
+  {id:20,title:"DongGang International Photo Festival",org:"DongGang Photo Festival",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Exhibition in Korea",country:"South Korea",urgent:false,desc:"24th edition. Theme: The Silence that Shapes. Work exhibited across the full festival run in South Korea, July to October 2026.",url:"https://dgphoto.kr"}
 ];
+
+
 
 const LIVE_EXH=EXH.filter(e=>!isExp(e.end));
 const LIVE_OPP=OPP.filter(o=>!isExp(o.iso));
@@ -480,14 +493,29 @@ const LIVE_OPP=OPP.filter(o=>!isExp(o.iso));
 let cF="All",tF="All",eQ="",oQ="";
 
 function go(p){
-  document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
-  document.getElementById("pg-"+p).classList.add("on");
-  document.querySelectorAll(".nav-link").forEach(e=>e.classList.remove("on"));
-  const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("on");
-  document.body.scrollTop=0;
-  document.documentElement.scrollTop=0;
-  if(p==="exhibitions")reExh();
-  if(p==="opportunities")reOpp();
+  const cur = document.querySelector(".pg.on");
+  if(cur){
+    cur.style.opacity="0";
+    cur.style.transition="opacity 0.18s ease";
+  }
+  setTimeout(()=>{
+    document.querySelectorAll(".pg").forEach(e=>{e.classList.remove("on");e.style.opacity="";e.style.transition="";});
+    const pg=document.getElementById("pg-"+p);
+    if(!pg) return;
+    pg.style.opacity="0";
+    pg.classList.add("on");
+    document.querySelectorAll(".nav-link").forEach(e=>e.classList.remove("on"));
+    const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("on");
+    document.body.scrollTop=0;
+    document.documentElement.scrollTop=0;
+    requestAnimationFrame(()=>{
+      pg.style.transition="opacity 0.28s ease";
+      pg.style.opacity="1";
+      setTimeout(()=>{pg.style.opacity="";pg.style.transition="";},300);
+    });
+    if(p==="exhibitions")reExh();
+    if(p==="opportunities")reOpp();
+  }, cur ? 180 : 0);
 }
 
 function fc(b,city){
@@ -619,9 +647,26 @@ function nlSub(){
   }
 }
 
-// Init
+
+// ── BRUSH PAINT INTRO ────────────────────────────────────
+(function(){
+
+
+// ── PAGE TRANSITIONS ─────────────────────────────────────
+// Wrap go() to add transition
+const _go = go;
+window.go = function(p){
+  const cur = document.querySelector(".pg.on");
+  if(cur){
+    cur.style.animation = "none";
+    cur.style.opacity = "1";
+  }
+  _go(p);
+};
+
+
+// ── INIT ─────────────────────────────────────────────────
 reMust();reOppPrev();reStrip();
 </script>
-
 </body>
 </html>
