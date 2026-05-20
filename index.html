@@ -3,262 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artatlas — Every opportunity. Every exhibition.</title>
+<title>Artatlas</title>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-/* ── PAGE TRANSITIONS ── */
-.pg { opacity: 1; transition: opacity 0.22s ease; }
-.pg.fading { opacity: 0; }
-
-
-body{background:#fff;color:#111;font-family:'EB Garamond',Georgia,serif;-webkit-font-smoothing:antialiased}
-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:56px;display:flex;align-items:center;padding:0 40px;justify-content:space-between;background:rgba(255,255,255,0.95);border-bottom:1px solid #f0f0f0;backdrop-filter:blur(10px)}
-.logo{font-size:20px;font-style:italic;cursor:pointer}
-.nav-links{display:flex;gap:32px;align-items:center}
-.nav-link{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#999;cursor:pointer;transition:color 0.2s;border-bottom:1px solid transparent;padding-bottom:1px}
-.nav-link:hover,.nav-link.on{color:#111;border-bottom-color:#111}
-/* pg rules moved to transitions block */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;background:linear-gradient(135deg,#b8c8d8,#8aa8c0,#6888a8,#4a6888);background-size:300% 300%;animation:hs 14s ease infinite;position:relative}
+html,body{background:#fff;color:#111;font-family:'EB Garamond',Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 32px;justify-content:space-between;background:rgba(255,255,255,0.96);border-bottom:1px solid #f0f0f0}
+.logo{font-size:20px;font-style:italic;cursor:pointer;color:#111}
+.navlinks{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.nl{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#999;cursor:pointer;padding-bottom:1px;border-bottom:1px solid transparent}
+.nl:hover,.nl.on{color:#111;border-bottom-color:#111}
+.pg{display:none;padding-top:56px;min-height:100vh}
+.pg.on{display:block}
+.hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 32px;background:linear-gradient(135deg,#b8c8d8,#8aa8c0,#6888a8,#4a6888);background-size:300% 300%;animation:hs 14s ease infinite}
 @keyframes hs{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero-word{font-size:clamp(64px,12vw,160px);font-style:italic;color:#fff;line-height:1;letter-spacing:-0.02em;margin-bottom:16px}
-.hero-tag{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:40px}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px}
-.btn-w{background:rgba(255,255,255,0.95);color:#111;border:none;padding:12px 32px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer}
-.btn-o{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);padding:11px 32px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer}
-.hero-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.2);padding-top:32px}
-.hstat{flex:1;text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,0.15)}
-.hstat:last-child{border-right:none}
-.hstat-n{font-size:40px;font-style:italic;color:#fff;line-height:1}
-.hstat-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:5px}
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-line{width:1px;height:36px;background:rgba(255,255,255,0.35);animation:sl 2s ease infinite}
-@keyframes sl{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
-.scroll-txt{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35)}
-.banner{background:#111;padding:13px 40px;display:flex;align-items:center;gap:12px}
-.bdot{width:5px;height:5px;border-radius:50%;background:#c0392b;animation:pulse 2s infinite;flex-shrink:0}
+.hw{font-size:clamp(56px,11vw,140px);font-style:italic;color:#fff;line-height:1;letter-spacing:-0.02em;margin-bottom:14px}
+.ht{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.38em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:36px}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
+.hb1{background:rgba(255,255,255,0.95);color:#111;border:none;padding:12px 28px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer}
+.hb2{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);padding:11px 28px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer}
+.hstats{display:flex;border-top:1px solid rgba(255,255,255,0.18);padding-top:28px;gap:0;flex-wrap:wrap;justify-content:center}
+.hs2{text-align:center;padding:0 28px;border-right:1px solid rgba(255,255,255,0.12)}
+.hs2:last-child{border-right:none}
+.hsn{font-size:38px;font-style:italic;color:#fff;line-height:1}
+.hsl{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:5px}
+.ban{background:#111;padding:12px 32px;display:flex;align-items:center;gap:12px}
+.bd{width:5px;height:5px;border-radius:50%;background:#c0392b;animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.btxt{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.6)}
-.btxt strong{color:#fff}
-.blink{font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);cursor:pointer;margin-left:auto;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;letter-spacing:0.1em;text-transform:uppercase}
-.sec{padding:72px 40px;max-width:1320px;margin:0 auto}
-.sec-bg{background:#f9f9f9}
-.sec-dark{background:#111}
-.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;flex-wrap:wrap;gap:12px}
-.sl2{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:8px}
-.st{font-size:clamp(26px,3.5vw,44px);font-style:italic}
-.sm{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#bbb;cursor:pointer;border-bottom:1px solid #ddd;padding-bottom:1px}
+.bt{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.6)}
+.bt strong{color:#fff}
+.bl{font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);cursor:pointer;margin-left:auto;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;letter-spacing:0.1em;text-transform:uppercase}
+.s{padding:64px 32px;max-width:1280px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;flex-wrap:wrap;gap:10px}
+.slb{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:#bbb;margin-bottom:8px}
+.st{font-size:clamp(24px,3.5vw,42px);font-style:italic;color:#111}
+.sm{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:#bbb;cursor:pointer;border-bottom:1px solid #ddd;padding-bottom:1px}
 .sm:hover{color:#111;border-color:#111}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.mc{cursor:pointer;position:relative;overflow:hidden;aspect-ratio:3/4}
-.mc-grad{position:absolute;inset:0;transition:transform 0.5s}
-.mc:hover .mc-grad{transform:scale(1.04)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.mc{cursor:pointer;position:relative;overflow:hidden;aspect-ratio:3/4;display:block}
+.mc-bg{position:absolute;inset:0;transition:transform 0.5s}
+.mc:hover .mc-bg{transform:scale(1.04)}
 .mc-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent 55%)}
-.mc-badge{position:absolute;top:0;left:0;background:#fff;color:#111;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;padding:5px 10px}
-.mc-info{position:absolute;bottom:0;left:0;right:0;padding:16px}
-.mc-tag{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:5px}
-.mc-title{font-size:17px;font-style:italic;color:#fff;line-height:1.3;margin-bottom:3px}
-.mc-city{font-family:'Inter',sans-serif;font-size:9px;color:rgba(255,255,255,0.45);letter-spacing:0.08em}
-.oc{background:#fff;padding:24px 22px;cursor:pointer;transition:outline 0.15s;outline:1px solid transparent;display:flex;flex-direction:column}
+.mc-b{position:absolute;top:0;left:0;background:#fff;color:#111;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;padding:5px 9px}
+.mc-info{position:absolute;bottom:0;left:0;right:0;padding:14px}
+.mc-tag{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.mc-title{font-size:16px;font-style:italic;color:#fff;line-height:1.3;margin-bottom:2px}
+.mc-city{font-family:'Inter',sans-serif;font-size:9px;color:rgba(255,255,255,0.45)}
+.oc{background:#fff;padding:22px 20px;cursor:pointer;outline:1px solid transparent;display:flex;flex-direction:column;transition:outline 0.15s}
 .oc:hover{outline-color:#111}
-.oc-top{display:flex;justify-content:space-between;margin-bottom:12px}
+.oc-top{display:flex;justify-content:space-between;margin-bottom:10px;align-items:flex-start}
 .oc-dl{font-family:'Inter',sans-serif;font-size:10px}
 .oc-dl.urg{color:#c0392b;font-weight:500}
 .oc-dl.rol{color:#ccc}
-.oc-title{font-size:19px;font-style:italic;line-height:1.35;margin-bottom:6px}
-.oc-org{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:14px}
-.oc-award{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#999;border-top:1px solid #f0f0f0;padding-top:12px;margin-top:auto;display:flex;justify-content:space-between}
-.chip{display:inline-block;padding:2px 9px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;line-height:1.8}
-.strip-outer{background:#111;padding:0;overflow:hidden}
+.oc-t{font-size:18px;font-style:italic;line-height:1.3;margin-bottom:5px}
+.oc-o{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:12px}
+.oc-a{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:#999;border-top:1px solid #f0f0f0;padding-top:10px;margin-top:auto}
+.chip{display:inline-block;padding:2px 8px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;line-height:1.8}
+.strip-w{background:#111;overflow:hidden}
 .strip{display:flex;overflow-x:auto;scrollbar-width:none;gap:1px}
 .strip::-webkit-scrollbar{display:none}
-.si{flex-shrink:0;width:188px;cursor:pointer;position:relative;overflow:hidden}
+.si{flex-shrink:0;width:180px;cursor:pointer;position:relative;overflow:hidden}
 .si-bg{aspect-ratio:2/3;transition:opacity 0.3s}
 .si:hover .si-bg{opacity:0.65}
-.si-info{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(to top,rgba(0,0,0,0.88),transparent)}
-.si-title{font-size:13px;font-style:italic;color:#fff;line-height:1.3;margin-bottom:2px}
-.si-city{font-family:'Inter',sans-serif;font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase}
-.nl-box{border:1px solid #eae4dc;padding:36px}
-.nl-q{font-size:24px;font-style:italic;line-height:1.5;margin-bottom:28px}
-.nl-inp{width:100%;border:none;border-bottom:1px solid #ddd;padding:10px 0;font-size:17px;font-family:'EB Garamond',serif;font-style:italic;color:#111;background:transparent;outline:none;margin-bottom:20px}
-.nl-btn{background:#111;color:#fff;border:none;padding:13px 40px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;width:100%}
-.nl-fine{font-family:'Inter',sans-serif;font-size:9px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;margin-top:14px;text-align:center}
-.pg-eye{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#bbb;margin-bottom:10px}
-.pg-h1{font-size:clamp(38px,6vw,72px);font-style:italic;margin-bottom:8px}
-.pg-sub{font-size:18px;color:#aaa;margin-bottom:40px}
-.fb{display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid #f0f0f0;padding-bottom:16px;margin-bottom:32px}
-.pill{cursor:pointer;padding:6px 16px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;border:1px solid #e0e0e0;background:transparent;color:#888;transition:all 0.15s}
+.si-info{position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(to top,rgba(0,0,0,0.88),transparent)}
+.si-t{font-size:12px;font-style:italic;color:#fff;line-height:1.3}
+.si-c{font-family:'Inter',sans-serif;font-size:8px;color:rgba(255,255,255,0.4);margin-top:2px;letter-spacing:0.07em}
+.nl-box{border:1px solid #e8e0d8;padding:32px}
+.nl-q{font-size:22px;font-style:italic;line-height:1.5;margin-bottom:24px}
+.nl-i{width:100%;border:none;border-bottom:1px solid #ddd;padding:9px 0;font-size:16px;font-family:'EB Garamond',serif;font-style:italic;color:#111;background:transparent;outline:none;margin-bottom:18px}
+.nl-btn{background:#111;color:#fff;border:none;padding:12px 36px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;width:100%}
+.nl-f{font-family:'Inter',sans-serif;font-size:9px;color:#bbb;letter-spacing:0.09em;text-transform:uppercase;margin-top:12px;text-align:center}
+.pge{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:#bbb;margin-bottom:9px}
+.pgh{font-size:clamp(36px,5.5vw,68px);font-style:italic;margin-bottom:7px}
+.pgs{font-size:17px;color:#aaa;margin-bottom:36px}
+.fb{display:flex;gap:7px;flex-wrap:wrap;align-items:center;border-bottom:1px solid #f0f0f0;padding-bottom:14px;margin-bottom:28px}
+.pill{cursor:pointer;padding:5px 14px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid #e0e0e0;background:transparent;color:#888;transition:all 0.14s}
 .pill.on{border-color:#111;background:#111;color:#fff}
-.pill.urg-pill{color:#c0392b;border-color:#c0392b}
-.pill.urg-pill.on{background:#c0392b;border-color:#c0392b;color:#fff}
-.si2{margin-left:auto;border:none;border-bottom:1px solid #e0e0e0;padding:6px 0;font-size:15px;font-family:'EB Garamond',serif;color:#111;width:180px;font-style:italic;background:transparent;outline:none}
-.rc{font-family:'Inter',sans-serif;font-size:9px;color:#ccc;letter-spacing:0.08em}
-.exh-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ebebeb}
-.ec{background:#fff;cursor:pointer;transition:box-shadow 0.25s}
-.ec:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.pill.up{color:#c0392b;border-color:#c0392b}
+.pill.up.on{background:#c0392b;border-color:#c0392b;color:#fff}
+.si3{margin-left:auto;border:none;border-bottom:1px solid #e0e0e0;padding:5px 0;font-size:14px;font-family:'EB Garamond',serif;color:#111;width:160px;font-style:italic;background:transparent;outline:none}
+.rc{font-family:'Inter',sans-serif;font-size:9px;color:#ccc}
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ebebeb}
+.ec{background:#fff;cursor:pointer;transition:box-shadow 0.22s}
+.ec:hover{box-shadow:0 6px 28px rgba(0,0,0,0.09)}
 .ec-top{position:relative;overflow:hidden;aspect-ratio:4/3}
-.ec-grad{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;transition:transform 0.5s}
+.ec-grad{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:16px;transition:transform 0.5s}
 .ec:hover .ec-grad{transform:scale(1.04)}
-.ec-line{width:28px;height:0.5px;background:rgba(255,255,255,0.4)}
-.ec-ven{font-size:15px;font-style:italic;color:rgba(255,255,255,0.82);text-align:center;line-height:1.3}
-.ec-city{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
-.ec-info{padding:18px 18px 22px}
-.ec-title{font-size:20px;font-style:italic;color:#111;margin-bottom:4px;line-height:1.3}
-.ec-ven2{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:10px}
-.ec-dates{font-family:'Inter',sans-serif;font-size:9px;color:#ccc;border-top:1px solid #f5f5f5;padding-top:9px;display:flex;justify-content:space-between}
-.otable{width:100%;border-collapse:collapse}
-.otable th{text-align:left;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:#ccc;padding:0 0 14px;border-bottom:1px solid #f0f0f0;font-weight:400}
-.orow{border-bottom:1px solid #f5f5f5;cursor:pointer;transition:background 0.15s}
-.orow:hover{background:#fafafa}
-.orow td{padding:18px 12px 18px 0;vertical-align:top}
-.orow td:last-child{padding-left:12px;padding-right:0}
-.or-title{font-size:19px;font-style:italic;color:#111;line-height:1.3;margin-bottom:2px;display:flex;align-items:center;gap:7px}
-.or-org{font-family:'Inter',sans-serif;font-size:10px;color:#bbb}
+.ec-line{width:24px;height:0.5px;background:rgba(255,255,255,0.4)}
+.ec-v{font-size:14px;font-style:italic;color:rgba(255,255,255,0.8);text-align:center;line-height:1.3}
+.ec-c{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.ec-info{padding:16px 16px 20px}
+.ec-t{font-size:19px;font-style:italic;color:#111;margin-bottom:3px;line-height:1.3}
+.ec-v2{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:9px}
+.ec-d{font-family:'Inter',sans-serif;font-size:9px;color:#ccc;border-top:1px solid #f5f5f5;padding-top:8px;display:flex;justify-content:space-between}
+.ot{width:100%;border-collapse:collapse}
+.ot th{text-align:left;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:#ccc;padding:0 0 13px;border-bottom:1px solid #f0f0f0;font-weight:400}
+.or{border-bottom:1px solid #f5f5f5;cursor:pointer}
+.or:hover td{background:#fafafa}
+.or td{padding:16px 10px 16px 0;vertical-align:top}
+.or td:last-child{padding-left:10px}
+.or-t{font-size:18px;font-style:italic;color:#111;line-height:1.3;margin-bottom:2px;display:flex;align-items:center;gap:6px}
+.or-o{font-family:'Inter',sans-serif;font-size:10px;color:#bbb}
 .udot{width:5px;height:5px;border-radius:50%;background:#c0392b;display:inline-block;flex-shrink:0;animation:pulse 2s infinite}
-.about-hero{background:#111;padding:120px 40px 64px}
-.about-hero h1{font-size:clamp(34px,6vw,68px);font-style:italic;color:#fff;max-width:540px;line-height:1.1}
-.about-label{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:14px}
+.ah{background:#111;padding:110px 32px 56px}
+.ah h1{font-size:clamp(32px,5.5vw,64px);font-style:italic;color:#fff;max-width:500px;line-height:1.1}
+.ahl{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:13px}
 .sg{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.sb{padding:28px 22px}
-.sb-n{font-size:42px;font-style:italic;line-height:1;margin-bottom:8px}
-.sb-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.15em;text-transform:uppercase}
-.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1320px;margin:0 auto}
-.vi{padding:32px 24px;border-top:1px solid #222}
-.vi-n{font-family:'Inter',sans-serif;font-size:9px;color:#444;letter-spacing:0.14em;margin-bottom:8px}
-.vi-name{font-size:22px;font-style:italic;color:#fff;margin-bottom:8px}
-.vi-desc{font-size:15px;color:#666;line-height:1.75}
-.legal-body{max-width:720px;margin:0 auto;padding:80px 40px}
-.legal-body h2{font-size:26px;font-style:italic;margin-bottom:14px}
-.legal-body h3{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#888;margin:26px 0 8px}
-.legal-body p{font-size:17px;line-height:1.9;color:#555;margin-bottom:12px}
-.legal-div{height:1px;background:#f0f0f0;margin:44px 0}
-.legal-note{background:#fafafa;padding:22px 26px;margin-top:36px;font-size:16px;font-style:italic;color:#999;line-height:1.7}
-footer{border-top:1px solid #f0f0f0}
-.foot{max-width:1320px;margin:0 auto;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.foot-logo{font-size:20px;font-style:italic}
-.foot-links{display:flex;gap:22px}
-.foot-link{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#ccc;cursor:pointer}
-.foot-link:hover{color:#111}
-.foot-copy{font-family:'Inter',sans-serif;font-size:9px;color:#ddd}
-.mb{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.62);align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px)}
-.mb.open{display:flex}
-.mo{background:#fff;width:100%;max-width:700px;max-height:90vh;overflow-y:auto;position:relative}
-.mo-grad{aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;position:relative}
-.mo-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.4),transparent 55%)}
-.mo-title{font-size:30px;font-style:italic;color:rgba(255,255,255,0.92);text-align:center;line-height:1.2;position:relative;z-index:1}
-.mo-line{width:40px;height:0.5px;background:rgba(255,255,255,0.4);position:relative;z-index:1}
-.mo-city{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);position:relative;z-index:1}
-.mo-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.35);border:none;color:#fff;width:32px;height:32px;font-size:18px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center}
-.mo-body{padding:28px 32px 36px}
-.mo-t{font-size:28px;font-style:italic;line-height:1.2;margin:10px 0 4px}
-.mo-s{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:16px}
-.mo-d{font-size:17px;line-height:1.9;color:#555;margin-bottom:22px}
-.mo-cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#ebebeb;margin-bottom:20px}
-.mo-cells-2{grid-template-columns:1fr 1fr}
-.mo-cell{background:#fff;padding:14px 17px}
-.mo-cl{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:#ccc;margin-bottom:5px}
-.mo-cv{font-size:15px;font-style:italic}
-.mo-cta{display:block;background:#111;color:#fff;padding:13px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;text-align:center;text-decoration:none;border:none;width:100%;cursor:pointer}
-@media(max-width:960px){
+.sb{padding:26px 20px}
+.sb-n{font-size:40px;font-style:italic;line-height:1;margin-bottom:7px}
+.sb-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1280px;margin:0 auto}
+.vi{padding:28px 22px;border-top:1px solid #222}
+.vi-n{font-family:'Inter',sans-serif;font-size:9px;color:#444;letter-spacing:0.12em;margin-bottom:7px}
+.vi-nm{font-size:21px;font-style:italic;color:#fff;margin-bottom:7px}
+.vi-d{font-size:14px;color:#666;line-height:1.7}
+.lb{max-width:700px;margin:0 auto;padding:80px 32px}
+.lb h2{font-size:25px;font-style:italic;margin-bottom:13px}
+.lb h3{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#888;margin:24px 0 8px}
+.lb p{font-size:16px;line-height:1.9;color:#555;margin-bottom:11px}
+.ld{height:1px;background:#f0f0f0;margin:40px 0}
+.ln{background:#fafafa;padding:20px 24px;margin-top:32px;font-size:15px;font-style:italic;color:#999;line-height:1.7}
+footer{border-top:1px solid #f0f0f0;background:#fff}
+.fi{max-width:1280px;margin:0 auto;padding:32px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.fl{font-size:19px;font-style:italic;color:#111}
+.fls{display:flex;gap:20px}
+.fll{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:#ccc;cursor:pointer}
+.fll:hover{color:#111}
+.fc{font-family:'Inter',sans-serif;font-size:9px;color:#ddd}
+.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.62);align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;position:relative}
+.mo-grad{aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;position:relative}
+.mo-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.38),transparent 55%)}
+.mo-title{font-size:28px;font-style:italic;color:rgba(255,255,255,0.92);text-align:center;line-height:1.2;position:relative;z-index:1}
+.mo-line{width:36px;height:0.5px;background:rgba(255,255,255,0.4);position:relative;z-index:1}
+.mo-city{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);position:relative;z-index:1}
+.mo-x{position:absolute;top:11px;right:11px;background:rgba(0,0,0,0.32);border:none;color:#fff;width:30px;height:30px;font-size:17px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center}
+.mo-body{padding:24px 28px 32px}
+.mo-t{font-size:26px;font-style:italic;line-height:1.2;margin:10px 0 4px}
+.mo-s{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:15px}
+.mo-d{font-size:16px;line-height:1.9;color:#555;margin-bottom:20px}
+.mo-cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#ebebeb;margin-bottom:18px}
+.mo-cells2{grid-template-columns:1fr 1fr}
+.mo-cell{background:#fff;padding:13px 16px}
+.mo-cl{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:#ccc;margin-bottom:4px}
+.mo-cv{font-size:14px;font-style:italic}
+.mo-btn{display:block;width:100%;background:#111;color:#fff;padding:13px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-align:center;border:none}
+.mo-btn:hover{opacity:0.85}
+@media(max-width:900px){
   .g4{grid-template-columns:1fr 1fr}
   .g3{grid-template-columns:1fr 1fr}
-  .exh-g{grid-template-columns:1fr 1fr}
-  .g2{grid-template-columns:1fr;gap:36px}
+  .eg{grid-template-columns:1fr 1fr}
+  .g2{grid-template-columns:1fr;gap:32px}
   .vg{grid-template-columns:1fr 1fr}
-  .nav-links .nav-link:not(:last-child):not(:nth-last-child(2)){display:none}
-  .hero-stats{flex-wrap:wrap}
-  .hstat{flex:1 1 120px}
+  .navlinks .nl:nth-child(n+4){display:none}
 }
-@media(max-width:560px){
-  .g4,.g3,.exh-g{grid-template-columns:1fr}
+@media(max-width:540px){
+  .g4,.g3,.eg{grid-template-columns:1fr}
   .mo-cells{grid-template-columns:1fr 1fr}
-  .sec{padding:56px 20px}
-  nav{padding:0 20px}
-  .hero{padding:80px 20px}
-  .banner{padding:12px 20px}
-  .about-hero{padding:90px 20px 56px}
-  .foot{padding:28px 20px}
-  .legal-body{padding:72px 20px}
+  .s{padding:48px 18px}
+  nav{padding:0 18px}
+  .hero{padding:56px 18px}
+  .ban{padding:11px 18px}
+  .ah{padding:90px 18px 48px}
+  .fi{padding:28px 18px}
+  .lb{padding:70px 18px}
+  .hstats{gap:0}
+  .hs2{padding:0 16px}
 }
-
-/* ── PAGE TRANSITIONS ── */
-.pg{display:none;padding-top:56px;animation:none}
-.pg.on{display:block;animation:pg-in 0.45s ease both}
-@keyframes pg-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-
-/* ── BRUSH INTRO ── */
 </style>
 </head>
 <body>
 
-<!-- BRUSH INTRO -->
-
 <nav>
   <span class="logo" onclick="go('home')">Artatlas</span>
-  <div class="nav-links">
-    <span class="nav-link on" id="nl-home" onclick="go('home')">Home</span>
-    <span class="nav-link" id="nl-exhibitions" onclick="go('exhibitions')">Exhibitions</span>
-    <span class="nav-link" id="nl-opportunities" onclick="go('opportunities')">Opportunities</span>
-    <span class="nav-link" id="nl-about" onclick="go('about')">About</span>
-    <span class="nav-link" id="nl-legal" onclick="go('legal')" style="font-size:9px">Legal</span>
+  <div class="navlinks">
+    <span class="nl on" id="ni-home" onclick="go('home')">Home</span>
+    <span class="nl" id="ni-exhibitions" onclick="go('exhibitions')">Exhibitions</span>
+    <span class="nl" id="ni-opportunities" onclick="go('opportunities')">Opportunities</span>
+    <span class="nl" id="ni-about" onclick="go('about')">About</span>
+    <span class="nl" id="ni-legal" onclick="go('legal')" style="font-size:9px">Legal</span>
   </div>
 </nav>
 
 <!-- HOME -->
 <div id="pg-home" class="pg on">
   <div class="hero">
-    <div class="hero-word">Artatlas</div>
-    <div class="hero-tag">Every opportunity &nbsp;&middot;&nbsp; Every exhibition</div>
-    <div class="hero-btns">
-      <button class="btn-w" onclick="go('exhibitions')">Explore exhibitions</button>
-      <button class="btn-o" onclick="go('opportunities')">Find opportunities</button>
+    <div class="hw">Artatlas</div>
+    <div class="ht">Every opportunity &nbsp;&middot;&nbsp; Every exhibition</div>
+    <div class="hbtns">
+      <button class="hb1" onclick="go('exhibitions')">Explore exhibitions</button>
+      <button class="hb2" onclick="go('opportunities')">Find opportunities</button>
     </div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Exhibitions</div></div>
-      <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Opportunities</div></div>
-      <div class="hstat"><div class="hstat-n">20+</div><div class="hstat-l">Countries</div></div>
-      <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">Always</div></div>
+    <div class="hstats">
+      <div class="hs2"><div class="hsn">20</div><div class="hsl">Exhibitions</div></div>
+      <div class="hs2"><div class="hsn">20</div><div class="hsl">Opportunities</div></div>
+      <div class="hs2"><div class="hsn">20+</div><div class="hsl">Countries</div></div>
+      <div class="hs2"><div class="hsn">Free</div><div class="hsl">Always</div></div>
     </div>
-    <div class="scroll-hint"><div class="scroll-line"></div><div class="scroll-txt">Scroll</div></div>
   </div>
-  <div class="banner">
-    <div class="bdot"></div>
-    <span class="btxt"><strong>4 opportunities</strong> closing before June</span>
-    <span class="blink" onclick="go('opportunities')">View all</span>
+  <div class="ban">
+    <div class="bd"></div>
+    <span class="bt"><strong>Opportunities closing soon</strong> &mdash; don't miss them</span>
+    <span class="bl" onclick="go('opportunities')">View all</span>
   </div>
-  <div style="background:#fff"><div class="sec">
+  <div style="background:#fff"><div class="s">
     <div class="sh">
-      <div><div class="sl2">Editor's selection</div><div class="st">Must-see right now</div></div>
+      <div><div class="slb">Editor's selection</div><div class="st">Must-see right now</div></div>
       <span class="sm" onclick="go('exhibitions')">All exhibitions</span>
     </div>
     <div class="g4" id="must-grid"></div>
   </div></div>
-  <div class="sec-bg"><div class="sec">
+  <div style="background:#f9f9f9"><div class="s">
     <div class="sh">
-      <div><div class="sl2">For artists</div><div class="st">Closing soon</div></div>
+      <div><div class="slb">For artists</div><div class="st">Closing soon</div></div>
       <span class="sm" onclick="go('opportunities')">All opportunities</span>
     </div>
-    <div class="g3" id="opp-preview"></div>
+    <div class="g3" id="opp-prev"></div>
   </div></div>
-  <div class="strip-outer">
-    <div style="padding:20px 40px 12px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.28)">Now showing</div>
-    <div class="strip" id="film-strip"></div>
+  <div class="strip-w">
+    <div style="padding:18px 32px 10px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25)">Now showing</div>
+    <div class="strip" id="strip"></div>
   </div>
-  <div style="background:#fff"><div class="sec" id="newsletter">
+  <div style="background:#fff"><div class="s" id="newsletter">
     <div class="g2">
       <div>
-        <div class="sl2" style="margin-bottom:14px">Weekly digest</div>
-        <div class="st" style="margin-bottom:18px;line-height:1.1">Never miss an<br>opportunity.</div>
-        <p style="font-size:18px;line-height:1.85;color:#888;max-width:380px">Every Monday &mdash; the 5 best opportunities closing that week, exhibitions worth seeing, and what the art world is talking about.</p>
+        <div class="slb" style="margin-bottom:12px">Weekly digest</div>
+        <div class="st" style="margin-bottom:16px;line-height:1.1">Never miss an<br>opportunity.</div>
+        <p style="font-size:17px;line-height:1.85;color:#888;max-width:360px">Every Monday &mdash; the best opportunities closing that week, exhibitions worth seeing, and what the art world is talking about.</p>
       </div>
       <div class="nl-box" id="nl-box">
         <div class="nl-q">&ldquo;The first thing I open on Monday morning.&rdquo;</div>
-        <input class="nl-inp" type="email" id="nl-email" placeholder="Your email address">
-        <button class="nl-btn" onclick="nlSub()">Subscribe free</button>
-        <div class="nl-fine">No spam &middot; Unsubscribe anytime</div>
+        <input class="nl-i" type="email" id="nl-email" placeholder="Your email address">
+        <button class="nl-btn" onclick="nlsub()">Subscribe free</button>
+        <div class="nl-f">No spam &middot; Unsubscribe anytime</div>
       </div>
     </div>
   </div></div>
@@ -266,42 +246,45 @@ footer{border-top:1px solid #f0f0f0}
 
 <!-- EXHIBITIONS -->
 <div id="pg-exhibitions" class="pg">
-  <div class="sec">
-    <div class="pg-eye">What to see</div>
-    <div class="pg-h1">Exhibitions</div>
-    <div class="pg-sub">The shows worth seeing right now.</div>
+  <div class="s">
+    <div class="pge">What to see</div>
+    <div class="pgh">Exhibitions</div>
+    <div class="pgs">The shows worth seeing right now.</div>
     <div class="fb">
       <button class="pill on" onclick="fc(this,'All')">All</button>
       <button class="pill" onclick="fc(this,'Paris')">Paris</button>
       <button class="pill" onclick="fc(this,'London')">London</button>
       <button class="pill" onclick="fc(this,'Venice')">Venice</button>
       <button class="pill" onclick="fc(this,'Florence')">Florence</button>
-      <button class="pill" onclick="fc(this,'Basel')">Basel</button>
-      <button class="pill" onclick="fc(this,'Amsterdam')">Amsterdam</button>
-      <input class="si2" placeholder="Search&hellip;" oninput="se(this.value)">
+      <button class="pill" onclick="fc(this,'Rome')">Rome</button>
+      <input class="si3" placeholder="Search&hellip;" oninput="se(this.value)">
     </div>
-    <div class="exh-g" id="exh-grid"></div>
+    <div class="eg" id="exh-grid"></div>
   </div>
 </div>
 
 <!-- OPPORTUNITIES -->
 <div id="pg-opportunities" class="pg">
-  <div class="sec">
-    <div class="pg-eye">For artists</div>
-    <div class="pg-h1">Opportunities</div>
-    <div class="pg-sub">Grants, residencies and open calls &mdash; verified weekly.</div>
+  <div class="s">
+    <div class="pge">For artists</div>
+    <div class="pgh">Opportunities</div>
+    <div class="pgs">Grants, residencies and open calls &mdash; verified weekly.</div>
     <div class="fb">
       <button class="pill on" onclick="ft(this,'All')">All</button>
       <button class="pill" onclick="ft(this,'Grant')">Grant</button>
       <button class="pill" onclick="ft(this,'Residency')">Residency</button>
       <button class="pill" onclick="ft(this,'Open Call')">Open Call</button>
-      <button class="pill urg-pill" onclick="ft(this,'Week')">&#9679; Closing this week</button>
-      <input class="si2" placeholder="Search&hellip;" oninput="so(this.value)">
+      <button class="pill up" onclick="ft(this,'Week')">&#9679; Closing this week</button>
+      <input class="si3" placeholder="Search&hellip;" oninput="so(this.value)">
       <span class="rc" id="ocount"></span>
     </div>
-    <table class="otable">
+    <table class="ot">
       <thead><tr>
-        <th>Opportunity</th><th>Award</th><th>Type</th><th>Location</th><th>Deadline</th>
+        <th>Opportunity</th>
+        <th>Award</th>
+        <th>Type</th>
+        <th>Country</th>
+        <th>Deadline</th>
       </tr></thead>
       <tbody id="obody"></tbody>
     </table>
@@ -310,98 +293,98 @@ footer{border-top:1px solid #f0f0f0}
 
 <!-- ABOUT -->
 <div id="pg-about" class="pg">
-  <div class="about-hero">
-    <div class="about-label">About Artatlas</div>
+  <div class="ah">
+    <div class="ahl">About Artatlas</div>
     <h1>Built for artists.<br><em>Loved by art.</em></h1>
   </div>
-  <div class="sec">
+  <div class="s">
     <div class="g2">
       <div>
-        <p style="font-size:18px;line-height:1.9;color:#666;margin-bottom:18px">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
-        <p style="font-size:18px;line-height:1.9;color:#666;margin-bottom:18px">We built the platform we wished existed &mdash; where artists find residencies, grants and open calls, and art lovers discover the exhibitions worth travelling for.</p>
-        <p style="font-size:18px;line-height:1.9;color:#666">Updated every week. Free forever.</p>
+        <p style="font-size:17px;line-height:1.9;color:#666;margin-bottom:16px">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
+        <p style="font-size:17px;line-height:1.9;color:#666;margin-bottom:16px">We built the platform we wished existed &mdash; where artists find residencies, grants and open calls, and art lovers discover the exhibitions worth travelling for.</p>
+        <p style="font-size:17px;line-height:1.9;color:#666">Updated every week. Free forever.</p>
       </div>
       <div>
         <div class="sg">
-          <div class="sb" style="background:#f9f9f9"><div class="sb-n">16</div><div class="sb-l" style="color:#bbb">Exhibitions</div></div>
+          <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Exhibitions</div></div>
           <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Opportunities</div></div>
           <div class="sb" style="background:#f9f9f9"><div class="sb-n">20+</div><div class="sb-l" style="color:#bbb">Countries</div></div>
           <div class="sb" style="background:#111"><div class="sb-n" style="color:#fff">Free</div><div class="sb-l" style="color:#555">Always</div></div>
         </div>
-        <div style="background:#f9f9f9;padding:26px 22px;margin-top:1px">
-          <p style="font-size:20px;font-style:italic;line-height:1.6;color:#333">&ldquo;Art should not be reserved for those with the right connections. Information is a lever for equality.&rdquo;</p>
+        <div style="background:#f9f9f9;padding:24px 20px;margin-top:1px">
+          <p style="font-size:19px;font-style:italic;line-height:1.6;color:#333">&ldquo;Art should not be reserved for those with the right connections. Information is a lever for equality.&rdquo;</p>
         </div>
       </div>
     </div>
   </div>
-  <div style="background:#111;padding:56px 0">
+  <div style="background:#111;padding:48px 0">
     <div class="vg">
-      <div class="vi"><div class="vi-n">01</div><div class="vi-name">Free</div><div class="vi-desc">No paywalls. No subscription. Full access, always.</div></div>
-      <div class="vi"><div class="vi-n">02</div><div class="vi-name">Verified</div><div class="vi-desc">Every opportunity checked. Expired entries removed automatically.</div></div>
-      <div class="vi"><div class="vi-n">03</div><div class="vi-name">Complete</div><div class="vi-desc">All disciplines, all countries &mdash; Brooklyn to Lagos to Basel.</div></div>
-      <div class="vi"><div class="vi-n">04</div><div class="vi-name">Independent</div><div class="vi-desc">No sponsors. No paid placement. Curation is ours alone.</div></div>
+      <div class="vi"><div class="vi-n">01</div><div class="vi-nm">Free</div><div class="vi-d">No paywalls. No subscription. Full access, always.</div></div>
+      <div class="vi"><div class="vi-n">02</div><div class="vi-nm">Verified</div><div class="vi-d">Every opportunity checked. Expired listings removed automatically.</div></div>
+      <div class="vi"><div class="vi-n">03</div><div class="vi-nm">Complete</div><div class="vi-d">All disciplines, all countries &mdash; Brooklyn to Lagos to Basel.</div></div>
+      <div class="vi"><div class="vi-n">04</div><div class="vi-nm">Independent</div><div class="vi-d">No sponsors. No paid placement. Curation is ours alone.</div></div>
     </div>
   </div>
 </div>
 
 <!-- LEGAL -->
 <div id="pg-legal" class="pg">
-  <div class="legal-body">
-    <div class="pg-eye">Legal</div>
-    <div class="pg-h1">Terms &amp; Privacy</div>
-    <div style="font-family:'Inter',sans-serif;font-size:10px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Last updated: May 2026</div>
-    <div style="width:36px;height:1px;background:#e0e0e0;margin:20px 0 36px"></div>
+  <div class="lb">
+    <div class="pge">Legal</div>
+    <div class="pgh">Terms &amp; Privacy</div>
+    <div style="font-family:'Inter',sans-serif;font-size:10px;color:#bbb;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Last updated: May 2026</div>
+    <div style="width:32px;height:1px;background:#e0e0e0;margin:18px 0 32px"></div>
     <h2>Terms of Use</h2>
     <p>By accessing and using Artatlas, you agree to the following terms.</p>
     <h3>1. Nature of the Service</h3>
     <p>Artatlas is an informational platform aggregating publicly available artistic opportunities and exhibitions. All information is for informational purposes only. Artatlas does not guarantee the accuracy, completeness or currency of any listing.</p>
     <h3>2. No Liability for Third-Party Content</h3>
-    <p>Artatlas is not responsible for the content or practices of any linked third parties. Any interaction with a third party is solely between you and that party.</p>
+    <p>Artatlas is not responsible for the content or practices of any linked third parties. Any interaction with a third party is solely between you and that party. Artatlas is not affiliated with or endorsed by any listed institution.</p>
     <h3>3. Intellectual Property</h3>
-    <p>The Artatlas name, design and original content are the property of Artatlas. Third-party names and trademarks remain the property of their respective owners. Artatlas is not affiliated with or endorsed by any listed institution.</p>
+    <p>The Artatlas name, design and original content are the property of Artatlas. Third-party names and trademarks remain the property of their respective owners.</p>
     <h3>4. Disclaimer</h3>
     <p>The platform is provided &ldquo;as is&rdquo; without warranties of any kind.</p>
-    <div class="legal-div"></div>
+    <div class="ld"></div>
     <h2>Privacy Policy</h2>
     <p>Artatlas is committed to protecting your privacy in accordance with the GDPR (Regulation EU 2016/679).</p>
     <h3>1. Data We Collect</h3>
-    <p>We collect only your email address when you subscribe to our newsletter. We do not collect names, location data, or browsing behaviour. We do not use tracking cookies.</p>
+    <p>We collect only your email address when you subscribe to our newsletter. We do not use tracking cookies or collect any other personal data.</p>
     <h3>2. Purpose of Processing</h3>
-    <p>Your email is used solely to send the Artatlas weekly newsletter. Legal basis: your freely given consent (Article 6(1)(a) GDPR).</p>
+    <p>Your email is used solely to send the Artatlas weekly newsletter. Legal basis: freely given consent (Article 6(1)(a) GDPR).</p>
     <h3>3. Data Retention</h3>
-    <p>Your email is retained while you remain subscribed. Upon unsubscription, it is deleted within 30 days.</p>
+    <p>Your email is retained while you remain subscribed. Upon unsubscription, deleted within 30 days.</p>
     <h3>4. Your Rights</h3>
-    <p>You have the right to access, rectify or delete your data, and to withdraw consent at any time by unsubscribing directly from any newsletter email.</p>
+    <p>You have the right to access, rectify or delete your data by unsubscribing from any newsletter email.</p>
     <h3>5. Data Sharing</h3>
     <p>We do not sell, rent or share your personal data with any third party.</p>
     <h3>6. Contact</h3>
-    <p>For any questions, please contact us via the newsletter.</p>
-    <div class="legal-note">Artatlas is an independent personal project, not a registered commercial entity. The platform is free to use and does not generate revenue at this stage.</div>
+    <p>For any questions, contact us via the newsletter.</p>
+    <div class="ln">Artatlas is an independent personal project, not a registered commercial entity. The platform is free to use and does not generate revenue at this stage.</div>
   </div>
 </div>
 
 <footer>
-  <div class="foot">
-    <span class="foot-logo">Artatlas</span>
-    <div class="foot-links">
-      <span class="foot-link" onclick="go('exhibitions')">Exhibitions</span>
-      <span class="foot-link" onclick="go('opportunities')">Opportunities</span>
-      <span class="foot-link" onclick="go('about')">About</span>
-      <span class="foot-link" onclick="go('legal')">Legal &amp; Privacy</span>
+  <div class="fi">
+    <span class="fl">Artatlas</span>
+    <div class="fls">
+      <span class="fll" onclick="go('exhibitions')">Exhibitions</span>
+      <span class="fll" onclick="go('opportunities')">Opportunities</span>
+      <span class="fll" onclick="go('about')">About</span>
+      <span class="fll" onclick="go('legal')">Legal &amp; Privacy</span>
     </div>
-    <span class="foot-copy">2026 &middot; Artatlas</span>
+    <span class="fc">2026 &middot; Artatlas</span>
   </div>
 </footer>
 
-<!-- MODALS -->
-<div class="mb" id="em" onclick="cm('em')">
-  <div class="mo" onclick="event.stopPropagation()">
+<!-- EXHIBITION MODAL -->
+<div class="modal-bg" id="em" onclick="if(event.target===this)cm('em')">
+  <div class="modal">
     <div class="mo-grad" id="em-grad">
       <div class="mo-veil"></div>
       <div class="mo-title" id="em-title"></div>
       <div class="mo-line"></div>
       <div class="mo-city" id="em-city"></div>
-      <button class="mo-close" onclick="cm('em')">&#x2715;</button>
+      <button class="mo-x" onclick="cm('em')">&#x2715;</button>
     </div>
     <div class="mo-body">
       <div id="em-chip"></div>
@@ -409,191 +392,198 @@ footer{border-top:1px solid #f0f0f0}
       <div class="mo-s" id="em-s"></div>
       <div class="mo-d" id="em-d"></div>
       <div class="mo-cells" id="em-cells"></div>
-      <button class="mo-cta" id="em-link" onclick="openUrl('em')">Visit museum website &rarr;</button>
+      <button class="mo-btn" id="em-btn" onclick="gourl('em')">Visit museum website &rarr;</button>
     </div>
   </div>
 </div>
 
-<div class="mb" id="om" onclick="cm('om')">
-  <div class="mo" onclick="event.stopPropagation()">
+<!-- OPPORTUNITY MODAL -->
+<div class="modal-bg" id="om" onclick="if(event.target===this)cm('om')">
+  <div class="modal">
     <div class="mo-body">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
         <div id="om-chip"></div>
-        <button style="background:none;border:none;font-size:22px;color:#ccc;cursor:pointer" onclick="cm('om')">&#x2715;</button>
+        <button style="background:none;border:none;font-size:21px;color:#ccc;cursor:pointer;line-height:1;padding:4px" onclick="cm('om')">&#x2715;</button>
       </div>
       <div class="mo-t" id="om-t"></div>
       <div class="mo-s" id="om-s"></div>
       <div class="mo-d" id="om-d"></div>
-      <div class="mo-cells mo-cells-2" id="om-cells"></div>
-      <button class="mo-cta" id="om-link" onclick="openUrl('om')" style="margin-top:20px">Apply now &rarr;</button>
+      <div class="mo-cells mo-cells2" id="om-cells"></div>
+      <button class="mo-btn" id="om-btn" onclick="gourl('om')" style="margin-top:16px">Apply now &rarr;</button>
     </div>
   </div>
 </div>
 
 <script>
-const G=["linear-gradient(145deg,#e8c4a0,#c07840)","linear-gradient(135deg,#2d4a6b,#3d6080)","linear-gradient(150deg,#7a2a3a,#a04060)","linear-gradient(160deg,#8b2020,#c04820)","linear-gradient(140deg,#1a1a1a,#3a3a3a)","linear-gradient(135deg,#c87840,#e0a060)","linear-gradient(145deg,#4a6040,#8a9870)","linear-gradient(150deg,#3a4858,#7a8898)","linear-gradient(140deg,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#6b4a10,#a87830)","linear-gradient(135deg,#a8a098,#d0c8c0)","linear-gradient(150deg,#907060,#c8a098)","linear-gradient(145deg,#1a3020,#3a5040)","linear-gradient(140deg,#907020,#c8a850)","linear-gradient(135deg,#a87810,#e0b830)","linear-gradient(150deg,#0a1828,#283850)","linear-gradient(145deg,#5a3a7a,#8a5aaa)","linear-gradient(140deg,#2a4a2a,#5a8a5a)","linear-gradient(135deg,#7a4a1a,#b07a3a)","linear-gradient(150deg,#1a3a4a,#3a6a7a)"];
-const CH={"Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a","Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22","Performance Art":"background:#f5ebe8;color:#5a1e18","Post-Impressionism":"background:#faf0e4;color:#5a3010","19th Century":"background:#f5f0e2;color:#4a3a10","Sculpture":"background:#eef5e8;color:#2a4a10","Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a","Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00","Old Masters":"background:#f5ede8;color:#5a2e1a","Medieval Art":"background:#f0ece0;color:#3a2e10","Design":"background:#e8f0e8;color:#1a3a1a","Street Art":"background:#ebebeb;color:#222","Drawing":"background:#f5f0e8;color:#3a3010","Symbolism":"background:#f0e8f5;color:#3a1a5a","Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"};
-function ch(l){const s=CH[l]||"background:#f0f0f0;color:#444";return'<span class="chip" style="'+s+'">'+l+'</span>';}
+var EU={}, OU={};
 
-const TODAY=new Date();TODAY.setHours(0,0,0,0);
-function isExp(d){if(!d)return false;const x=new Date(d);x.setHours(0,0,0,0);return x<TODAY;}
-function isCTW(d){if(!d)return false;const x=new Date(d);x.setHours(0,0,0,0);const df=(x-TODAY)/86400000;return df>=0&&df<=7;}
+var G=["linear-gradient(145deg,#e8c4a0,#c07840)","linear-gradient(135deg,#2d4a6b,#3d6080)","linear-gradient(150deg,#7a2a3a,#a04060)","linear-gradient(160deg,#8b2020,#c04820)","linear-gradient(140deg,#222,#3a3a3a)","linear-gradient(135deg,#c87840,#e0a060)","linear-gradient(145deg,#4a6040,#8a9870)","linear-gradient(150deg,#3a4858,#7a8898)","linear-gradient(140deg,#1a0a2a,#5a2a6a)","linear-gradient(145deg,#6b4a10,#a87830)","linear-gradient(135deg,#a8a098,#d0c8c0)","linear-gradient(150deg,#907060,#c8a098)","linear-gradient(145deg,#1a3020,#3a5040)","linear-gradient(140deg,#907020,#c8a850)","linear-gradient(135deg,#a87810,#e0b830)","linear-gradient(150deg,#0a1828,#283850)","linear-gradient(145deg,#5a3a7a,#8a5aaa)","linear-gradient(140deg,#2a4a2a,#5a8a5a)","linear-gradient(135deg,#7a4a1a,#b07a3a)","linear-gradient(150deg,#1a3a4a,#3a6a7a)"];
 
-const EXH=[
-  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 230 works from Matisse's final period. The Jazz book, the monumental cut-outs including La Tristesse du roi, the Chapel of Vence.",url:"https://www.grandpalais.fr"},
-  {id:2,title:"Venice Biennale — In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The 61st International Art Exhibition curated by the late Koyo Kouoh — the first African woman in the role. 90 countries, 110 artists.",url:"https://www.labiennale.org"},
-  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,end:"2027-01-03",verified:"May 2026",desc:"One of the largest European retrospectives devoted to Kahlo's work, exploring her visual language, identity and political fire.",url:"https://www.tate.org.uk"},
-  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 26 Jul 2026",tag:"Abstract Exp.",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 70 works from major international collections tracing Rothko's full career, in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
-  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia. New works in dialogue with Renaissance masterpieces.",url:"https://www.gallerieaccademia.it"},
-  {id:6,title:"Tracey Emin — 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,end:"2026-08-31",verified:"May 2026",desc:"The most comprehensive retrospective of Emin's career. More than 90 works erasing the boundary between public and personal life.",url:"https://www.tate.org.uk"},
-  {id:7,title:"Alexander Calder",venue:"Fondation Louis Vuitton",city:"Paris",country:"France",dates:"Spring - Autumn 2026",tag:"Sculpture",must:true,end:"2026-10-31",verified:"May 2026",desc:"Celebrating the 50th anniversary of Calder's death and the 100th of his arrival in France. Mobiles, stabiles, sculptures and paintings.",url:"https://www.fondationlouisvuitton.fr"},
+var CH={"Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a","Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22","Performance Art":"background:#f5ebe8;color:#5a1e18","Post-Impressionism":"background:#faf0e4;color:#5a3010","19th Century":"background:#f5f0e2;color:#4a3a10","Sculpture":"background:#eef5e8;color:#2a4a10","Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a","Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00","Old Masters":"background:#f5ede8;color:#5a2e1a","Medieval Art":"background:#f0ece0;color:#3a2e10","Design":"background:#e8f0e8;color:#1a3a1a","Street Art":"background:#ebebeb;color:#222","Drawing":"background:#f5f0e8;color:#3a3010","Symbolism":"background:#f0e8f5;color:#3a1a5a","Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"};
+
+function ch(l){var s=CH[l]||"background:#f0f0f0;color:#444";return'<span class="chip" style="'+s+'">'+l+'</span>';}
+
+var TODAY=new Date();TODAY.setHours(0,0,0,0);
+function exp(d){if(!d)return false;var x=new Date(d);x.setHours(0,0,0,0);return x<TODAY;}
+function ctw(d){if(!d)return false;var x=new Date(d);x.setHours(0,0,0,0);var df=(x-TODAY)/86400000;return df>=0&&df<=7;}
+
+var EXH=[
+  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 230 works from Matisse's final period including the monumental cut-outs, the Jazz book and the Chapel of Vence.",url:"https://www.grandpalais.fr"},
+  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The 61st International Art Exhibition curated by the late Koyo Kouoh. 90 countries, 110 artists.",url:"https://www.labiennale.org"},
+  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 3 Jan 2027",tag:"Modernism",must:true,end:"2027-01-03",verified:"May 2026",desc:"One of the largest European retrospectives devoted to Kahlo, exploring her visual language, identity and political fire.",url:"https://www.tate.org.uk"},
+  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 26 Jul 2026",tag:"Abstract Exp.",must:true,end:"2026-07-26",verified:"May 2026",desc:"Over 70 works from major collections tracing Rothko's full career, in dialogue with Fra Angelico at the Museo di San Marco.",url:"https://www.palazzostrozzi.org"},
+  {id:5,title:"Marina Abramovic",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"9 May - 22 Nov 2026",tag:"Performance Art",must:true,end:"2026-11-22",verified:"May 2026",desc:"The first major solo show of a living female artist at the Gallerie dell'Accademia, in dialogue with Renaissance masterpieces.",url:"https://www.gallerieaccademia.it"},
+  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"27 Feb - 31 Aug 2026",tag:"Contemporary Art",must:true,end:"2026-08-31",verified:"May 2026",desc:"The most comprehensive retrospective of Emin's career. 90+ works erasing the boundary between public and personal life.",url:"https://www.tate.org.uk"},
+  {id:7,title:"Alexander Calder",venue:"Fondation Louis Vuitton",city:"Paris",country:"France",dates:"Spring - Autumn 2026",tag:"Sculpture",must:true,end:"2026-10-31",verified:"May 2026",desc:"Celebrating 50 years since Calder's death. Iconic mobiles, stabiles, sculptures and paintings in a landmark retrospective.",url:"https://www.fondationlouisvuitton.fr"},
   {id:8,title:"James McNeill Whistler",venue:"Tate Britain",city:"London",country:"UK",dates:"21 May - 27 Sep 2026",tag:"19th Century",must:false,end:"2026-09-27",verified:"May 2026",desc:"The first major European Whistler retrospective in 30 years. Nocturnes, tonal paintings and rarely-seen early works.",url:"https://www.tate.org.uk"},
   {id:9,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,end:"2026-10-18",verified:"May 2026",desc:"Voidal, mirrored and wax sculptures fill the Hayward. One of the year's most immersive shows.",url:"https://www.southbankcentre.co.uk"},
-  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,end:"2026-12-31",verified:"May 2026",desc:"All nine known painted portraits by van Eyck together for the first and only time. Rarely travelled works, never seen side by side before.",url:"https://www.nationalgallery.org.uk"},
-  {id:11,title:"Bayeux Tapestry",venue:"British Museum",city:"London",country:"UK",dates:"Sep 2026 - Jul 2027",tag:"Medieval Art",must:true,end:"2027-07-31",verified:"May 2026",desc:"The 70-metre Bayeux Tapestry travels from France for the first time in nearly 1000 years. Depicting the Norman invasion of 1066.",url:"https://www.britishmuseum.org"},
+  {id:10,title:"Jan van Eyck: The Portraits",venue:"National Gallery",city:"London",country:"UK",dates:"Autumn 2026",tag:"Flemish Painting",must:true,end:"2026-12-31",verified:"May 2026",desc:"All nine known painted portraits by van Eyck together for the first and only time. Never before seen side by side.",url:"https://www.nationalgallery.org.uk"},
+  {id:11,title:"Bayeux Tapestry",venue:"British Museum",city:"London",country:"UK",dates:"Sep 2026 - Jul 2027",tag:"Medieval Art",must:true,end:"2027-07-31",verified:"May 2026",desc:"The 70-metre Bayeux Tapestry travels from France for the first time in nearly 1000 years, depicting the Norman invasion of 1066.",url:"https://www.britishmuseum.org"},
   {id:12,title:"Mary Cassatt",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,end:"2027-01-31",verified:"May 2026",desc:"First major Cassatt retrospective at a French national museum, marking 100 years since her death.",url:"https://www.musee-orsay.fr"},
-  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,end:"2026-12-31",verified:"May 2026",desc:"The first major two-person exhibition of Lassnig and Munch — united in their wildly expressive approach to the body and psyche.",url:"https://www.hamburger-kunsthalle.de"},
-  {id:14,title:"Wes Anderson Retrospective",venue:"Design Museum",city:"London",country:"UK",dates:"Until 26 Jul 2026",tag:"Design",must:false,end:"2026-07-26",verified:"May 2026",desc:"600+ objects from Anderson's films — storyboards, costumes, puppets, the Grand Budapest Hotel model. First major retrospective of the director.",url:"https://designmuseum.org"},
-  {id:15,title:"JR — Pont Neuf",venue:"Pont Neuf",city:"Paris",country:"France",dates:"Jun 2026",tag:"Street Art",must:true,end:"2026-06-30",verified:"May 2026",desc:"The world's largest immersive artwork unveiled on the Pont Neuf. JR's monumental tribute to Christo and Jeanne-Claude's 1985 wrapping.",url:"https://jr-art.net"},
-  {id:16,title:"Lucian Freud Drawings",venue:"Louisiana Museum of Modern Art",city:"Copenhagen",country:"Denmark",dates:"10 Jun - 27 Sep 2026",tag:"Drawing",must:false,end:"2026-09-27",verified:"May 2026",desc:"Freud's obsession with the human figure through intense sketches and dynamic drawings. Travelling from London's National Portrait Gallery.",url:"https://louisiana.dk"},
-  {id:17,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,end:"2026-12-31",verified:"May 2026",desc:"A monumental sculptural dialogue. Two giants of Western art side by side for the first time.",url:"https://www.louvre.fr"},
-  {id:18,title:"Tarot: Origins, Cards, Destiny",venue:"Accademia Carrara",city:"Bergamo",country:"Italy",dates:"27 Feb - 2 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-02",verified:"May 2026",desc:"The history of tarot from 15th-century Italy. Rare early decks, Renaissance court culture and artistic exchange.",url:"https://lacarrara.it"},
-  {id:19,title:"Symbolism",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"Mar - Jul 2026",tag:"Symbolism",must:false,end:"2026-07-31",verified:"May 2026",desc:"Symbolism as a rich and self-contained artistic world — presented as more than a marginal chapter in European art history.",url:"https://www.palazzostrozzi.org"},
-  {id:20,title:"Metamorphoses",venue:"Galleria Borghese",city:"Rome",country:"Italy",dates:"22 Jun - 20 Sep 2026",tag:"Old Masters",must:false,end:"2026-09-20",verified:"May 2026",desc:"Titian, Caravaggio, Rembrandt and Bourgeois — 80+ masterpieces exploring transformation, identity and the natural world. From the Rijksmuseum.",url:"https://galleriaborghese.it"}
+  {id:13,title:"Munch & Lassnig",venue:"Hamburger Kunsthalle",city:"Hamburg",country:"Germany",dates:"2026",tag:"Expressionism",must:false,end:"2026-12-31",verified:"May 2026",desc:"The first major two-person exhibition of Lassnig and Munch, united in their wildly expressive approach to the body.",url:"https://www.hamburger-kunsthalle.de"},
+  {id:14,title:"Wes Anderson Retrospective",venue:"Design Museum",city:"London",country:"UK",dates:"Until 26 Jul 2026",tag:"Design",must:false,end:"2026-07-26",verified:"May 2026",desc:"600+ objects from Anderson's films including storyboards, costumes, the Grand Budapest Hotel model. His first major retrospective.",url:"https://designmuseum.org"},
+  {id:15,title:"JR - Pont Neuf",venue:"Pont Neuf",city:"Paris",country:"France",dates:"Jun 2026",tag:"Street Art",must:true,end:"2026-06-30",verified:"May 2026",desc:"The world's largest immersive artwork on the Pont Neuf. JR's monumental tribute to Christo and Jeanne-Claude's 1985 wrapping.",url:"https://jr-art.net"},
+  {id:16,title:"Lucian Freud Drawings",venue:"Louisiana Museum of Modern Art",city:"Copenhagen",country:"Denmark",dates:"10 Jun - 27 Sep 2026",tag:"Drawing",must:false,end:"2026-09-27",verified:"May 2026",desc:"Freud's obsession with the human figure through intense sketches and drawings. Travelling from London's National Portrait Gallery.",url:"https://louisiana.dk"},
+  {id:17,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,end:"2026-12-31",verified:"May 2026",desc:"A monumental sculptural dialogue. Two giants of Western art placed side by side for the first time.",url:"https://www.louvre.fr"},
+  {id:18,title:"Symbolism",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"Mar - Jul 2026",tag:"Symbolism",must:false,end:"2026-07-31",verified:"May 2026",desc:"Symbolism presented as a rich and self-contained artistic world rather than a marginal chapter in European art history.",url:"https://www.palazzostrozzi.org"},
+  {id:19,title:"Metamorphoses",venue:"Galleria Borghese",city:"Rome",country:"Italy",dates:"22 Jun - 20 Sep 2026",tag:"Old Masters",must:false,end:"2026-09-20",verified:"May 2026",desc:"Titian, Caravaggio, Rembrandt - 80+ masterpieces exploring transformation, identity and the natural world.",url:"https://galleriaborghese.it"},
+  {id:20,title:"Tarot: Origins, Cards, Destiny",venue:"Accademia Carrara",city:"Bergamo",country:"Italy",dates:"27 Feb - 2 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-02",verified:"May 2026",desc:"The history of tarot from 15th-century Italy. Rare early decks and the visual imagination of Renaissance court culture.",url:"https://lacarrara.it"}
 ];
 
-const OPP=[
-  {id:1,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Spring cycle open May 1 - July 15. Uninterrupted time on 20,000 Wyoming acres. Studio, housing, meals included. All disciplines, international applicants welcome.",url:"https://ucross.org"},
+var OPP=[
+  {id:1,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Spring cycle open May 1 - July 15. Uninterrupted time on 20,000 Wyoming acres. Studio, housing and meals included. All disciplines welcome.",url:"https://ucross.org"},
   {id:2,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",iso:"2026-05-31",type:"Grant",award:"$10,000",country:"International",urgent:true,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes. 2-5 week stay at Oak Spring, Virginia.",url:"https://osgf.org"},
-  {id:3,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:true,desc:"Open to all media, geared toward emerging artists. International visibility and prize money. Online exhibition.",url:"https://yicca.org"},
+  {id:3,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:true,desc:"Open to all media, geared toward emerging artists. International visibility, online exhibition and prize money.",url:"https://yicca.org"},
   {id:4,title:"Headlands Center Residency",org:"Headlands Center for the Arts",deadline:"1 Jun 2026",iso:"2026-06-01",type:"Residency",award:"Fully funded",country:"USA",urgent:true,desc:"50 fully sponsored residencies per year. Studio, chef-prepared meals, housing, travel and living expenses. Sausalito, California.",url:"https://headlands.org"},
   {id:5,title:"Artflow Prize",org:"Artflow Studio",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"200 GBP + Exhibition",country:"International",urgent:true,desc:"Cash prize, group exhibition, published interview and Artsy promotional feature. One of the most accessible international prizes.",url:"https://artflowstudio.com"},
-  {id:6,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators and cultural professionals in EU member states.",url:"https://on-the-move.org"},
-  {id:7,title:"Earthwise — Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices. Fifth edition. Studio, housing and meals included.",url:"https://earthwise.dk"},
-  {id:8,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",iso:"2026-07-31",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. 2027 edition — apply July 2026. One of the most competitive opportunities on the continent.",url:"https://releartsfoundation.org"},
-  {id:9,title:"Craft 1o1 Summer Program",org:"Arts Letters & Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts, construction and mechanics. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
-  {id:10,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship or needing to complete a body of work. Grant size reflects need and exhibition history.",url:"https://pkf.org"},
-  {id:11,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for painters, printmakers and sculptors facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
-  {id:12,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",iso:null,type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June, July, August and October 2026. Five-artist cohort in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
-  {id:13,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",iso:null,type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists aged 21+, US residents. Highly competitive.",url:"https://studioprogram.org"},
-  {id:14,title:"De Ateliers Amsterdam",org:"De Ateliers",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program. Studio space, structured tutoring and weekly conversations with international tutors. For highly motivated early-career artists.",url:"https://de-ateliers.nl"},
-  {id:15,title:"Kala Art Institute Residency",org:"Kala Art Institute",deadline:"Rolling",iso:null,type:"Residency",award:"Subsidised studio",country:"USA",urgent:false,desc:"Subsidised residencies through the Artist-in-Residence program and fully funded residencies through fellowships. Berkeley, California.",url:"https://kala.org"},
-  {id:16,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe. Rolling applications via national offices.",url:"https://goethe.de"},
-  {id:17,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 USD meal stipend.",url:"https://creative-capital.org"},
-  {id:18,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"},
-  {id:19,title:"Emptiness 2026 Art Awards",org:"Exhibizone",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Artsy feature + Catalogue",country:"International",urgent:false,desc:"5th edition of this juried international call. Theme: solitude, serenity and existential depth. Artsy feature, catalogue and editorial reviews.",url:"https://exhibizone.com/emptiness"},
-  {id:20,title:"DongGang International Photo Festival",org:"DongGang Photo Festival",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Exhibition in Korea",country:"South Korea",urgent:false,desc:"24th edition. Theme: The Silence that Shapes. Work exhibited across the full festival run in South Korea, July to October 2026.",url:"https://dgphoto.kr"}
+  {id:6,title:"Emptiness 2026 Art Awards",org:"Exhibizone",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Artsy feature + Catalogue",country:"International",urgent:false,desc:"5th edition. Theme: solitude, serenity and existential depth. Artsy feature, global promotion, catalogue and editorial reviews.",url:"https://exhibizone.com/emptiness"},
+  {id:7,title:"European Solidarity Residency",org:"On the Move",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Fully funded",country:"Europe",urgent:false,desc:"Fully funded cross-border residency for early-career curators and cultural professionals in EU member states.",url:"https://on-the-move.org"},
+  {id:8,title:"Earthwise - Curious Encounters 5",org:"Earthwise",deadline:"Jun 2026",iso:"2026-06-30",type:"Residency",award:"Studio + housing",country:"Denmark",urgent:false,desc:"For visual and performing artists interested in ecological practices. Fifth edition. Studio, housing and meals included.",url:"https://earthwise.dk"},
+  {id:9,title:"DongGang International Photo Festival",org:"DongGang Photo Festival",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Exhibition in Korea",country:"South Korea",urgent:false,desc:"24th edition. Theme: The Silence that Shapes. Work exhibited across the festival run in South Korea, July to October 2026.",url:"https://dgphoto.kr"},
+  {id:10,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",iso:"2026-07-31",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. 2027 edition - apply July 2026. One of the most competitive opportunities on the continent.",url:"https://releartsfoundation.org"},
+  {id:11,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship or needing to complete a body of work.",url:"https://pkf.org"},
+  {id:12,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
+  {id:13,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",iso:null,type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June, July, August and October 2026. Five-artist cohort in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
+  {id:14,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",iso:null,type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists aged 21+, US residents.",url:"https://studioprogram.org"},
+  {id:15,title:"De Ateliers Amsterdam",org:"De Ateliers",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program in Amsterdam with weekly studio conversations with international tutors.",url:"https://de-ateliers.nl"},
+  {id:16,title:"Kala Art Institute Residency",org:"Kala Art Institute",deadline:"Rolling",iso:null,type:"Residency",award:"Subsidised studio",country:"USA",urgent:false,desc:"Subsidised residencies and fully funded fellowships. Berkeley, California. One of the USA's most respected printmaking centres.",url:"https://kala.org"},
+  {id:17,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe. Rolling applications via national offices.",url:"https://goethe.de"},
+  {id:18,title:"Craft 1o1 Summer Program",org:"Arts Letters & Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
+  {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 USD stipend included.",url:"https://creative-capital.org"},
+  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"}
 ];
 
-
-
-const LIVE_EXH=EXH.filter(e=>!isExp(e.end));
-const LIVE_OPP=OPP.filter(o=>!isExp(o.iso));
-
-let cF="All",tF="All",eQ="",oQ="";
+var LE=EXH.filter(function(e){return !exp(e.end);});
+var LO=OPP.filter(function(o){return !exp(o.iso);});
+var CF="All",TF="All",EQ="",OQ="";
 
 function go(p){
-  document.querySelectorAll(".pg").forEach(e=>e.classList.remove("on"));
-  const pg=document.getElementById("pg-"+p);
-  if(!pg) return;
-  pg.classList.add("on");
-  document.querySelectorAll(".nav-link").forEach(e=>e.classList.remove("on"));
-  const nl=document.getElementById("nl-"+p);if(nl)nl.classList.add("on");
+  document.querySelectorAll(".pg").forEach(function(e){e.classList.remove("on");});
+  document.querySelectorAll(".nl").forEach(function(e){e.classList.remove("on");});
+  document.getElementById("pg-"+p).classList.add("on");
+  var ni=document.getElementById("ni-"+p);
+  if(ni) ni.classList.add("on");
   document.body.scrollTop=0;
   document.documentElement.scrollTop=0;
-  if(p==="exhibitions") reExh();
-  if(p==="opportunities") reOpp();
+  if(p==="exhibitions") rex();
+  if(p==="opportunities") roo();
 }
 
 function fc(b,city){
-  cF=city;
-  document.querySelectorAll("#pg-exhibitions .pill").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on");reExh();
+  CF=city;
+  document.querySelectorAll("#pg-exhibitions .pill").forEach(function(x){x.classList.remove("on");});
+  b.classList.add("on");
+  rex();
 }
 function ft(b,t){
-  tF=t;
-  document.querySelectorAll("#pg-opportunities .pill").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on");reOpp();
+  TF=t;
+  document.querySelectorAll("#pg-opportunities .pill").forEach(function(x){x.classList.remove("on");});
+  b.classList.add("on");
+  roo();
 }
-function se(v){eQ=v.toLowerCase();reExh();}
-function so(v){oQ=v.toLowerCase();reOpp();}
+function se(v){EQ=v.toLowerCase();rex();}
+function so(v){OQ=v.toLowerCase();roo();}
 
-function reMust(){
-  document.getElementById("must-grid").innerHTML=LIVE_EXH.filter(e=>e.must).slice(0,4).map(e=>
-    '<div class="mc" onclick="oe('+e.id+')">'
-    +'<div class="mc-grad" style="background:'+G[e.id-1]+'"></div>'
-    +'<div class="mc-veil"></div>'
-    +(e.must?'<div class="mc-badge">Must-see</div>':'')
-    +'<div class="mc-info"><div class="mc-tag">'+e.tag+'</div><div class="mc-title">'+e.title+'</div><div class="mc-city">'+e.city+'</div></div>'
-    +'</div>'
-  ).join("");
-}
-
-function reOppPrev(){
-  document.getElementById("opp-preview").innerHTML=LIVE_OPP.slice(0,6).map(o=>
-    '<div class="oc" onclick="oo('+o.id+')">'
-    +'<div class="oc-top">'+ch(o.type)+'<span class="oc-dl '+(o.deadline==="Rolling"?"rol":"urg")+'">'+o.deadline+'</span></div>'
-    +'<div class="oc-title">'+o.title+'</div>'
-    +'<div class="oc-org">'+o.org+'</div>'
-    +'<div class="oc-award"><span>'+o.award+' &middot; '+o.country+'</span><span style="color:#ddd">&#10003; Verified</span></div>'
-    +'</div>'
-  ).join("");
+function rmust(){
+  var must=LE.filter(function(e){return e.must;}).slice(0,4);
+  document.getElementById("must-grid").innerHTML=must.map(function(e){
+    return '<div class="mc" onclick="oe('+e.id+')">'
+      +'<div class="mc-bg" style="position:absolute;inset:0;background:'+G[e.id-1]+'"></div>'
+      +'<div class="mc-veil"></div>'
+      +(e.must?'<div class="mc-b">Must-see</div>':'')
+      +'<div class="mc-info">'
+      +'<div class="mc-tag">'+e.tag+'</div>'
+      +'<div class="mc-title">'+e.title+'</div>'
+      +'<div class="mc-city">'+e.city+'</div>'
+      +'</div></div>';
+  }).join("");
 }
 
-function reStrip(){
-  document.getElementById("film-strip").innerHTML=[...LIVE_EXH,...LIVE_EXH.slice(0,6)].map(e=>
-    '<div class="si" onclick="oe('+e.id+')">'
-    +'<div class="si-bg" style="background:'+G[e.id-1]+'"></div>'
-    +'<div class="si-info"><div class="si-title">'+e.title+'</div><div class="si-city">'+e.city+'</div></div>'
-    +'</div>'
-  ).join("");
+function ropp(){
+  document.getElementById("opp-prev").innerHTML=LO.slice(0,6).map(function(o){
+    return '<div class="oc" onclick="oo('+o.id+')">'
+      +'<div class="oc-top">'+ch(o.type)
+      +'<span class="oc-dl '+(o.deadline==="Rolling"?"rol":"urg")+'">'+o.deadline+'</span></div>'
+      +'<div class="oc-t">'+o.title+'</div>'
+      +'<div class="oc-o">'+o.org+'</div>'
+      +'<div class="oc-a">'+o.award+' &middot; '+o.country+'</div>'
+      +'</div>';
+  }).join("");
 }
 
-function reExh(){
-  const f=LIVE_EXH.filter(e=>(cF==="All"||e.city===cF)&&(e.title+e.city+e.venue+e.tag).toLowerCase().includes(eQ));
-  document.getElementById("exh-grid").innerHTML=f.map(e=>
-    '<div class="ec" onclick="oe('+e.id+')">'
-    +'<div class="ec-top">'
-    +'<div class="ec-grad" style="background:'+G[e.id-1]+'">'
-    +'<div class="ec-line"></div>'
-    +'<div class="ec-ven">'+e.venue+'</div>'
-    +'<div class="ec-city">'+e.city+'</div>'
-    +'</div>'
-    +(e.must?'<div class="mc-badge">Must-see</div>':'')
-    +'</div>'
-    +'<div class="ec-info">'
-    +ch(e.tag)
-    +'<div class="ec-title">'+e.title+'</div>'
-    +'<div class="ec-ven2">'+e.venue+' &middot; '+e.city+'</div>'
-    +'<div class="ec-dates">'+e.dates+'<span style="color:#ddd">&#10003; '+e.verified+'</span></div>'
-    +'</div></div>'
-  ).join("");
+function rstrip(){
+  var items=LE.concat(LE.slice(0,6));
+  document.getElementById("strip").innerHTML=items.map(function(e){
+    return '<div class="si" onclick="oe('+e.id+')">'
+      +'<div class="si-bg" style="background:'+G[e.id-1]+'"></div>'
+      +'<div class="si-info"><div class="si-t">'+e.title+'</div><div class="si-c">'+e.city+'</div></div>'
+      +'</div>';
+  }).join("");
 }
 
-function reOpp(){
-  const f=LIVE_OPP.filter(o=>{
-    if(tF==="Week") return isCTW(o.iso)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oQ);
-    return (tF==="All"||o.type===tF)&&(o.title+o.org+o.country+o.type).toLowerCase().includes(oQ);
+function rex(){
+  var f=LE.filter(function(e){
+    return (CF==="All"||e.city===CF)&&
+      (e.title+e.city+e.venue+e.tag).toLowerCase().indexOf(EQ)>=0;
+  });
+  document.getElementById("exh-grid").innerHTML=f.map(function(e){
+    return '<div class="ec" onclick="oe('+e.id+')">'
+      +'<div class="ec-top">'
+      +'<div class="ec-grad" style="background:'+G[e.id-1]+'">'
+      +'<div class="ec-line"></div>'
+      +'<div class="ec-v">'+e.venue+'</div>'
+      +'<div class="ec-c">'+e.city+'</div>'
+      +'</div>'
+      +(e.must?'<div class="mc-b">Must-see</div>':'')
+      +'</div>'
+      +'<div class="ec-info">'
+      +ch(e.tag)
+      +'<div class="ec-t">'+e.title+'</div>'
+      +'<div class="ec-v2">'+e.venue+' &middot; '+e.city+'</div>'
+      +'<div class="ec-d">'+e.dates+'<span style="color:#ddd">&#10003; '+e.verified+'</span></div>'
+      +'</div></div>';
+  }).join("");
+}
+
+function roo(){
+  var f=LO.filter(function(o){
+    if(TF==="Week") return ctw(o.iso)&&(o.title+o.org+o.country+o.type).toLowerCase().indexOf(OQ)>=0;
+    return (TF==="All"||o.type===TF)&&(o.title+o.org+o.country+o.type).toLowerCase().indexOf(OQ)>=0;
   });
   document.getElementById("ocount").textContent=f.length+" results";
-  document.getElementById("obody").innerHTML=f.map(o=>
-    '<tr class="orow" onclick="oo('+o.id+')">'
-    +'<td><div class="or-title">'+o.title+(o.urgent?'<span class="udot"></span>':'')+'</div><div class="or-org">'+o.org+'</div></td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#666;white-space:nowrap;padding:18px 12px">'+o.award+'</td>'
-    +'<td style="padding:18px 12px">'+ch(o.type)+'</td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;padding:18px 12px">'+o.country+'</td>'
-    +'<td style="font-family:Inter,sans-serif;font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#ccc":o.urgent?"#c0392b":"#555")+'">'+o.deadline+'</td>'
-    +'</tr>'
-  ).join("");
-}
-
-function openUrl(type){
-  const url = type==='em' ? window._emUrl : window._omUrl;
-  if(url && url !== '#') window.open(url, '_blank');
+  document.getElementById("obody").innerHTML=f.map(function(o){
+    return '<tr class="or" onclick="oo('+o.id+')">'
+      +'<td><div class="or-t">'+o.title+(o.urgent?'<span class="udot"></span>':'')+'</div><div class="or-o">'+o.org+'</div></td>'
+      +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#666;white-space:nowrap;padding:16px 10px">'+o.award+'</td>'
+      +'<td style="padding:16px 10px">'+ch(o.type)+'</td>'
+      +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;padding:16px 10px">'+o.country+'</td>'
+      +'<td style="font-family:Inter,sans-serif;font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#ccc":o.urgent?"#c0392b":"#555")+'">'+o.deadline+'</td>'
+      +'</tr>';
+  }).join("");
 }
 
 function oe(id){
-  const e=EXH.find(x=>x.id===id);
+  var e=EXH.filter(function(x){return x.id===id;})[0];
   document.getElementById("em-grad").style.background=G[e.id-1];
   document.getElementById("em-title").textContent=e.title;
   document.getElementById("em-city").textContent=e.city+" \u00b7 "+e.country;
@@ -605,13 +595,13 @@ function oe(id){
     '<div class="mo-cell"><div class="mo-cl">Dates</div><div class="mo-cv">'+e.dates+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">City</div><div class="mo-cv">'+e.city+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Status</div><div class="mo-cv">Open now</div></div>';
-  window._emUrl = e.url||'#';
+  EU=e.url||null;
   document.getElementById("em").classList.add("open");
   document.body.style.overflow="hidden";
 }
 
 function oo(id){
-  const o=OPP.find(x=>x.id===id);
+  var o=OPP.filter(function(x){return x.id===id;})[0];
   document.getElementById("om-chip").innerHTML=ch(o.type);
   document.getElementById("om-t").textContent=o.title;
   document.getElementById("om-s").textContent=o.org;
@@ -621,7 +611,7 @@ function oo(id){
     +'<div class="mo-cell"><div class="mo-cl">Deadline</div><div class="mo-cv" style="color:'+(o.urgent?"#c0392b":"#111")+'">'+o.deadline+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Location</div><div class="mo-cv">'+o.country+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Type</div><div class="mo-cv">'+o.type+'</div></div>';
-  window._omUrl = o.url||'#';
+  OU=o.url||null;
   document.getElementById("om").classList.add("open");
   document.body.style.overflow="hidden";
 }
@@ -631,34 +621,26 @@ function cm(id){
   document.body.style.overflow="";
 }
 
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){cm("em");cm("om");}});
+function gourl(type){
+  var url=type==="em"?EU:OU;
+  if(url) window.open(url,"_blank");
+}
 
-function nlSub(){
-  if(document.getElementById("nl-email").value.includes("@")){
-    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:32px 0"><div style="font-size:28px;font-style:italic;color:#111;margin-bottom:8px">You\'re in. \u2736</div><div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.14em;text-transform:uppercase">Welcome to Artatlas</div></div>';
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){cm("em");cm("om");}
+});
+
+function nlsub(){
+  var v=document.getElementById("nl-email").value;
+  if(v.indexOf("@")>=0){
+    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:28px 0">'
+      +'<div style="font-size:26px;font-style:italic;color:#111;margin-bottom:7px">You\'re in. \u2736</div>'
+      +'<div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.13em;text-transform:uppercase">Welcome to Artatlas</div>'
+      +'</div>';
   }
 }
 
-
-// ── BRUSH PAINT INTRO ────────────────────────────────────
-(function(){
-
-
-// ── PAGE TRANSITIONS ─────────────────────────────────────
-// Wrap go() to add transition
-const _go = go;
-window.go = function(p){
-  const cur = document.querySelector(".pg.on");
-  if(cur){
-    cur.style.animation = "none";
-    cur.style.opacity = "1";
-  }
-  _go(p);
-};
-
-
-// ── INIT ─────────────────────────────────────────────────
-reMust();reOppPrev();reStrip();
+rmust();ropp();rstrip();
 </script>
 </body>
 </html>
