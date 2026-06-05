@@ -263,10 +263,9 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
       </div>
       <div class="nl-box">
         <div class="nl-q">&ldquo;The first thing I open on Monday morning.&rdquo;</div>
-        <iframe src="https://artatlas.beehiiv.com/subscribe?slim=true" 
-          style="width:100%;height:180px;border:none;overflow:hidden;background:transparent"
-          scrolling="no" frameborder="0"></iframe>
-        <div class="nl-f" style="margin-top:8px">No spam &middot; Unsubscribe anytime</div>
+        <input class="nl-i" type="email" id="nl-email" placeholder="Your email address" onkeydown="if(event.key==='Enter')nlsub()">
+        <button class="nl-btn" onclick="nlsub()">Subscribe</button>
+        <div class="nl-f">No spam &middot; Unsubscribe anytime</div>
       </div>
     </div>
   </div></div>
@@ -668,13 +667,21 @@ document.addEventListener("keydown",function(e){
 });
 
 function nlsub(){
-  var v=document.getElementById("nl-email").value;
-  if(v.indexOf("@")>=0){
-    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:28px 0">'
-      +'<div style="font-size:26px;font-style:italic;color:#111;margin-bottom:7px">You\'re in. \u2736</div>'
-      +'<div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.13em;text-transform:uppercase">Welcome to Artatlas</div>'
+  var email=document.getElementById("nl-email").value.trim();
+  if(!email||email.indexOf("@")<0) return;
+  var btn=document.querySelector(".nl-btn");
+  if(btn){btn.textContent="...";btn.disabled=true;}
+  fetch("https://artatlas.beehiiv.com/subscribe",{
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:"email="+encodeURIComponent(email),
+    mode:"no-cors"
+  }).finally(function(){
+    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:32px 0">'
+      +'<div style="font-size:28px;font-style:italic;color:#111;margin-bottom:8px">You\u2019re in. \u2736</div>'
+      +'<div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.14em;text-transform:uppercase">Welcome to Artatlas</div>'
       +'</div>';
-  }
+  });
 }
 
 rmust();ropp();rstrip();
