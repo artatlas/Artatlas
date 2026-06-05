@@ -15,8 +15,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;ali
 .nl:hover,.nl.on{color:#111;border-bottom-color:#111}
 .pg{display:none;padding-top:56px;min-height:100vh}
 .pg.on{display:block}
-.hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 32px;background:linear-gradient(135deg,#b8c8d8,#8aa8c0,#6888a8,#4a6888);background-size:300% 300%;animation:hs 14s ease infinite}
-@keyframes hs{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 32px;background:linear-gradient(135deg,#0a1628,#1a3a5a,#2a5a8a,#4a8ab8,#6aaad8,#4a8ab8,#1a3a5a);background-size:400% 400%;animation:hs 20s ease infinite;position:relative;overflow:hidden}
+@keyframes hs{0%{background-position:0% 20%}25%{background-position:100% 80%}50%{background-position:80% 0%}75%{background-position:20% 100%}100%{background-position:0% 20%}}
 .hw{font-size:clamp(56px,11vw,140px);font-style:italic;color:#fff;line-height:1;letter-spacing:-0.02em;margin-bottom:14px}
 .ht{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.38em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:36px}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
@@ -178,7 +178,7 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
 <body>
 
 <nav>
-  <span class="logo" onclick="go('home')">Artatlas</span>
+  <span class="logo" onclick="go('home')" style="position:relative">Artatlas<span style="position:absolute;bottom:-2px;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(74,104,136,0.4),transparent)"></span></span>
   <div class="navlinks">
     <span class="nl on" id="ni-home" onclick="go('home')">Home</span>
     <span class="nl" id="ni-exhibitions" onclick="go('exhibitions')">Exhibitions</span>
@@ -191,6 +191,33 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
 <!-- HOME -->
 <div id="pg-home" class="pg on">
   <div class="hero">
+    <!-- Art-inspired abstract SVG background -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07;pointer-events:none" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+      <!-- Mondrian-inspired lines -->
+      <line x1="0" y1="150" x2="800" y2="150" stroke="white" stroke-width="1.5"/>
+      <line x1="0" y1="420" x2="800" y2="420" stroke="white" stroke-width="1"/>
+      <line x1="200" y1="0" x2="200" y2="600" stroke="white" stroke-width="1.5"/>
+      <line x1="580" y1="0" x2="580" y2="600" stroke="white" stroke-width="1"/>
+      <line x1="380" y1="150" x2="380" y2="600" stroke="white" stroke-width="0.8"/>
+      <!-- Kandinsky circles -->
+      <circle cx="100" cy="80" r="48" fill="none" stroke="white" stroke-width="1"/>
+      <circle cx="100" cy="80" r="28" fill="none" stroke="white" stroke-width="0.5"/>
+      <circle cx="680" cy="500" r="72" fill="none" stroke="white" stroke-width="1"/>
+      <circle cx="680" cy="500" r="44" fill="none" stroke="white" stroke-width="0.5"/>
+      <circle cx="420" cy="300" r="120" fill="none" stroke="white" stroke-width="0.6"/>
+      <!-- Rothko-inspired soft rectangles -->
+      <rect x="50" y="200" width="120" height="80" fill="white" opacity="0.06" rx="2"/>
+      <rect x="620" y="100" width="140" height="100" fill="white" opacity="0.05" rx="2"/>
+      <!-- Diagonal Klee-inspired lines -->
+      <line x1="0" y1="600" x2="200" y2="0" stroke="white" stroke-width="0.6"/>
+      <line x1="600" y1="0" x2="800" y2="400" stroke="white" stroke-width="0.6"/>
+      <!-- Small dots - pointillist reference -->
+      <circle cx="300" cy="80" r="3" fill="white" opacity="0.4"/>
+      <circle cx="480" cy="520" r="3" fill="white" opacity="0.4"/>
+      <circle cx="720" cy="200" r="2" fill="white" opacity="0.3"/>
+      <circle cx="60" cy="480" r="2" fill="white" opacity="0.3"/>
+      <circle cx="520" cy="180" r="4" fill="white" opacity="0.25"/>
+    </svg>
     <div class="hw">Artatlas</div>
     <div class="ht">Every opportunity &nbsp;&middot;&nbsp; Every exhibition</div>
     <div class="hbtns">
@@ -201,10 +228,10 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
       <div class="hs2"><div class="hsn">26</div><div class="hsl">Exhibitions</div></div>
       <div class="hs2"><div class="hsn">21</div><div class="hsl">Opportunities</div></div>
       <div class="hs2"><div class="hsn">20+</div><div class="hsl">Countries</div></div>
-      <div class="hs2"><div class="hsn">Open</div><div class="hsl">To all</div></div>
+      <div class="hs2"><div class="hsn">Weekly</div><div class="hsl">Updated</div></div>
     </div>
   </div>
-  <div class="ban">
+  <div class="ban" style="position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.02) 40px,rgba(255,255,255,0.02) 41px);pointer-events:none"></div>
     <div class="bd"></div>
     <span class="bt"><strong>Opportunities closing soon</strong> &mdash; don't miss them</span>
     <span class="bl" onclick="go('opportunities')">View all</span>
@@ -310,10 +337,10 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
           <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Exhibitions</div></div>
           <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Opportunities</div></div>
           <div class="sb" style="background:#f9f9f9"><div class="sb-n">20+</div><div class="sb-l" style="color:#bbb">Countries</div></div>
-          <div class="sb" style="background:#111"><div class="sb-n" style="color:#fff">Open</div><div class="sb-l" style="color:#555">To all</div></div>
+          <div class="sb" style="background:#111"><div class="sb-n" style="color:#fff">&#10003;</div><div class="sb-l" style="color:#555">Accessible</div></div>
         </div>
         <div style="background:#f9f9f9;padding:24px 20px;margin-top:1px">
-          <p style="font-size:19px;font-style:italic;line-height:1.6;color:#333">&ldquo;Art should not be reserved for those with the right connections. Information is a lever for equality.&rdquo;</p>
+          <p style="font-size:19px;font-style:italic;line-height:1.6;color:#333">&ldquo;The best opportunities should reach every artist &mdash; not just those who already know where to look.&rdquo; &mdash; Artatlas</p>
         </div>
       </div>
     </div>
