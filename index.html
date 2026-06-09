@@ -4,238 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artatlas</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
+:root{
+  --ink:#0e0c0a;
+  --paper:#f8f4ef;
+  --paper2:#f0ebe3;
+  --gold:#b89455;
+  --clay:#8a7264;
+  --ash:#c4bdb6;
+  --mist:#ede8e1;
+  --deep:#13100e;
+  --crimson:#9b3a2e;
+  --border:#e4ddd4;
+  --border-dark:#2a2420
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#fff;color:#111;font-family:'EB Garamond',Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 32px;justify-content:space-between;background:rgba(255,255,255,0.96);border-bottom:1px solid #f0f0f0}
-.logo{font-size:20px;font-style:italic;cursor:pointer;color:#111}
-.navlinks{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
-.nl{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#999;cursor:pointer;padding-bottom:1px;border-bottom:1px solid transparent}
-.nl:hover,.nl.on{color:#111;border-bottom-color:#111}
-.pg{display:none;padding-top:56px;min-height:100vh}
+html,body{background:var(--paper);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;padding:0 48px;justify-content:space-between;background:rgba(248,244,239,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.logo{font-size:19px;font-style:italic;font-weight:300;letter-spacing:0.06em;cursor:pointer;color:var(--ink)}
+.navlinks{display:flex;gap:32px;align-items:center}
+.nl{font-family:'DM Sans',sans-serif;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);cursor:pointer;padding-bottom:2px;border-bottom:1px solid transparent;transition:color 0.2s,border-color 0.2s}
+.nl:hover,.nl.on{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ── PAGES ── */
+.pg{display:none;padding-top:64px;min-height:100vh}
 .pg.on{display:block}
-.hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 32px;background:linear-gradient(135deg,#0a1628,#1a3a5a,#2a5a8a,#4a8ab8,#6aaad8,#4a8ab8,#1a3a5a);background-size:400% 400%;animation:hs 20s ease infinite;position:relative;overflow:hidden}
-@keyframes hs{0%{background-position:0% 20%}25%{background-position:100% 80%}50%{background-position:80% 0%}75%{background-position:20% 100%}100%{background-position:0% 20%}}
-.hw{font-size:clamp(56px,11vw,140px);font-style:italic;color:#fff;line-height:1;letter-spacing:-0.02em;margin-bottom:14px}
-.ht{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.38em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:36px}
-.hbtns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
-.hb1{background:rgba(255,255,255,0.95);color:#111;border:none;padding:12px 28px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer}
-.hb2{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.5);padding:11px 28px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer}
-.hstats{display:flex;border-top:1px solid rgba(255,255,255,0.18);padding-top:28px;gap:0;flex-wrap:wrap;justify-content:center}
-.hs2{text-align:center;padding:0 28px;border-right:1px solid rgba(255,255,255,0.12)}
+
+/* ── HERO ── */
+.hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 48px;background:var(--deep);position:relative;overflow:hidden}
+.hero-rule{width:1px;height:64px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);margin-bottom:44px}
+.hw{font-size:clamp(80px,15vw,200px);font-style:italic;font-weight:300;color:var(--paper);line-height:0.9;letter-spacing:-0.03em;margin-bottom:36px}
+.ht{font-family:'DM Sans',sans-serif;font-size:8.5px;letter-spacing:0.55em;text-transform:uppercase;color:rgba(248,244,239,0.28);margin-bottom:60px}
+.hbtns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:80px}
+.hb1{background:var(--paper);color:var(--ink);border:none;padding:14px 40px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:background 0.25s,color 0.25s}
+.hb1:hover{background:var(--gold);color:#fff}
+.hb2{background:transparent;color:rgba(248,244,239,0.6);border:1px solid rgba(248,244,239,0.18);padding:13px 40px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:all 0.25s}
+.hb2:hover{border-color:rgba(248,244,239,0.5);color:var(--paper)}
+.hstats{display:flex;border-top:1px solid rgba(248,244,239,0.1);padding-top:44px;gap:0;flex-wrap:wrap;justify-content:center}
+.hs2{text-align:center;padding:0 44px;border-right:1px solid rgba(248,244,239,0.08)}
 .hs2:last-child{border-right:none}
-.hsn{font-size:38px;font-style:italic;color:#fff;line-height:1}
-.hsl{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:5px}
-.ban{background:#111;padding:12px 32px;display:flex;align-items:center;gap:12px}
-.bd{width:5px;height:5px;border-radius:50%;background:#c0392b;animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.bt{font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,0.6)}
-.bt strong{color:#fff}
-.bl{font-family:'Inter',sans-serif;font-size:10px;color:rgba(255,255,255,0.4);cursor:pointer;margin-left:auto;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:1px;letter-spacing:0.1em;text-transform:uppercase}
-.s{padding:64px 32px;max-width:1280px;margin:0 auto}
-.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;flex-wrap:wrap;gap:10px}
-.slb{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:#bbb;margin-bottom:8px}
-.st{font-size:clamp(24px,3.5vw,42px);font-style:italic;color:#111}
-.sm{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:#bbb;cursor:pointer;border-bottom:1px solid #ddd;padding-bottom:1px}
-.sm:hover{color:#111;border-color:#111}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.hsn{font-size:52px;font-style:italic;font-weight:300;color:var(--paper);line-height:1}
+.hsl{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(248,244,239,0.2);margin-top:9px}
+
+/* ── BANNER ── */
+.ban{background:var(--ink);padding:13px 48px;display:flex;align-items:center;gap:14px}
+.bd{width:4px;height:4px;border-radius:50%;background:var(--crimson);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
+.bt{font-family:'DM Sans',sans-serif;font-size:10px;color:rgba(248,244,239,0.5)}
+.bt strong{color:var(--paper)}
+.bl{font-family:'DM Sans',sans-serif;font-size:8.5px;color:rgba(248,244,239,0.28);cursor:pointer;margin-left:auto;border-bottom:1px solid rgba(248,244,239,0.14);padding-bottom:1px;letter-spacing:0.16em;text-transform:uppercase;transition:color 0.2s}
+.bl:hover{color:var(--paper)}
+
+/* ── SECTIONS ── */
+.s{padding:80px 48px;max-width:1320px;margin:0 auto}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px;flex-wrap:wrap;gap:12px}
+.slb{font-family:'DM Sans',sans-serif;font-size:7.5px;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.st{font-size:clamp(30px,4.5vw,56px);font-style:italic;font-weight:300;color:var(--ink)}
+.sm{font-family:'DM Sans',sans-serif;font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ash);cursor:pointer;border-bottom:1px solid var(--border);padding-bottom:1px;transition:color 0.2s,border-color 0.2s}
+.sm:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ── GRIDS ── */
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+/* ── MUST-SEE CARDS ── */
 .mc{cursor:pointer;position:relative;overflow:hidden;aspect-ratio:3/4;display:block}
-.mc-bg{position:absolute;inset:0;transition:transform 0.5s}
-.mc:hover .mc-bg{transform:scale(1.04)}
-.mc-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent 55%)}
-.mc-b{position:absolute;top:0;left:0;background:#fff;color:#111;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;padding:5px 9px}
-.mc-info{position:absolute;bottom:0;left:0;right:0;padding:14px}
-.mc-tag{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px}
-.mc-title{font-size:16px;font-style:italic;color:#fff;line-height:1.3;margin-bottom:2px}
-.mc-city{font-family:'Inter',sans-serif;font-size:9px;color:rgba(255,255,255,0.45)}
-.oc{background:#fff;padding:22px 20px;cursor:pointer;outline:1px solid transparent;display:flex;flex-direction:column;transition:outline 0.15s}
-.oc:hover{outline-color:#111}
-.oc-top{display:flex;justify-content:space-between;margin-bottom:10px;align-items:flex-start}
-.oc-dl{font-family:'Inter',sans-serif;font-size:10px}
-.oc-dl.urg{color:#c0392b;font-weight:500}
-.oc-dl.rol{color:#ccc}
-.oc-t{font-size:18px;font-style:italic;line-height:1.3;margin-bottom:5px}
-.oc-o{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:12px}
-.oc-a{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.09em;text-transform:uppercase;color:#999;border-top:1px solid #f0f0f0;padding-top:10px;margin-top:auto}
-.chip{display:inline-block;padding:2px 8px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;line-height:1.8}
-.strip-w{background:#111;overflow:hidden}
+.mc-bg{position:absolute;inset:0;transition:transform 0.8s cubic-bezier(0.25,0.1,0.25,1)}
+.mc:hover .mc-bg{transform:scale(1.06)}
+.mc-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,10,8,0.78),rgba(13,10,8,0.08) 62%)}
+.mc-b{position:absolute;top:0;left:0;background:var(--gold);color:#fff;font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.22em;text-transform:uppercase;padding:5px 11px}
+.mc-info{position:absolute;bottom:0;left:0;right:0;padding:20px}
+.mc-tag{font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(248,244,239,0.42);margin-bottom:7px}
+.mc-title{font-size:19px;font-style:italic;font-weight:300;color:var(--paper);line-height:1.25;margin-bottom:5px}
+.mc-city{font-family:'DM Sans',sans-serif;font-size:8px;color:rgba(248,244,239,0.36);letter-spacing:0.08em}
+
+/* ── OPPORTUNITY CARDS (HOME) ── */
+.oc{background:var(--paper);padding:28px 24px;cursor:pointer;border:1px solid transparent;display:flex;flex-direction:column;transition:border-color 0.2s}
+.oc:hover{border-color:var(--ink)}
+.oc-top{display:flex;justify-content:space-between;margin-bottom:12px;align-items:flex-start}
+.oc-dl{font-family:'DM Sans',sans-serif;font-size:10px}
+.oc-dl.urg{color:var(--crimson);font-weight:500}
+.oc-dl.rol{color:var(--ash)}
+.oc-t{font-size:21px;font-style:italic;font-weight:300;line-height:1.3;margin-bottom:6px}
+.oc-o{font-family:'DM Sans',sans-serif;font-size:9.5px;color:var(--clay);margin-bottom:14px}
+.oc-a{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash);border-top:1px solid var(--border);padding-top:12px;margin-top:auto}
+
+/* ── CHIP ── */
+.chip{display:inline-block;padding:3px 9px;font-family:'DM Sans',sans-serif;font-size:7.5px;letter-spacing:0.13em;text-transform:uppercase;line-height:1.9}
+
+/* ── STRIP ── */
+.strip-w{background:var(--deep);overflow:hidden}
 .strip{display:flex;overflow-x:auto;scrollbar-width:none;gap:1px}
 .strip::-webkit-scrollbar{display:none}
-.si{flex-shrink:0;width:180px;cursor:pointer;position:relative;overflow:hidden}
-.si-bg{aspect-ratio:2/3;transition:opacity 0.3s}
-.si:hover .si-bg{opacity:0.65}
-.si-info{position:absolute;bottom:0;left:0;right:0;padding:10px;background:linear-gradient(to top,rgba(0,0,0,0.88),transparent)}
-.si-t{font-size:12px;font-style:italic;color:#fff;line-height:1.3}
-.si-c{font-family:'Inter',sans-serif;font-size:8px;color:rgba(255,255,255,0.4);margin-top:2px;letter-spacing:0.07em}
-.nl-box{border:1px solid #e8e0d8;padding:32px}
-.nl-q{font-size:22px;font-style:italic;line-height:1.5;margin-bottom:24px}
-.nl-i{width:100%;border:none;border-bottom:1px solid #ddd;padding:9px 0;font-size:16px;font-family:'EB Garamond',serif;font-style:italic;color:#111;background:transparent;outline:none;margin-bottom:18px}
-.nl-btn{background:#111;color:#fff;border:none;padding:12px 36px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;width:100%}
-.nl-f{font-family:'Inter',sans-serif;font-size:9px;color:#bbb;letter-spacing:0.09em;text-transform:uppercase;margin-top:12px;text-align:center}
-.pge{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:#bbb;margin-bottom:9px}
-.pgh{font-size:clamp(36px,5.5vw,68px);font-style:italic;margin-bottom:7px}
-.pgs{font-size:17px;color:#aaa;margin-bottom:36px}
-.fb{display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-bottom:1px solid #f0f0f0;padding-bottom:14px;margin-bottom:28px}
-.pill{cursor:pointer;padding:5px 14px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid #e0e0e0;background:transparent;color:#888;transition:all 0.14s}
-.pill.on{border-color:#111;background:#111;color:#fff}
-.pill.up{color:#c0392b;border-color:#c0392b}
-.pill.up.on{background:#c0392b;border-color:#c0392b;color:#fff}
-.si3{margin-left:auto;border:none;border-bottom:1px solid #e0e0e0;padding:5px 0;font-size:14px;font-family:'EB Garamond',serif;color:#111;width:160px;font-style:italic;background:transparent;outline:none}
-.rc{font-family:'Inter',sans-serif;font-size:9px;color:#ccc}
-.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ebebeb}
-.ec{background:#fff;cursor:pointer;transition:box-shadow 0.22s}
-.ec:hover{box-shadow:0 6px 28px rgba(0,0,0,0.09)}
+.si{flex-shrink:0;width:200px;cursor:pointer;position:relative;overflow:hidden}
+.si-bg{aspect-ratio:2/3;transition:opacity 0.4s}
+.si:hover .si-bg{opacity:0.6}
+.si-info{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(to top,rgba(13,10,8,0.92),transparent)}
+.si-t{font-size:13px;font-style:italic;font-weight:300;color:var(--paper);line-height:1.25}
+.si-c{font-family:'DM Sans',sans-serif;font-size:8px;color:rgba(248,244,239,0.32);margin-top:3px;letter-spacing:0.08em}
+
+/* ── NEWSLETTER ── */
+.nl-box{border:1px solid var(--border);padding:40px}
+.nl-q{font-size:24px;font-style:italic;font-weight:300;line-height:1.5;margin-bottom:28px;color:var(--clay)}
+.nl-i{width:100%;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--ink);background:transparent;outline:none;margin-bottom:20px;transition:border-color 0.2s}
+.nl-i:focus{border-bottom-color:var(--ink)}
+.nl-btn{background:var(--ink);color:var(--paper);border:none;padding:14px 36px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;width:100%;transition:background 0.25s}
+.nl-btn:hover{background:var(--gold)}
+.nl-f{font-family:'DM Sans',sans-serif;font-size:8px;color:var(--ash);letter-spacing:0.1em;text-transform:uppercase;margin-top:14px;text-align:center}
+
+/* ── PAGE HEADERS ── */
+.pge{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.pgh{font-size:clamp(48px,8vw,100px);font-style:italic;font-weight:300;line-height:0.92;margin-bottom:12px}
+.pgs{font-size:19px;font-style:italic;font-weight:300;color:var(--clay);margin-bottom:48px}
+
+/* ── FILTER BAR ── */
+.fb{display:flex;gap:6px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:36px}
+.pill{cursor:pointer;padding:6px 16px;font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--ash);transition:all 0.15s}
+.pill:hover{border-color:var(--clay);color:var(--clay)}
+.pill.on{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.pill.up{color:var(--crimson);border-color:rgba(155,58,46,0.28)}
+.pill.up.on{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.si3{margin-left:auto;border:none;border-bottom:1px solid var(--border);padding:6px 0;font-size:16px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;color:var(--ink);width:180px;background:transparent;outline:none;transition:border-color 0.2s}
+.si3:focus{border-bottom-color:var(--ink)}
+.rc{font-family:'DM Sans',sans-serif;font-size:8.5px;color:var(--ash)}
+
+/* ── EXHIBITION GRID ── */
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--mist)}
+.ec{background:var(--paper);cursor:pointer;transition:box-shadow 0.3s}
+.ec:hover{box-shadow:0 10px 50px rgba(14,12,10,0.1)}
 .ec-top{position:relative;overflow:hidden;aspect-ratio:4/3}
-.ec-grad{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:16px;transition:transform 0.5s}
-.ec:hover .ec-grad{transform:scale(1.04)}
-.ec-line{width:24px;height:0.5px;background:rgba(255,255,255,0.4)}
-.ec-v{font-size:14px;font-style:italic;color:rgba(255,255,255,0.8);text-align:center;line-height:1.3}
-.ec-c{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
-.ec-info{padding:16px 16px 20px}
-.ec-t{font-size:19px;font-style:italic;color:#111;margin-bottom:3px;line-height:1.3}
-.ec-v2{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:9px}
-.ec-d{font-family:'Inter',sans-serif;font-size:9px;color:#ccc;border-top:1px solid #f5f5f5;padding-top:8px;display:flex;justify-content:space-between}
+.ec-grad{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px;transition:transform 0.8s cubic-bezier(0.25,0.1,0.25,1)}
+.ec:hover .ec-grad{transform:scale(1.05)}
+.ec-line{width:28px;height:0.5px;background:rgba(255,255,255,0.28)}
+.ec-v{font-size:14px;font-style:italic;font-weight:300;color:rgba(255,255,255,0.82);text-align:center;line-height:1.3}
+.ec-c{font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.ec-info{padding:18px 18px 24px}
+.ec-t{font-size:21px;font-style:italic;font-weight:300;color:var(--ink);margin-bottom:4px;line-height:1.25}
+.ec-v2{font-family:'DM Sans',sans-serif;font-size:9px;color:var(--ash);margin-bottom:10px}
+.ec-d{font-family:'DM Sans',sans-serif;font-size:8px;color:var(--ash);border-top:1px solid var(--border);padding-top:10px;display:flex;justify-content:space-between}
+
+/* ── OPPORTUNITIES TABLE ── */
 .ot{width:100%;border-collapse:collapse}
-.ot th{text-align:left;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:#ccc;padding:0 0 13px;border-bottom:1px solid #f0f0f0;font-weight:400}
-.or{border-bottom:1px solid #f5f5f5;cursor:pointer}
-.or:hover td{background:#fafafa}
-.or td{padding:16px 10px 16px 0;vertical-align:top}
-.or td:last-child{padding-left:10px}
-.or-t{font-size:18px;font-style:italic;color:#111;line-height:1.3;margin-bottom:2px;display:flex;align-items:center;gap:6px}
-.or-o{font-family:'Inter',sans-serif;font-size:10px;color:#bbb}
-.udot{width:5px;height:5px;border-radius:50%;background:#c0392b;display:inline-block;flex-shrink:0;animation:pulse 2s infinite}
-.ah{background:#111;padding:110px 32px 56px}
-.ah h1{font-size:clamp(32px,5.5vw,64px);font-style:italic;color:#fff;max-width:500px;line-height:1.1}
-.ahl{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:13px}
+.ot th{text-align:left;font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ash);padding:0 0 14px;border-bottom:1px solid var(--border);font-weight:400}
+.or{border-bottom:1px solid var(--mist);cursor:pointer}
+.or:hover td{background:var(--mist)}
+.or td{padding:18px 12px 18px 0;vertical-align:top}
+.or td:last-child{padding-left:12px}
+.or-t{font-size:20px;font-style:italic;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+.or-o{font-family:'DM Sans',sans-serif;font-size:9px;color:var(--clay)}
+.udot{width:4px;height:4px;border-radius:50%;background:var(--crimson);display:inline-block;flex-shrink:0;animation:pulse 2s infinite}
+
+/* ── ABOUT ── */
+.ah{background:var(--deep);padding:130px 48px 70px}
+.ah h1{font-size:clamp(40px,7vw,82px);font-style:italic;font-weight:300;color:var(--paper);max-width:620px;line-height:1.0}
+.ahl{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .sg{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.sb{padding:26px 20px}
-.sb-n{font-size:40px;font-style:italic;line-height:1;margin-bottom:7px}
-.sb-l{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.14em;text-transform:uppercase}
-.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1280px;margin:0 auto}
-.vi{padding:28px 22px;border-top:1px solid #222}
-.vi-n{font-family:'Inter',sans-serif;font-size:9px;color:#444;letter-spacing:0.12em;margin-bottom:7px}
-.vi-nm{font-size:21px;font-style:italic;color:#fff;margin-bottom:7px}
-.vi-d{font-size:14px;color:#666;line-height:1.7}
-.lb{max-width:700px;margin:0 auto;padding:80px 32px}
-.lb h2{font-size:25px;font-style:italic;margin-bottom:13px}
-.lb h3{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#888;margin:24px 0 8px}
-.lb p{font-size:16px;line-height:1.9;color:#555;margin-bottom:11px}
-.ld{height:1px;background:#f0f0f0;margin:40px 0}
-.ln{background:#fafafa;padding:20px 24px;margin-top:32px;font-size:15px;font-style:italic;color:#999;line-height:1.7}
-footer{border-top:1px solid #f0f0f0;background:#fff}
-.fi{max-width:1280px;margin:0 auto;padding:32px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.fl{font-size:19px;font-style:italic;color:#111}
-.fls{display:flex;gap:20px}
-.fll{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.13em;text-transform:uppercase;color:#ccc;cursor:pointer}
-.fll:hover{color:#111}
-.fc{font-family:'Inter',sans-serif;font-size:9px;color:#ddd}
-.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.62);align-items:center;justify-content:center;padding:16px}
+.sb{padding:28px 24px}
+.sb-n{font-size:52px;font-style:italic;font-weight:300;line-height:1;margin-bottom:9px}
+.sb-l{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase}
+.vg{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1320px;margin:0 auto}
+.vi{padding:32px 28px;border-top:1px solid var(--border-dark)}
+.vi-n{font-family:'DM Sans',sans-serif;font-size:8px;color:#3e3a38;letter-spacing:0.16em;margin-bottom:10px}
+.vi-nm{font-size:25px;font-style:italic;font-weight:300;color:var(--paper);margin-bottom:10px}
+.vi-d{font-size:15px;font-weight:300;color:#676260;line-height:1.8}
+
+/* ── LEGAL ── */
+.lb{max-width:720px;margin:0 auto;padding:100px 48px}
+.lb h2{font-size:30px;font-style:italic;font-weight:300;margin-bottom:16px}
+.lb h3{font-family:'DM Sans',sans-serif;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--clay);margin:28px 0 10px}
+.lb p{font-size:17px;font-weight:300;line-height:2;color:var(--clay);margin-bottom:12px}
+.ld{height:1px;background:var(--border);margin:48px 0}
+.ln{background:var(--mist);padding:24px 28px;margin-top:36px;font-size:16px;font-style:italic;font-weight:300;color:var(--ash);line-height:1.8}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);background:var(--paper)}
+.fi{max-width:1320px;margin:0 auto;padding:36px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fl{font-size:20px;font-style:italic;font-weight:300;color:var(--ink)}
+.fls{display:flex;gap:24px}
+.fll{font-family:'DM Sans',sans-serif;font-size:8.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ash);cursor:pointer;transition:color 0.2s}
+.fll:hover{color:var(--ink)}
+.fc{font-family:'DM Sans',sans-serif;font-size:8.5px;color:var(--border)}
+
+/* ── MODALS ── */
+.modal-bg{display:none;position:fixed;inset:0;z-index:500;background:rgba(13,10,8,0.72);align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .modal-bg.open{display:flex}
-.modal{background:#fff;width:100%;max-width:680px;max-height:88vh;overflow-y:auto;position:relative}
-.mo-grad{aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;position:relative}
-.mo-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.38),transparent 55%)}
-.mo-title{font-size:28px;font-style:italic;color:rgba(255,255,255,0.92);text-align:center;line-height:1.2;position:relative;z-index:1}
-.mo-line{width:36px;height:0.5px;background:rgba(255,255,255,0.4);position:relative;z-index:1}
-.mo-city{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);position:relative;z-index:1}
-.mo-x{position:absolute;top:11px;right:11px;background:rgba(0,0,0,0.32);border:none;color:#fff;width:30px;height:30px;font-size:17px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center}
-.mo-body{padding:24px 28px 32px}
-.mo-t{font-size:26px;font-style:italic;line-height:1.2;margin:10px 0 4px}
-.mo-s{font-family:'Inter',sans-serif;font-size:10px;color:#bbb;margin-bottom:15px}
-.mo-d{font-size:16px;line-height:1.9;color:#555;margin-bottom:20px}
-.mo-cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#ebebeb;margin-bottom:18px}
+.modal{background:var(--paper);width:100%;max-width:700px;max-height:88vh;overflow-y:auto;position:relative}
+.mo-grad{aspect-ratio:16/8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;position:relative}
+.mo-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,10,8,0.48),transparent 55%)}
+.mo-title{font-size:30px;font-style:italic;font-weight:300;color:rgba(248,244,239,0.95);text-align:center;line-height:1.2;position:relative;z-index:1}
+.mo-line{width:40px;height:0.5px;background:rgba(248,244,239,0.28);position:relative;z-index:1}
+.mo-city{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(248,244,239,0.42);position:relative;z-index:1}
+.mo-x{position:absolute;top:14px;right:14px;background:rgba(13,10,8,0.3);border:none;color:rgba(248,244,239,0.7);width:32px;height:32px;font-size:15px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.mo-x:hover{background:rgba(13,10,8,0.6)}
+.mo-body{padding:28px 32px 36px}
+.mo-t{font-size:28px;font-style:italic;font-weight:300;line-height:1.2;margin:12px 0 6px}
+.mo-s{font-family:'DM Sans',sans-serif;font-size:9px;color:var(--clay);margin-bottom:18px}
+.mo-d{font-size:17px;font-weight:300;line-height:1.95;color:var(--clay);margin-bottom:24px}
+.mo-cells{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--mist);margin-bottom:20px}
 .mo-cells2{grid-template-columns:1fr 1fr}
-.mo-cell{background:#fff;padding:13px 16px}
-.mo-cl{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:#ccc;margin-bottom:4px}
-.mo-cv{font-size:14px;font-style:italic}
-.mo-btn{display:block;width:100%;background:#111;color:#fff;padding:13px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;text-align:center;border:none}
-.mo-btn:hover{opacity:0.85}
-@media(max-width:900px){
+.mo-cell{background:var(--paper);padding:15px 18px}
+.mo-cl{font-family:'DM Sans',sans-serif;font-size:7px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ash);margin-bottom:5px}
+.mo-cv{font-size:15px;font-style:italic;font-weight:300}
+.mo-btn{display:block;width:100%;background:var(--ink);color:var(--paper);padding:15px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;text-align:center;border:none;transition:background 0.25s}
+.mo-btn:hover{background:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
   .g4{grid-template-columns:1fr 1fr}
   .g3{grid-template-columns:1fr 1fr}
   .eg{grid-template-columns:1fr 1fr}
-  .g2{grid-template-columns:1fr;gap:32px}
+  .g2{grid-template-columns:1fr;gap:48px}
   .vg{grid-template-columns:1fr 1fr}
   .navlinks .nl:nth-child(n+4){display:none}
 }
-@media(max-width:540px){
+@media(max-width:600px){
   .g4,.g3,.eg{grid-template-columns:1fr}
   .mo-cells{grid-template-columns:1fr 1fr}
-  .s{padding:48px 18px}
-  nav{padding:0 18px}
-  .hero{padding:56px 18px}
-  .ban{padding:11px 18px}
-  .ah{padding:90px 18px 48px}
-  .fi{padding:28px 18px}
-  .lb{padding:70px 18px}
+  .s{padding:56px 24px}
+  nav{padding:0 24px}
+  .hero{padding:64px 24px}
+  .ban{padding:12px 24px}
+  .ah{padding:100px 24px 56px}
+  .fi{padding:32px 24px}
+  .lb{padding:80px 24px}
   .hstats{gap:0}
-  .hs2{padding:0 16px}
+  .hs2{padding:0 20px}
 }
 
 /* ── MOBILE OPP CARDS ── */
 .opp-mobile{display:none}
-@media(max-width:720px){
+@media(max-width:760px){
   .ot thead{display:none}
   .ot{display:none}
-  .opp-mobile{display:grid;grid-template-columns:1fr;gap:1px;background:#ebebeb}
-  .om-card{background:#fff;padding:20px 18px;cursor:pointer;display:flex;flex-direction:column;gap:6px}
-  .om-card:active{background:#fafafa}
+  .opp-mobile{display:grid;grid-template-columns:1fr;gap:1px;background:var(--mist)}
+  .om-card{background:var(--paper);padding:22px 20px;cursor:pointer;display:flex;flex-direction:column;gap:7px}
+  .om-card:active{background:var(--mist)}
   .om-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .om-title{font-size:18px;font-style:italic;color:#111;line-height:1.3;flex:1}
-  .om-dl{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;flex-shrink:0}
-  .om-dl.urg{color:#c0392b}
-  .om-dl.rol{color:#ccc}
-  .om-org{font-family:'Inter',sans-serif;font-size:10px;color:#bbb}
-  .om-foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding-top:10px;border-top:1px solid #f5f5f5}
-  .om-award{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:#999}
+  .om-title{font-size:19px;font-style:italic;font-weight:300;color:var(--ink);line-height:1.3;flex:1}
+  .om-dl{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;flex-shrink:0}
+  .om-dl.urg{color:var(--crimson)}
+  .om-dl.rol{color:var(--ash)}
+  .om-org{font-family:'DM Sans',sans-serif;font-size:9px;color:var(--clay)}
+  .om-foot{display:flex;justify-content:space-between;align-items:center;margin-top:5px;padding-top:12px;border-top:1px solid var(--border)}
+  .om-award{font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ash)}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <span class="logo" onclick="go('home')" style="position:relative">Artatlas<span style="position:absolute;bottom:-2px;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(74,104,136,0.4),transparent)"></span></span>
+  <span class="logo" onclick="go('home')">Artatlas</span>
   <div class="navlinks">
     <span class="nl on" id="ni-home" onclick="go('home')">Home</span>
     <span class="nl" id="ni-exhibitions" onclick="go('exhibitions')">Exhibitions</span>
     <span class="nl" id="ni-opportunities" onclick="go('opportunities')">Opportunities</span>
     <span class="nl" id="ni-about" onclick="go('about')">About</span>
-    <span class="nl" id="ni-legal" onclick="go('legal')" style="font-size:9px">Legal</span>
+    <span class="nl" id="ni-legal" onclick="go('legal')">Legal</span>
   </div>
 </nav>
 
 <!-- HOME -->
 <div id="pg-home" class="pg on">
   <div class="hero">
-    <!-- Art-inspired abstract SVG background -->
-    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.07;pointer-events:none" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-      <!-- Mondrian-inspired lines -->
-      <line x1="0" y1="150" x2="800" y2="150" stroke="white" stroke-width="1.5"/>
-      <line x1="0" y1="420" x2="800" y2="420" stroke="white" stroke-width="1"/>
-      <line x1="200" y1="0" x2="200" y2="600" stroke="white" stroke-width="1.5"/>
-      <line x1="580" y1="0" x2="580" y2="600" stroke="white" stroke-width="1"/>
-      <line x1="380" y1="150" x2="380" y2="600" stroke="white" stroke-width="0.8"/>
-      <!-- Kandinsky circles -->
-      <circle cx="100" cy="80" r="48" fill="none" stroke="white" stroke-width="1"/>
-      <circle cx="100" cy="80" r="28" fill="none" stroke="white" stroke-width="0.5"/>
-      <circle cx="680" cy="500" r="72" fill="none" stroke="white" stroke-width="1"/>
-      <circle cx="680" cy="500" r="44" fill="none" stroke="white" stroke-width="0.5"/>
-      <circle cx="420" cy="300" r="120" fill="none" stroke="white" stroke-width="0.6"/>
-      <!-- Rothko-inspired soft rectangles -->
-      <rect x="50" y="200" width="120" height="80" fill="white" opacity="0.06" rx="2"/>
-      <rect x="620" y="100" width="140" height="100" fill="white" opacity="0.05" rx="2"/>
-      <!-- Diagonal Klee-inspired lines -->
-      <line x1="0" y1="600" x2="200" y2="0" stroke="white" stroke-width="0.6"/>
-      <line x1="600" y1="0" x2="800" y2="400" stroke="white" stroke-width="0.6"/>
-      <!-- Small dots - pointillist reference -->
-      <circle cx="300" cy="80" r="3" fill="white" opacity="0.4"/>
-      <circle cx="480" cy="520" r="3" fill="white" opacity="0.4"/>
-      <circle cx="720" cy="200" r="2" fill="white" opacity="0.3"/>
-      <circle cx="60" cy="480" r="2" fill="white" opacity="0.3"/>
-      <circle cx="520" cy="180" r="4" fill="white" opacity="0.25"/>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.045;pointer-events:none" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <line x1="0" y1="0" x2="1200" y2="800" stroke="white" stroke-width="0.5"/>
+      <line x1="1200" y1="0" x2="0" y2="800" stroke="white" stroke-width="0.5"/>
+      <circle cx="600" cy="400" r="320" fill="none" stroke="white" stroke-width="0.6"/>
+      <circle cx="600" cy="400" r="220" fill="none" stroke="white" stroke-width="0.4"/>
+      <circle cx="600" cy="400" r="120" fill="none" stroke="white" stroke-width="0.3"/>
+      <line x1="0" y1="0" x2="80" y2="0" stroke="white" stroke-width="0.8"/>
+      <line x1="0" y1="0" x2="0" y2="80" stroke="white" stroke-width="0.8"/>
+      <line x1="1200" y1="0" x2="1120" y2="0" stroke="white" stroke-width="0.8"/>
+      <line x1="1200" y1="0" x2="1200" y2="80" stroke="white" stroke-width="0.8"/>
+      <line x1="0" y1="800" x2="80" y2="800" stroke="white" stroke-width="0.8"/>
+      <line x1="0" y1="800" x2="0" y2="720" stroke="white" stroke-width="0.8"/>
+      <line x1="1200" y1="800" x2="1120" y2="800" stroke="white" stroke-width="0.8"/>
+      <line x1="1200" y1="800" x2="1200" y2="720" stroke="white" stroke-width="0.8"/>
+      <line x1="580" y1="400" x2="620" y2="400" stroke="white" stroke-width="0.9"/>
+      <line x1="600" y1="380" x2="600" y2="420" stroke="white" stroke-width="0.9"/>
     </svg>
+    <div class="hero-rule"></div>
     <div class="hw">Artatlas</div>
     <div class="ht">Every opportunity &nbsp;&middot;&nbsp; Every exhibition</div>
     <div class="hbtns">
@@ -249,19 +301,19 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
       <div class="hs2"><div class="hsn">Weekly</div><div class="hsl">Updated</div></div>
     </div>
   </div>
-  <div class="ban" style="position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.02) 40px,rgba(255,255,255,0.02) 41px);pointer-events:none"></div>
+  <div class="ban">
     <div class="bd"></div>
     <span class="bt"><strong>Opportunities closing soon</strong> &mdash; don't miss them</span>
     <span class="bl" onclick="go('opportunities')">View all</span>
   </div>
-  <div style="background:#fff"><div class="s">
+  <div style="background:var(--paper)"><div class="s">
     <div class="sh">
       <div><div class="slb">Editor's selection</div><div class="st">Must-see right now</div></div>
       <span class="sm" onclick="go('exhibitions')">All exhibitions</span>
     </div>
     <div class="g4" id="must-grid"></div>
   </div></div>
-  <div style="background:#f9f9f9"><div class="s">
+  <div style="background:var(--paper2)"><div class="s">
     <div class="sh">
       <div><div class="slb">For artists</div><div class="st">Closing soon</div></div>
       <span class="sm" onclick="go('opportunities')">All opportunities</span>
@@ -269,17 +321,17 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
     <div class="g3" id="opp-prev"></div>
   </div></div>
   <div class="strip-w">
-    <div style="padding:18px 32px 10px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25)">Now showing</div>
+    <div style="padding:20px 48px 12px;font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(248,244,239,0.2)">Now showing</div>
     <div class="strip" id="strip"></div>
   </div>
-  <div style="background:#fff"><div class="s" id="newsletter">
+  <div style="background:var(--paper)"><div class="s" id="newsletter">
     <div class="g2">
       <div>
-        <div class="slb" style="margin-bottom:12px">Weekly digest</div>
-        <div class="st" style="margin-bottom:16px;line-height:1.1">Never miss an<br>opportunity.</div>
-        <p style="font-size:17px;line-height:1.85;color:#888;max-width:360px">Every Monday &mdash; the best opportunities closing that week, exhibitions worth seeing, and what the art world is talking about.</p>
+        <div class="slb" style="margin-bottom:14px">Weekly digest</div>
+        <div class="st" style="margin-bottom:20px;line-height:1.05">Never miss an<br>opportunity.</div>
+        <p style="font-size:18px;font-style:italic;font-weight:300;line-height:1.9;color:var(--clay);max-width:380px">Every Monday &mdash; the best opportunities closing that week, exhibitions worth seeing, and what the art world is talking about.</p>
       </div>
-      <div class="nl-box">
+      <div class="nl-box" id="nl-box">
         <div class="nl-q">&ldquo;The first thing I open on Monday morning.&rdquo;</div>
         <input class="nl-i" type="email" id="nl-email" placeholder="Your email address" onkeydown="if(event.key==='Enter')nlsub()">
         <button class="nl-btn" onclick="nlsub()">Subscribe</button>
@@ -333,7 +385,6 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
       </tr></thead>
       <tbody id="obody"></tbody>
     </table>
-    <!-- Mobile card view -->
     <div class="opp-mobile" id="opp-mobile"></div>
   </div>
 </div>
@@ -347,24 +398,24 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
   <div class="s">
     <div class="g2">
       <div>
-        <p style="font-size:17px;line-height:1.9;color:#666;margin-bottom:16px">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
-        <p style="font-size:17px;line-height:1.9;color:#666;margin-bottom:16px">We built the platform we wished existed &mdash; where artists find residencies, grants and open calls, and art lovers discover the exhibitions worth travelling for.</p>
-        <p style="font-size:17px;line-height:1.9;color:#666">Updated every week. Open to all.</p>
+        <p style="font-size:18px;font-weight:300;line-height:2;color:var(--clay);margin-bottom:18px">Artatlas was built from a simple frustration: the best artistic opportunities existed but were scattered, hidden behind newsletters and paywalls, accessible only to those who already knew where to look.</p>
+        <p style="font-size:18px;font-weight:300;line-height:2;color:var(--clay);margin-bottom:18px">We built the platform we wished existed &mdash; where artists find residencies, grants and open calls, and art lovers discover the exhibitions worth travelling for.</p>
+        <p style="font-size:18px;font-weight:300;line-height:2;color:var(--clay)">Updated every week. Open to all.</p>
       </div>
       <div>
         <div class="sg">
-          <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Exhibitions</div></div>
-          <div class="sb" style="background:#f9f9f9"><div class="sb-n">20</div><div class="sb-l" style="color:#bbb">Opportunities</div></div>
-          <div class="sb" style="background:#f9f9f9"><div class="sb-n">20+</div><div class="sb-l" style="color:#bbb">Countries</div></div>
-          <div class="sb" style="background:#111"><div class="sb-n" style="color:#fff">&#10003;</div><div class="sb-l" style="color:#555">Accessible</div></div>
+          <div class="sb" style="background:var(--mist)"><div class="sb-n">26</div><div class="sb-l" style="color:var(--ash)">Exhibitions</div></div>
+          <div class="sb" style="background:var(--mist)"><div class="sb-n">21</div><div class="sb-l" style="color:var(--ash)">Opportunities</div></div>
+          <div class="sb" style="background:var(--mist)"><div class="sb-n">20+</div><div class="sb-l" style="color:var(--ash)">Countries</div></div>
+          <div class="sb" style="background:var(--deep)"><div class="sb-n" style="color:var(--paper)">&#10003;</div><div class="sb-l" style="color:#4a4440">Accessible</div></div>
         </div>
-        <div style="background:#f9f9f9;padding:24px 20px;margin-top:1px">
-          <p style="font-size:19px;font-style:italic;line-height:1.6;color:#333">&ldquo;The best opportunities should reach every artist &mdash; not just those who already know where to look.&rdquo; &mdash; Artatlas</p>
+        <div style="background:var(--mist);padding:28px 24px;margin-top:2px">
+          <p style="font-size:21px;font-style:italic;font-weight:300;line-height:1.65;color:var(--ink)">&ldquo;The best opportunities should reach every artist &mdash; not just those who already know where to look.&rdquo;</p>
         </div>
       </div>
     </div>
   </div>
-  <div style="background:#111;padding:48px 0">
+  <div style="background:var(--deep);padding:56px 0">
     <div class="vg">
       <div class="vi"><div class="vi-n">01</div><div class="vi-nm">Free</div><div class="vi-d">Accessible to all. Curated with care.</div></div>
       <div class="vi"><div class="vi-n">02</div><div class="vi-nm">Verified</div><div class="vi-d">Every opportunity checked. Expired listings removed automatically.</div></div>
@@ -379,8 +430,8 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
   <div class="lb">
     <div class="pge">Legal</div>
     <div class="pgh">Terms &amp; Privacy</div>
-    <div style="font-family:'Inter',sans-serif;font-size:10px;color:#bbb;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px">Last updated: May 2026</div>
-    <div style="width:32px;height:1px;background:#e0e0e0;margin:18px 0 32px"></div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:8.5px;color:var(--ash);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Last updated: May 2026</div>
+    <div style="width:32px;height:1px;background:var(--border);margin:20px 0 36px"></div>
     <h2>Terms of Use</h2>
     <p>By accessing and using Artatlas, you agree to the following terms.</p>
     <h3>1. Nature of the Service</h3>
@@ -448,15 +499,15 @@ footer{border-top:1px solid #f0f0f0;background:#fff}
 <div class="modal-bg" id="om" onclick="if(event.target===this)cm('om')">
   <div class="modal">
     <div class="mo-body">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
         <div id="om-chip"></div>
-        <button style="background:none;border:none;font-size:21px;color:#ccc;cursor:pointer;line-height:1;padding:4px" onclick="cm('om')">&#x2715;</button>
+        <button style="background:none;border:none;font-size:20px;color:var(--ash);cursor:pointer;line-height:1;padding:4px;transition:color 0.2s" onmouseover="this.style.color='#0e0c0a'" onmouseout="this.style.color='#c4bdb6'" onclick="cm('om')">&#x2715;</button>
       </div>
       <div class="mo-t" id="om-t"></div>
       <div class="mo-s" id="om-s"></div>
       <div class="mo-d" id="om-d"></div>
       <div class="mo-cells mo-cells2" id="om-cells"></div>
-      <button class="mo-btn" id="om-btn" onclick="gourl('om')" style="margin-top:16px">Apply now &rarr;</button>
+      <button class="mo-btn" id="om-btn" onclick="gourl('om')" style="margin-top:18px">Apply now &rarr;</button>
     </div>
   </div>
 </div>
@@ -468,7 +519,7 @@ var G=["linear-gradient(145deg,#e8c4a0,#c07840)","linear-gradient(135deg,#2d4a6b
 
 var CH={"Painting":"background:#fdf0e8;color:#7a4520","Contemporary Art":"background:#e8eef8;color:#1e3a7a","Modernism":"background:#f5e8f5;color:#5a1a6b","Abstract Exp.":"background:#e8f2ec;color:#1a4a22","Performance Art":"background:#f5ebe8;color:#5a1e18","Post-Impressionism":"background:#faf0e4;color:#5a3010","19th Century":"background:#f5f0e2;color:#4a3a10","Sculpture":"background:#eef5e8;color:#2a4a10","Flemish Painting":"background:#e8f0f5;color:#1a2e5a","Impressionism":"background:#eeebf8;color:#2e1e5a","Expressionism":"background:#f8eee8;color:#5a2a10","Renaissance":"background:#f5f0e2;color:#3a2e00","Old Masters":"background:#f5ede8;color:#5a2e1a","Medieval Art":"background:#f0ece0;color:#3a2e10","Design":"background:#e8f0e8;color:#1a3a1a","Street Art":"background:#ebebeb;color:#222","Drawing":"background:#f5f0e8;color:#3a3010","Symbolism":"background:#f0e8f5;color:#3a1a5a","Baroque":"background:#f5ede0;color:#5a3a10","Surrealism":"background:#f0e8f8;color:#4a1a6a","Grant":"background:#faf0e4;color:#5a3010","Residency":"background:#e8eef8;color:#1e3a7a","Open Call":"background:#f5e8f5;color:#5a1a6b"};
 
-function ch(l){var s=CH[l]||"background:#f0f0f0;color:#444";return'<span class="chip" style="'+s+'">'+l+'</span>';}
+function ch(l){var s=CH[l]||"background:#ede8e1;color:#4a4440";return'<span class="chip" style="'+s+'">'+l+'</span>';}
 
 var TODAY=new Date();TODAY.setHours(0,0,0,0);
 function exp(d){if(!d)return false;var x=new Date(d);x.setHours(0,0,0,0);return x<TODAY;}
@@ -494,8 +545,7 @@ var EXH=[
   {id:17,title:"Michelangelo & Rodin",venue:"Musee du Louvre",city:"Paris",country:"France",dates:"Autumn 2026",tag:"Sculpture",must:false,end:"2026-12-31",verified:"May 2026",desc:"A monumental sculptural dialogue. Two giants of Western art placed side by side for the first time.",url:"https://www.louvre.fr"},
   {id:18,title:"Symbolism",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"Mar - Jul 2026",tag:"Symbolism",must:false,end:"2026-07-31",verified:"May 2026",desc:"Symbolism presented as a rich and self-contained artistic world rather than a marginal chapter in European art history.",url:"https://www.palazzostrozzi.org"},
   {id:19,title:"Metamorphoses",venue:"Galleria Borghese",city:"Rome",country:"Italy",dates:"22 Jun - 20 Sep 2026",tag:"Old Masters",must:false,end:"2026-09-20",verified:"May 2026",desc:"Titian, Caravaggio, Rembrandt - 80+ masterpieces exploring transformation, identity and the natural world.",url:"https://galleriaborghese.it"},
-  {id:20,title:"Tarot: Origins, Cards, Destiny",venue:"Accademia Carrara",city:"Bergamo",country:"Italy",dates:"27 Feb - 2 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-02",verified:"May 2026",desc:"The history of tarot from 15th-century Italy. Rare early decks and the visual imagination of Renaissance court culture.",url:"https://lacarrara.it"}
-,
+  {id:20,title:"Tarot: Origins, Cards, Destiny",venue:"Accademia Carrara",city:"Bergamo",country:"Italy",dates:"27 Feb - 2 Jun 2026",tag:"Renaissance",must:false,end:"2026-06-02",verified:"May 2026",desc:"The history of tarot from 15th-century Italy. Rare early decks and the visual imagination of Renaissance court culture.",url:"https://lacarrara.it"},
   {id:21,title:"Baroque Splendors — From El Greco to Velázquez",venue:"Musée Jacquemart-André",city:"Paris",country:"France",dates:"26 Mar - 2 Aug 2026",tag:"Baroque",must:true,end:"2026-08-02",verified:"Jun 2026",desc:"40 masterpieces from the Hispanic Society of America in New York, shown in France for the first time. Velázquez, El Greco and Zurbarán in the magnificent salons of the Jacquemart-André mansion.",url:"https://www.musee-jacquemart-andre.com/en/baroque-splendors"},
   {id:22,title:"Courbet, Pissarro, Cézanne",venue:"Musée Jacquemart-André",city:"Paris",country:"France",dates:"12 Mar - 2 Aug 2026",tag:"Post-Impressionism",must:false,end:"2026-08-02",verified:"Jun 2026",desc:"An intimate look at the artistic dialogue between Courbet, Pissarro and Cézanne — three painters who challenged academic conventions and shaped modern art.",url:"https://www.musee-jacquemart-andre.com"},
   {id:23,title:"Henri Rousseau",venue:"Musée de l'Orangerie",city:"Paris",country:"France",dates:"25 Mar - 20 Jul 2026",tag:"Post-Impressionism",must:true,end:"2026-07-20",verified:"Jun 2026",desc:"A rare and major retrospective of the self-taught painter. Portraits, jungle scenes and dreamlike landscapes from major international loans. One of the most underrated figures in modern art.",url:"https://www.musee-orangerie.fr"},
@@ -524,8 +574,7 @@ var OPP=[
   {id:17,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe. Rolling applications via national offices.",url:"https://goethe.de"},
   {id:18,title:"Craft 1o1 Summer Program",org:"Arts Letters & Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
   {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 USD stipend included.",url:"https://creative-capital.org"},
-  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"}
-,
+  {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"},
   {id:22,title:"PitturiAmo — ArTour Exhibition Programme",org:"PitturiAmo",deadline:"Rolling",iso:null,type:"Open Call",award:"Gallery exhibitions + online visibility",country:"Italy / International",urgent:false,desc:"Exhibition programme placing artists in galleries across Rome, Milan, Naples, Cannes and beyond. Physical exhibition plus 12 months online visibility across the PitturiAmo network. Note: participation fee applies. Free membership available.",url:"https://www.pitturiamo.it/artour-en/"}
 ];
 
@@ -616,7 +665,7 @@ function rex(){
       +ch(e.tag)
       +'<div class="ec-t">'+e.title+'</div>'
       +'<div class="ec-v2">'+e.venue+' &middot; '+e.city+'</div>'
-      +'<div class="ec-d">'+e.dates+'<span style="color:#ddd">&#10003; '+e.verified+'</span></div>'
+      +'<div class="ec-d">'+e.dates+'<span style="color:var(--border)">&#10003; '+e.verified+'</span></div>'
       +'</div></div>';
   }).join("");
 }
@@ -627,7 +676,6 @@ function roo(){
     return (TF==="All"||o.type===TF)&&(o.title+o.org+o.country+o.type).toLowerCase().indexOf(OQ)>=0;
   });
   document.getElementById("ocount").textContent=f.length+" results";
-  // Mobile cards
   var mc=document.getElementById("opp-mobile");
   if(mc){mc.innerHTML=f.map(function(o){
     return '<div class="om-card" onclick="oo('+o.id+')">'
@@ -642,10 +690,10 @@ function roo(){
   document.getElementById("obody").innerHTML=f.map(function(o){
     return '<tr class="or" onclick="oo('+o.id+')">'
       +'<td><div class="or-t">'+o.title+(o.urgent?'<span class="udot"></span>':'')+'</div><div class="or-o">'+o.org+'</div></td>'
-      +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#666;white-space:nowrap;padding:16px 10px">'+o.award+'</td>'
-      +'<td style="padding:16px 10px">'+ch(o.type)+'</td>'
-      +'<td style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;padding:16px 10px">'+o.country+'</td>'
-      +'<td style="font-family:Inter,sans-serif;font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#ccc":o.urgent?"#c0392b":"#555")+'">'+o.deadline+'</td>'
+      +'<td style="font-family:\'DM Sans\',sans-serif;font-size:10px;color:#8a7264;white-space:nowrap;padding:18px 12px">'+o.award+'</td>'
+      +'<td style="padding:18px 12px">'+ch(o.type)+'</td>'
+      +'<td style="font-family:\'DM Sans\',sans-serif;font-size:10px;color:#c4bdb6;padding:18px 12px">'+o.country+'</td>'
+      +'<td style="font-family:\'DM Sans\',sans-serif;font-size:10px;white-space:nowrap;font-weight:'+(o.urgent?500:400)+';color:'+(o.deadline==="Rolling"?"#c4bdb6":o.urgent?"#9b3a2e":"#8a7264")+'">'+o.deadline+'</td>'
       +'</tr>';
   }).join("");
 }
@@ -654,10 +702,10 @@ function oe(id){
   var e=EXH.filter(function(x){return x.id===id;})[0];
   document.getElementById("em-grad").style.background=G[e.id-1];
   document.getElementById("em-title").textContent=e.title;
-  document.getElementById("em-city").textContent=e.city+" \u00b7 "+e.country;
+  document.getElementById("em-city").textContent=e.city+" · "+e.country;
   document.getElementById("em-chip").innerHTML=ch(e.tag);
   document.getElementById("em-t").textContent=e.title;
-  document.getElementById("em-s").textContent=e.venue+" \u2013 "+e.city+", "+e.country;
+  document.getElementById("em-s").textContent=e.venue+" – "+e.city+", "+e.country;
   document.getElementById("em-d").textContent=e.desc;
   document.getElementById("em-cells").innerHTML=
     '<div class="mo-cell"><div class="mo-cl">Dates</div><div class="mo-cv">'+e.dates+'</div></div>'
@@ -676,7 +724,7 @@ function oo(id){
   document.getElementById("om-d").textContent=o.desc;
   document.getElementById("om-cells").innerHTML=
     '<div class="mo-cell"><div class="mo-cl">Award</div><div class="mo-cv">'+o.award+'</div></div>'
-    +'<div class="mo-cell"><div class="mo-cl">Deadline</div><div class="mo-cv" style="color:'+(o.urgent?"#c0392b":"#111")+'">'+o.deadline+'</div></div>'
+    +'<div class="mo-cell"><div class="mo-cl">Deadline</div><div class="mo-cv" style="color:'+(o.urgent?"#9b3a2e":"#0e0c0a")+'">'+o.deadline+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Location</div><div class="mo-cv">'+o.country+'</div></div>'
     +'<div class="mo-cell"><div class="mo-cl">Type</div><div class="mo-cv">'+o.type+'</div></div>';
   OU=o.url||null;
@@ -709,9 +757,9 @@ function nlsub(){
     body:"email="+encodeURIComponent(email),
     mode:"no-cors"
   }).finally(function(){
-    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:32px 0">'
-      +'<div style="font-size:28px;font-style:italic;color:#111;margin-bottom:8px">You\u2019re in. \u2736</div>'
-      +'<div style="font-family:Inter,sans-serif;font-size:10px;color:#bbb;letter-spacing:0.14em;text-transform:uppercase">Welcome to Artatlas</div>'
+    document.getElementById("nl-box").innerHTML='<div style="text-align:center;padding:40px 0">'
+      +'<div style="font-size:32px;font-style:italic;font-weight:300;color:#0e0c0a;margin-bottom:10px">You’re in.</div>'
+      +'<div style="font-family:\'DM Sans\',sans-serif;font-size:8.5px;color:#c4bdb6;letter-spacing:0.22em;text-transform:uppercase">Welcome to Artatlas</div>'
       +'</div>';
   });
 }
