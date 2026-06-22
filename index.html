@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Artatlas — Every Opportunity. Every Exhibition.</title>
+<title>Artatlas - Every Opportunity. Every Exhibition.</title>
 <meta name="description" content="Artatlas curates the world's best art exhibitions and opportunities for artists. Updated weekly.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -194,20 +194,18 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo" onclick="go('home')">Artatlas</div>
+<nav id="main-nav">
+  <div class="nav-logo" id="btn-home-logo">Artatlas</div>
   <div class="nav-links">
-    <span class="nav-link active" id="nl-home" onclick="go('home')">Home</span>
-    <span class="nav-link" id="nl-exh" onclick="go('exh')">Exhibitions</span>
-    <span class="nav-link" id="nl-opp" onclick="go('opp')">Opportunities</span>
-    <span class="nav-link" id="nl-about" onclick="go('about')">About</span>
-    <span class="nav-link" id="nl-legal" onclick="go('legal')" style="display:none">Legal</span>
+    <span class="nav-link active" id="nl-home">Home</span>
+    <span class="nav-link" id="nl-exh">Exhibitions</span>
+    <span class="nav-link" id="nl-opp">Opportunities</span>
+    <span class="nav-link" id="nl-about">About</span>
   </div>
 </nav>
 
 <!-- HOME -->
 <div class="page" id="p-home">
-
   <div class="hero">
     <svg class="hero-pattern" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
       <line x1="0" y1="200" x2="1200" y2="200" stroke="#3a0c0c" stroke-width="1"/>
@@ -217,21 +215,17 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
       <circle cx="150" cy="100" r="60" fill="none" stroke="#3a0c0c" stroke-width="0.8"/>
       <circle cx="150" cy="100" r="32" fill="none" stroke="#3a0c0c" stroke-width="0.4"/>
       <circle cx="1050" cy="680" r="90" fill="none" stroke="#3a0c0c" stroke-width="0.8"/>
-      <circle cx="1050" cy="680" r="48" fill="none" stroke="#3a0c0c" stroke-width="0.4"/>
       <circle cx="600" cy="400" r="180" fill="none" stroke="#3a0c0c" stroke-width="0.4"/>
       <line x1="0" y1="800" x2="300" y2="0" stroke="#3a0c0c" stroke-width="0.5"/>
       <line x1="860" y1="0" x2="1200" y2="600" stroke="#3a0c0c" stroke-width="0.5"/>
-      <circle cx="600" cy="100" r="4" fill="#3a0c0c" opacity="0.3"/>
-      <circle cx="100" cy="650" r="3" fill="#3a0c0c" opacity="0.2"/>
-      <circle cx="1100" cy="200" r="3" fill="#3a0c0c" opacity="0.2"/>
     </svg>
-    <div class="hero-eyebrow">Curated for artists &amp; art lovers</div>
+    <div class="hero-eyebrow">Curated for artists and art lovers</div>
     <div class="hero-title">Artatlas</div>
     <div class="hero-rule"></div>
     <div class="hero-sub">Every opportunity &nbsp;&middot;&nbsp; Every exhibition</div>
     <div class="hero-ctas">
-      <button class="hero-btn primary" onclick="go('exh')">Explore Exhibitions</button>
-      <button class="hero-btn secondary" onclick="go('opp')">Find Opportunities</button>
+      <button class="hero-btn primary" id="btn-exh">Explore Exhibitions</button>
+      <button class="hero-btn secondary" id="btn-opp">Find Opportunities</button>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-n">26</div><div class="hero-stat-l">Exhibitions</div></div>
@@ -240,44 +234,37 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
       <div class="hero-stat"><div class="hero-stat-n" style="font-style:italic">Weekly</div><div class="hero-stat-l">Updated</div></div>
     </div>
   </div>
-
-  <!-- Editor selection -->
   <div class="section cream">
     <div class="inner">
-      <div class="s-label reveal">Editor&rsquo;s selection</div>
+      <div class="s-label">Editor's selection</div>
       <div class="exh-list" id="home-must"></div>
     </div>
   </div>
-
-  <!-- Top opportunities -->
   <div class="section white">
     <div class="inner">
-      <div class="s-label reveal">Opportunities closing soon</div>
+      <div class="s-label">Opportunities closing soon</div>
       <div class="opp-list" id="home-opp-list"></div>
       <div id="home-opp-mob"></div>
-      <div style="margin-top:48px;padding-top:36px;border-top:1px solid #e8ddd0;text-align:center">
-        <span onclick="go('opp')" style="font-family:'Inter',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#9a8a7a;cursor:pointer;border-bottom:1px solid #e8ddd0;padding-bottom:2px">View all opportunities</span>
+      <div style="margin-top:48px;padding-top:36px;border-top:1px solid rgba(58,12,12,0.12);text-align:center">
+        <span id="btn-all-opp" style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#9a8a7a;cursor:pointer;border-bottom:1px solid #e8ddd0;padding-bottom:2px">View all opportunities</span>
       </div>
     </div>
   </div>
-
-  <!-- Newsletter -->
   <div class="nl-section" id="nl-box">
     <div class="nl-quote">&ldquo;The first thing I open on Monday morning.&rdquo;</div>
     <div class="nl-form">
-      <input class="nl-input" type="email" id="nl-email" placeholder="Your email address" onkeydown="if(event.key==='Enter')nlsub()">
-      <button class="nl-submit" onclick="nlsub()">Subscribe</button>
+      <input class="nl-input" type="email" id="nl-email" placeholder="Your email address">
+      <button class="nl-submit" id="nl-submit-btn">Subscribe</button>
     </div>
     <div class="nl-note">No spam &middot; Unsubscribe anytime</div>
   </div>
-
-</div><!-- /home -->
+</div>
 
 <!-- EXHIBITIONS -->
 <div class="page" id="p-exh" style="padding-top:60px">
   <div class="section cream">
     <div class="inner">
-      <div class="s-label reveal">Exhibitions</div>
+      <div class="s-label">Exhibitions</div>
       <div class="filters" id="exh-filters"></div>
       <div class="results-count" id="exh-count"></div>
       <div class="exh-list" id="exh-list"></div>
@@ -289,7 +276,7 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 <div class="page" id="p-opp" style="padding-top:60px">
   <div class="section cream">
     <div class="inner">
-      <div class="s-label reveal">Opportunities</div>
+      <div class="s-label">Opportunities</div>
       <div class="filters" id="opp-filters"></div>
       <div class="results-count" id="opp-count"></div>
       <div class="opp-list" id="opp-list"></div>
@@ -304,19 +291,18 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
     <div class="inner">
       <div class="about-grid">
         <div>
-          <div class="about-label reveal">About</div>
-          <div class="about-tagline reveal">Every opportunity. Every exhibition.</div>
+          <div class="about-label">About</div>
+          <div class="about-tagline">Every opportunity. Every exhibition.</div>
           <div class="about-rule"></div>
-          <div class="about-stats reveal">
+          <div class="about-stats">
             <div class="about-stat"><span class="about-stat-n">26</span><span class="about-stat-l">Exhibitions</span></div>
             <div class="about-stat"><span class="about-stat-n">21</span><span class="about-stat-l">Opportunities</span></div>
             <div class="about-stat"><span class="about-stat-n">20+</span><span class="about-stat-l">Countries</span></div>
           </div>
         </div>
-        <div class="about-body reveal">
-          <p>&ldquo;The best opportunities should reach every artist &mdash; not just those who already know where to look.&rdquo; &mdash; Artatlas</p>
-          <p>Artatlas curates the world's most significant art exhibitions alongside the best opportunities for artists &mdash; residencies, grants, open calls and fellowships &mdash; in one place, updated weekly.</p>
-          <p>The platform exists because the art world runs on information, and information is rarely distributed equally. Artatlas is an attempt to change that.</p>
+        <div class="about-body">
+          <p>"The best opportunities should reach every artist, not just those who already know where to look." - Artatlas</p>
+          <p>Artatlas curates the world's most significant art exhibitions alongside the best opportunities for artists - residencies, grants, open calls and fellowships - in one place, updated weekly.</p>
           <p>Contact: <a href="mailto:hello@artatlas.world" style="color:#3a0c0c">hello@artatlas.world</a></p>
         </div>
       </div>
@@ -330,33 +316,28 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
     <div class="inner">
       <div class="s-label">Legal &amp; Privacy</div>
       <div class="legal-content">
-        <h3>Publisher</h3>
-        <p>Artatlas is a personal, non-commercial platform. Contact: hello@artatlas.world</p>
-        <h3>Data &amp; Privacy</h3>
-        <p>Artatlas collects email addresses solely for newsletter delivery via Beehiiv. Data is never sold or shared with third parties. You may unsubscribe at any time.</p>
-        <h3>Content</h3>
-        <p>All exhibition and opportunity listings are curated editorially. Artatlas is not responsible for changes to third-party events or deadlines. Verify all information with the source before applying.</p>
-        <h3>Copyright</h3>
-        <p>The Artatlas name, wordmark and site design are the property of the publisher. All listed exhibitions and opportunities remain the property of their respective institutions.</p>
-        <h3>Cookies</h3>
-        <p>This site does not use tracking cookies. The newsletter subscription uses Beehiiv&rsquo;s infrastructure, subject to their own privacy policy.</p>
+        <h3>Publisher</h3><p>Artatlas is a personal, non-commercial platform. Contact: hello@artatlas.world</p>
+        <h3>Data &amp; Privacy</h3><p>Artatlas collects email addresses solely for newsletter delivery via Beehiiv. Data is never sold or shared. Unsubscribe anytime.</p>
+        <h3>Content</h3><p>All listings are curated editorially. Verify all information with the source before applying.</p>
+        <h3>Copyright</h3><p>The Artatlas name and site design are the property of the publisher.</p>
+        <h3>Cookies</h3><p>This site does not use tracking cookies.</p>
       </div>
     </div>
   </div>
 </div>
 
 <!-- MODAL -->
-<div class="overlay" id="overlay" onclick="closeModal(event)">
+<div id="overlay" style="display:none;position:fixed;inset:0;background:rgba(26,8,8,0.5);z-index:200;backdrop-filter:blur(4px);align-items:center;justify-content:center">
   <div class="modal" id="modal">
-    <div class="modal-head" id="modal-head">
-      <button class="modal-close" onclick="closeModal()">Close</button>
+    <div class="modal-head">
+      <button class="modal-close" id="modal-close-btn">Close</button>
       <div class="modal-eyebrow" id="modal-eyebrow"></div>
       <div class="modal-title" id="modal-title"></div>
     </div>
     <div class="modal-body">
       <div class="modal-meta" id="modal-meta"></div>
       <div class="modal-desc" id="modal-desc"></div>
-      <button class="modal-btn" id="modal-btn">Visit →</button>
+      <button class="modal-btn" id="modal-action-btn">Visit</button>
     </div>
   </div>
 </div>
@@ -365,44 +346,45 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 <footer>
   <div class="footer-logo">Artatlas</div>
   <div class="footer-links">
-    <span class="footer-link" onclick="go('home')">Home</span>
-    <span class="footer-link" onclick="go('exh')">Exhibitions</span>
-    <span class="footer-link" onclick="go('opp')">Opportunities</span>
-    <span class="footer-link" onclick="go('about')">About</span>
-    <span class="footer-link" onclick="go('legal')">Legal</span>
+    <span class="footer-link" id="ft-home">Home</span>
+    <span class="footer-link" id="ft-exh">Exhibitions</span>
+    <span class="footer-link" id="ft-opp">Opportunities</span>
+    <span class="footer-link" id="ft-about">About</span>
+    <span class="footer-link" id="ft-legal">Legal</span>
   </div>
   <div class="footer-copy">&copy; 2026 Artatlas &middot; artatlas.world</div>
 </footer>
 
 <script>
 var EXH=[
-  {id:1,title:"Matisse. 1941–1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar – 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"Jun 2026",desc:"Over 230 works from Matisse's final period including the monumental cut-outs and the Jazz book. A landmark retrospective at the newly reopened Grand Palais.",url:"https://www.grandpalais.fr"},
-  {id:2,title:"Venice Biennale — In Minor Keys",venue:"Giardini & Arsenale",city:"Venice",country:"Italy",dates:"10 May – 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"Jun 2026",desc:"Curated by the late Koyo Kouoh — the first African woman in the role. 90 countries, 110 artists. The most important contemporary art event of 2026.",url:"https://www.labiennale.org"},
-  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 – 4 Jan 2027",tag:"Painting",must:true,end:"2027-01-04",verified:"Jun 2026",desc:"The most comprehensive Frida Kahlo retrospective ever staged in Europe. Over 130 works tracing her life, politics and enduring visual power.",url:"https://www.tate.org.uk"},
-  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar – 23 Aug 2026",tag:"Abstract Exp.",must:true,end:"2026-08-23",verified:"Jun 2026",desc:"70+ works tracing Rothko's entire career, shown in dialogue with Fra Angelico's frescoes at Museo di San Marco. A rare and extraordinary pairing.",url:"https://www.palazzostrozzi.org"},
-  {id:5,title:"Marina Abramović — Transforming Energy",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"6 May – 19 Oct 2026",tag:"Performance Art",must:true,end:"2026-10-19",verified:"Jun 2026",desc:"First living female artist to have a major solo show at the Gallerie dell'Accademia. New works alongside Renaissance masterpieces, coinciding with her 80th birthday.",url:"https://www.gallerieaccademia.it"},
-  {id:6,title:"Tracey Emin — 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"1 May – 31 Aug 2026",tag:"Contemporary Art",must:false,end:"2026-08-31",verified:"Jun 2026",desc:"The most comprehensive retrospective of Emin's career. 90+ works spanning 40 years including My Bed, neon works and new commissions.",url:"https://www.tate.org.uk"},
-  {id:7,title:"Alexander Calder — Centenary",venue:"Fondation Louis Vuitton",city:"Paris",country:"France",dates:"Until Oct 2026",tag:"Sculpture",must:true,end:"2026-10-31",verified:"Jun 2026",desc:"Celebrating 100 years since Calder's arrival in France. The most comprehensive exhibition of his mobiles and kinetic works ever assembled in Europe.",url:"https://www.fondationlouisvuitton.fr"},
-  {id:8,title:"Lee Miller — War Photographer",venue:"Musée d'Art Moderne de Paris",city:"Paris",country:"France",dates:"10 Apr – 2 Aug 2026",tag:"Photography",must:true,end:"2026-08-02",verified:"Jun 2026",desc:"250 works retracing Lee Miller's career in fashion, surrealism and war photography. Co-produced with Tate Britain and the Art Institute of Chicago.",url:"https://www.mam.paris.fr"},
-  {id:9,title:"Ana Mendieta",venue:"Tate Modern",city:"London",country:"UK",dates:"15 Jul 2026 – 17 Jan 2027",tag:"Contemporary Art",must:false,end:"2027-01-17",verified:"Jun 2026",desc:"The first major UK retrospective of Ana Mendieta's groundbreaking earth-body works. A long-overdue celebration of one of the most radical artists of the 20th century.",url:"https://www.tate.org.uk"},
-  {id:10,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun – 18 Oct 2026",tag:"Sculpture",must:false,end:"2026-10-18",verified:"Jun 2026",desc:"Major survey of Kapoor's monumental sculptures exploring void, mass and the uncanny. Highlights include Mount Moriah at the Gate of the Ghetto.",url:"https://www.southbankcentre.co.uk"},
-  {id:11,title:"Lucian Freud — Drawing into Painting",venue:"Louisiana Museum of Modern Art",city:"Copenhagen",country:"Denmark",dates:"11 Jun – 27 Sep 2026",tag:"Drawing",must:false,end:"2026-09-27",verified:"Jun 2026",desc:"Freud's obsession with the human figure explored through drawings and paintings. Travelling from London's National Portrait Gallery.",url:"https://www.louisiana.dk"},
-  {id:12,title:"Bayeux Tapestry",venue:"British Museum",city:"London",country:"UK",dates:"Sep 2026 – Jan 2027",tag:"Medieval Art",must:true,end:"2027-01-31",verified:"Jun 2026",desc:"The 70-metre Bayeux Tapestry leaves France for the first time in almost 1000 years. The most significant loan in British Museum history.",url:"https://www.britishmuseum.org"},
-  {id:13,title:"Mary Cassatt — An American in Paris",venue:"Musée d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 – 31 Jan 2027",tag:"Impressionism",must:false,end:"2027-01-31",verified:"Jun 2026",desc:"Marking 100 years since her death. 80 paintings, pastels and prints tracing the only American member of the French Impressionist circle.",url:"https://www.musee-orsay.fr"},
-  {id:14,title:"Henri Rousseau — The Ambition of Painting",venue:"Musée de l'Orangerie",city:"Paris",country:"France",dates:"25 Mar – 20 Jul 2026",tag:"Post-Impressionism",must:true,end:"2026-07-20",verified:"Jun 2026",desc:"50 major works by the self-taught master, including works never before shown. Co-produced with the Barnes Foundation. Closes soon — do not miss.",url:"https://www.musee-orangerie.fr"},
-  {id:15,title:"Beyond the Streets",venue:"Grande Halle de la Villette",city:"Paris",country:"France",dates:"27 May – 30 Aug 2026",tag:"Street Art",must:true,end:"2026-08-30",verified:"Jun 2026",desc:"120+ artists from 30 countries. 3,600m² of murals, site-specific works and installations. The world's most important street art exhibition comes to Paris.",url:"https://www.villette.com"},
-  {id:16,title:"Pierre Huyghe",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"24 May – 13 Sep 2026",tag:"Contemporary Art",must:false,end:"2026-09-13",verified:"Jun 2026",desc:"Major solo show by one of the most important conceptual artists of his generation. Immersive works exploring ecology, memory and non-human intelligence.",url:"https://www.fondationbeyeler.ch"},
-  {id:17,title:"Chiaroscuro — Light and Shadow",venue:"Bourse de Commerce — Pinault Collection",city:"Paris",country:"France",dates:"Until 24 Aug 2026",tag:"Contemporary Art",must:false,end:"2026-08-24",verified:"Jun 2026",desc:"Works by Bill Viola, Pierre Huyghe and Victor Man exploring light and darkness in contemporary art. The Pinault Collection at its most atmospheric.",url:"https://www.pinaultcollection.com"},
-  {id:18,title:"Baroque Splendors — El Greco to Velázquez",venue:"Musée Jacquemart-André",city:"Paris",country:"France",dates:"26 Mar – 2 Aug 2026",tag:"Baroque",must:false,end:"2026-08-02",verified:"Jun 2026",desc:"40 masterpieces from the Hispanic Society of America shown in France for the first time. Velázquez, El Greco and Zurbarán in magnificent 19th century salons.",url:"https://www.musee-jacquemart-andre.com"},
-  {id:19,title:"Renoir and Love",venue:"Musée d'Orsay",city:"Paris",country:"France",dates:"17 Mar – 19 Jul 2026",tag:"Impressionism",must:false,end:"2026-07-19",verified:"Jun 2026",desc:"Renoir's exploration of love and human relationships, 1865–1885. Co-organised with the National Gallery London and the Museum of Fine Arts Boston.",url:"https://www.musee-orsay.fr"},
-  {id:20,title:"JR — Pont Neuf",venue:"Pont Neuf",city:"Paris",country:"France",dates:"Until Sep 2026",tag:"Street Art",must:false,end:"2026-09-30",verified:"Jun 2026",desc:"JR covers Paris's oldest bridge with a monumental installation combining limestone imagery, sound and augmented reality. Free and unmissable.",url:"https://jr-art.net"},
-  {id:21,title:"Zurbarán",venue:"National Gallery",city:"London",country:"UK",dates:"Summer 2026",tag:"Old Masters",must:false,end:"2026-09-30",verified:"Jun 2026",desc:"The first major exhibition dedicated to Francisco de Zurbarán in the UK. Around 50 paintings offering a definitive account of the great Spanish Baroque master.",url:"https://www.nationalgallery.org.uk"},
-  {id:22,title:"Lee Krasner",venue:"Gagosian",city:"Paris",country:"France",dates:"19 Oct – 18 Dec 2026",tag:"Abstract Exp.",must:false,end:"2026-12-18",verified:"Jun 2026",desc:"Major presentation of Lee Krasner's work at Gagosian Paris. Long overshadowed by Pollock, Krasner is finally receiving the institutional recognition she deserves.",url:"https://www.gagosian.com"},
-  {id:23,title:"Sterling Ruby — Till Death Do Us Part",venue:"Gagosian",city:"Paris",country:"France",dates:"12 Jun – 3 Oct 2026",tag:"Contemporary Art",must:false,end:"2026-10-03",verified:"Jun 2026",desc:"New works by Sterling Ruby exploring ritual, violence and American mythology. One of the most compelling painters working today.",url:"https://www.gagosian.com"},
+  {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"Jun 2026",desc:"Over 230 works from Matisse's final period including the monumental cut-outs and the Jazz book. A landmark retrospective at the newly reopened Grand Palais.",url:"https://www.grandpalais.fr"},
+  {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini and Arsenale",city:"Venice",country:"Italy",dates:"10 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"Jun 2026",desc:"Curated by the late Koyo Kouoh - the first African woman in the role. 90 countries, 110 artists. The most important contemporary art event of 2026.",url:"https://www.labiennale.org"},
+  {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 4 Jan 2027",tag:"Painting",must:true,end:"2027-01-04",verified:"Jun 2026",desc:"The most comprehensive Frida Kahlo retrospective ever staged in Europe. Over 130 works tracing her life, politics and enduring visual power.",url:"https://www.tate.org.uk"},
+  {id:4,title:"Rothko in Florence",venue:"Palazzo Strozzi",city:"Florence",country:"Italy",dates:"14 Mar - 23 Aug 2026",tag:"Abstract Exp.",must:true,end:"2026-08-23",verified:"Jun 2026",desc:"70+ works tracing Rothko's entire career, shown in dialogue with Fra Angelico's frescoes at Museo di San Marco. A rare and extraordinary pairing.",url:"https://www.palazzostrozzi.org"},
+  {id:5,title:"Marina Abramovic - Transforming Energy",venue:"Gallerie dell'Accademia",city:"Venice",country:"Italy",dates:"6 May - 19 Oct 2026",tag:"Performance Art",must:true,end:"2026-10-19",verified:"Jun 2026",desc:"First living female artist to have a major solo show at the Gallerie dell'Accademia. New works alongside Renaissance masterpieces, coinciding with her 80th birthday.",url:"https://www.gallerieaccademia.it"},
+  {id:6,title:"Tracey Emin - 40 Years",venue:"Tate Modern",city:"London",country:"UK",dates:"1 May - 31 Aug 2026",tag:"Contemporary Art",must:false,end:"2026-08-31",verified:"Jun 2026",desc:"The most comprehensive retrospective of Emin's career. 90+ works spanning 40 years including My Bed, neon works and new commissions.",url:"https://www.tate.org.uk"},
+  {id:7,title:"Alexander Calder - Centenary",venue:"Fondation Louis Vuitton",city:"Paris",country:"France",dates:"Until Oct 2026",tag:"Sculpture",must:true,end:"2026-10-31",verified:"Jun 2026",desc:"Celebrating 100 years since Calder's arrival in France. The most comprehensive exhibition of his mobiles and kinetic works ever assembled in Europe.",url:"https://www.fondationlouisvuitton.fr"},
+  {id:8,title:"Lee Miller - War Photographer",venue:"Musee d'Art Moderne de Paris",city:"Paris",country:"France",dates:"10 Apr - 2 Aug 2026",tag:"Photography",must:true,end:"2026-08-02",verified:"Jun 2026",desc:"250 works retracing Lee Miller's career in fashion, surrealism and war photography. Co-produced with Tate Britain and the Art Institute of Chicago.",url:"https://www.mam.paris.fr"},
+  {id:9,title:"Ana Mendieta",venue:"Tate Modern",city:"London",country:"UK",dates:"15 Jul 2026 - 17 Jan 2027",tag:"Contemporary Art",must:false,end:"2027-01-17",verified:"Jun 2026",desc:"The first major UK retrospective of Ana Mendieta's groundbreaking earth-body works. A long-overdue celebration of one of the most radical artists of the 20th century.",url:"https://www.tate.org.uk"},
+  {id:10,title:"Anish Kapoor",venue:"Hayward Gallery",city:"London",country:"UK",dates:"16 Jun - 18 Oct 2026",tag:"Sculpture",must:false,end:"2026-10-18",verified:"Jun 2026",desc:"Major survey of Kapoor's monumental sculptures exploring void, mass and the uncanny. Highlights include Mount Moriah at the Gate of the Ghetto.",url:"https://www.southbankcentre.co.uk"},
+  {id:11,title:"Lucian Freud - Drawing into Painting",venue:"Louisiana Museum of Modern Art",city:"Copenhagen",country:"Denmark",dates:"11 Jun - 27 Sep 2026",tag:"Drawing",must:false,end:"2026-09-27",verified:"Jun 2026",desc:"Freud's obsession with the human figure explored through drawings and paintings. Travelling from London's National Portrait Gallery.",url:"https://www.louisiana.dk"},
+  {id:12,title:"Bayeux Tapestry",venue:"British Museum",city:"London",country:"UK",dates:"Sep 2026 - Jan 2027",tag:"Medieval Art",must:true,end:"2027-01-31",verified:"Jun 2026",desc:"The 70-metre Bayeux Tapestry leaves France for the first time in almost 1000 years. The most significant loan in British Museum history.",url:"https://www.britishmuseum.org"},
+  {id:13,title:"Mary Cassatt - An American in Paris",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"6 Oct 2026 - 31 Jan 2027",tag:"Impressionism",must:false,end:"2027-01-31",verified:"Jun 2026",desc:"Marking 100 years since her death. 80 paintings, pastels and prints tracing the only American member of the French Impressionist circle.",url:"https://www.musee-orsay.fr"},
+  {id:14,title:"Henri Rousseau - The Ambition of Painting",venue:"Musee de l'Orangerie",city:"Paris",country:"France",dates:"25 Mar - 20 Jul 2026",tag:"Post-Impressionism",must:true,end:"2026-07-20",verified:"Jun 2026",desc:"50 major works by the self-taught master, including works never before shown. Co-produced with the Barnes Foundation. Closes soon - do not miss.",url:"https://www.musee-orangerie.fr"},
+  {id:15,title:"Beyond the Streets",venue:"Grande Halle de la Villette",city:"Paris",country:"France",dates:"27 May - 30 Aug 2026",tag:"Street Art",must:true,end:"2026-08-30",verified:"Jun 2026",desc:"120+ artists from 30 countries. 3,600m2 of murals, site-specific works and installations. The world's most important street art exhibition comes to Paris.",url:"https://www.villette.com"},
+  {id:16,title:"Pierre Huyghe",venue:"Fondation Beyeler",city:"Basel",country:"Switzerland",dates:"24 May - 13 Sep 2026",tag:"Contemporary Art",must:false,end:"2026-09-13",verified:"Jun 2026",desc:"Major solo show by one of the most important conceptual artists of his generation. Immersive works exploring ecology, memory and non-human intelligence.",url:"https://www.fondationbeyeler.ch"},
+  {id:17,title:"Chiaroscuro - Light and Shadow",venue:"Bourse de Commerce - Pinault Collection",city:"Paris",country:"France",dates:"Until 24 Aug 2026",tag:"Contemporary Art",must:false,end:"2026-08-24",verified:"Jun 2026",desc:"Works by Bill Viola, Pierre Huyghe and Victor Man exploring light and darkness in contemporary art. The Pinault Collection at its most atmospheric.",url:"https://www.pinaultcollection.com"},
+  {id:18,title:"Baroque Splendors - El Greco to Velazquez",venue:"Musee Jacquemart-Andre",city:"Paris",country:"France",dates:"26 Mar - 2 Aug 2026",tag:"Baroque",must:false,end:"2026-08-02",verified:"Jun 2026",desc:"40 masterpieces from the Hispanic Society of America shown in France for the first time. Velazquez, El Greco and Zurbaran in magnificent 19th century salons.",url:"https://www.musee-jacquemart-andre.com"},
+  {id:19,title:"Renoir and Love",venue:"Musee d'Orsay",city:"Paris",country:"France",dates:"17 Mar - 19 Jul 2026",tag:"Impressionism",must:false,end:"2026-07-19",verified:"Jun 2026",desc:"Renoir's exploration of love and human relationships, 1865-1885. Co-organised with the National Gallery London and the Museum of Fine Arts Boston.",url:"https://www.musee-orsay.fr"},
+  {id:20,title:"JR - Pont Neuf",venue:"Pont Neuf",city:"Paris",country:"France",dates:"Until Sep 2026",tag:"Street Art",must:false,end:"2026-09-30",verified:"Jun 2026",desc:"JR covers Paris's oldest bridge with a monumental installation combining limestone imagery, sound and augmented reality. Free and unmissable.",url:"https://jr-art.net"},
+  {id:21,title:"Zurbaran",venue:"National Gallery",city:"London",country:"UK",dates:"Summer 2026",tag:"Old Masters",must:false,end:"2026-09-30",verified:"Jun 2026",desc:"The first major exhibition dedicated to Francisco de Zurbaran in the UK. Around 50 paintings offering a definitive account of the great Spanish Baroque master.",url:"https://www.nationalgallery.org.uk"},
+  {id:22,title:"Lee Krasner",venue:"Gagosian",city:"Paris",country:"France",dates:"19 Oct - 18 Dec 2026",tag:"Abstract Exp.",must:false,end:"2026-12-18",verified:"Jun 2026",desc:"Major presentation of Lee Krasner's work at Gagosian Paris. Long overshadowed by Pollock, Krasner is finally receiving the institutional recognition she deserves.",url:"https://www.gagosian.com"},
+  {id:23,title:"Sterling Ruby - Till Death Do Us Part",venue:"Gagosian",city:"Paris",country:"France",dates:"12 Jun - 3 Oct 2026",tag:"Contemporary Art",must:false,end:"2026-10-03",verified:"Jun 2026",desc:"New works by Sterling Ruby exploring ritual, violence and American mythology. One of the most compelling painters working today.",url:"https://www.gagosian.com"},
   {id:24,title:"Sophie Calle",venue:"Hamburger Bahnhof",city:"Berlin",country:"Germany",dates:"Nov 2026",tag:"Contemporary Art",must:false,end:"2027-01-31",verified:"Jun 2026",desc:"Major solo show by Sophie Calle at Berlin's contemporary art museum, marking the institution's 30th anniversary. New works play with the building's history as a train station.",url:"https://www.smb.museum"},
-  {id:25,title:"Laure Prouvost — We, Shivers of Stars",venue:"Grand Palais",city:"Paris",country:"France",dates:"Until Jul 2026",tag:"Contemporary Art",must:false,end:"2026-07-31",verified:"Jun 2026",desc:"Immersive installation by Turner Prize winner Laure Prouvost filling the nave of the Grand Palais. A sensory journey through language, desire and collective memory.",url:"https://www.grandpalais.fr"},
-  {id:26,title:"Ewa Juszkiewicz",venue:"Thyssen-Bornemisza Museum",city:"Madrid",country:"Spain",dates:"26 May – 6 Sep 2026",tag:"Painting",must:false,end:"2026-09-06",verified:"Jun 2026",desc:"First major museum retrospective of the Polish painter known for obscured female portraits. A dialogue between Old Masters and contemporary feminist painting.",url:"https://www.museothyssen.org"}
+  {id:25,title:"Laure Prouvost - We, Shivers of Stars",venue:"Grand Palais",city:"Paris",country:"France",dates:"Until Jul 2026",tag:"Contemporary Art",must:false,end:"2026-07-31",verified:"Jun 2026",desc:"Immersive installation by Turner Prize winner Laure Prouvost filling the nave of the Grand Palais. A sensory journey through language, desire and collective memory.",url:"https://www.grandpalais.fr"},
+  {id:26,title:"Ewa Juszkiewicz",venue:"Thyssen-Bornemisza Museum",city:"Madrid",country:"Spain",dates:"26 May - 6 Sep 2026",tag:"Painting",must:false,end:"2026-09-06",verified:"Jun 2026",desc:"First major museum retrospective of the Polish painter known for obscured female portraits. A dialogue between Old Masters and contemporary feminist painting.",url:"https://www.museothyssen.org"}
 ];
+
 var OPP=[
   {id:1,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Spring cycle open May 1 - July 15. Uninterrupted time on 20,000 Wyoming acres. Studio, housing and meals included. All disciplines welcome.",url:"https://ucross.org"},
   {id:2,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",iso:"2026-05-31",type:"Grant",award:"$10,000",country:"International",urgent:true,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes. 2-5 week stay at Oak Spring, Virginia.",url:"https://osgf.org"},
@@ -415,251 +397,238 @@ var OPP=[
   {id:9,title:"DongGang International Photo Festival",org:"DongGang Photo Festival",deadline:"Jun 2026",iso:"2026-06-30",type:"Open Call",award:"Exhibition in Korea",country:"South Korea",urgent:false,desc:"24th edition. Theme: The Silence that Shapes. Work exhibited across the festival run in South Korea, July to October 2026.",url:"https://dgphoto.kr"},
   {id:10,title:"Rele Arts Foundation",org:"Rele Arts Foundation",deadline:"Jul 2026",iso:"2026-07-31",type:"Residency",award:"Residency + exhibition",country:"Nigeria",urgent:false,desc:"For African and Diaspora visual artists. 2027 edition - apply July 2026. One of the most competitive opportunities on the continent.",url:"https://releartsfoundation.org"},
   {id:11,title:"Pollock-Krasner Foundation Grant",org:"Pollock-Krasner Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $50,000",country:"International",urgent:false,desc:"For painters, sculptors and printmakers in financial hardship or needing to complete a body of work.",url:"https://pkf.org"},
-  {id:12,title:"Gottlieb Foundation Emergency Grant",org:"Adolph & Esther Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
+  {id:12,title:"Gottlieb Foundation Emergency Grant",org:"Adolph and Esther Gottlieb Foundation",deadline:"Rolling",iso:null,type:"Grant",award:"Up to $15,000",country:"International",urgent:false,desc:"One-time grant for artists facing catastrophic unforeseen events. Response within 8-10 weeks.",url:"https://gottliebfoundation.org"},
   {id:13,title:"Anderson Center Residency",org:"Anderson Center",deadline:"Rolling",iso:null,type:"Residency",award:"Live/work + meals",country:"USA",urgent:false,desc:"Interdisciplinary residencies June, July, August and October 2026. Five-artist cohort in Red Wing, Minnesota.",url:"https://andersoncenter.org"},
   {id:14,title:"Sharpe-Walentas Studio Program",org:"Sharpe-Walentas",deadline:"Rolling",iso:null,type:"Residency",award:"Free studio 11 months",country:"USA",urgent:false,desc:"Rent-free studio in Brooklyn for 11 months. For professional visual artists aged 21+, US residents.",url:"https://studioprogram.org"},
   {id:15,title:"De Ateliers Amsterdam",org:"De Ateliers",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + tutoring",country:"Netherlands",urgent:false,desc:"Two-year post-academic program in Amsterdam with weekly studio conversations with international tutors.",url:"https://de-ateliers.nl"},
   {id:16,title:"Kala Art Institute Residency",org:"Kala Art Institute",deadline:"Rolling",iso:null,type:"Residency",award:"Subsidised studio",country:"USA",urgent:false,desc:"Subsidised residencies and fully funded fellowships. Berkeley, California. One of the USA's most respected printmaking centres.",url:"https://kala.org"},
   {id:17,title:"Goethe-Institut Mobility Grants",org:"Goethe-Institut",deadline:"Rolling",iso:null,type:"Grant",award:"Mobility funding",country:"International",urgent:false,desc:"For artists and cultural professionals working between Sub-Saharan Africa and Europe. Rolling applications via national offices.",url:"https://goethe.de"},
-  {id:18,title:"Craft 1o1 Summer Program",org:"Arts Letters & Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
+  {id:18,title:"Craft 1o1 Summer Program",org:"Arts Letters and Numbers",deadline:"Rolling",iso:null,type:"Residency",award:"Programme access",country:"USA",urgent:false,desc:"Cross-disciplinary summer programme July 1 - August 30, 2026. Visual arts, humanities, performing arts. Averill Park, New York.",url:"https://artslettersandnumbers.com"},
   {id:19,title:"Kyoto Retreat",org:"Creative Capital",deadline:"Rolling",iso:null,type:"Residency",award:"Flights + $800 stipend",country:"Japan",urgent:false,desc:"Four weeks in Kyoto for research and inspiration. Roundtrip flight and $800 USD stipend included.",url:"https://creative-capital.org"},
   {id:20,title:"Proyecto ace Micro-Residencies",org:"Proyecto ace",deadline:"Rolling",iso:null,type:"Residency",award:"Studio + support",country:"Argentina",urgent:false,desc:"Year-round micro-residencies in Buenos Aires. Production, Exploration and Micro formats. Open calls four times a year.",url:"https://proyectoace.org"}
 ,
-  {id:22,title:"PitturiAmo — ArTour Exhibition Programme",org:"PitturiAmo",deadline:"Rolling",iso:null,type:"Open Call",award:"Gallery exhibitions + online visibility",country:"Italy / International",urgent:false,desc:"Exhibition programme placing artists in galleries across Rome, Milan, Naples, Cannes and beyond. Physical exhibition plus 12 months online visibility across the PitturiAmo network. Note: participation fee applies. Free membership available.",url:"https://www.pitturiamo.it/artour-en/"}
+  {id:22,title:"PitturiAmo - ArTour Exhibition Programme",org:"PitturiAmo",deadline:"Rolling",iso:null,type:"Open Call",award:"Gallery exhibitions + online visibility",country:"Italy / International",urgent:false,desc:"Exhibition programme placing artists in galleries across Rome, Milan, Naples, Cannes and beyond. Physical exhibition plus 12 months online visibility across the PitturiAmo network. Note: participation fee applies. Free membership available.",url:"https://www.pitturiamo.it/artour-en/"}
 ];
 
-// ── DATA FILTERING ──
+
 var today = new Date();
 var LIVE_EXH = EXH.filter(function(e){ return !e.end || new Date(e.end) >= today; });
 var LIVE_OPP = OPP.filter(function(o){ return !o.iso || new Date(o.iso) >= today; });
 
-// ── NAVIGATION ──
-function go(page){
-  var ids = ['p-home','p-exh','p-opp','p-about','p-legal'];
-  var j;
-  for(j=0;j<ids.length;j++){
-    var el = document.getElementById(ids[j]);
-    if(el) el.style.display='none';
-  }
-  var map = {home:'p-home',exh:'p-exh',opp:'p-opp',about:'p-about',legal:'p-legal'};
-  var target = document.getElementById(map[page]);
-  if(target) target.style.display='block';
-
-  var navs = document.querySelectorAll('.nav-link');
-  for(j=0;j<navs.length;j++) navs[j].classList.remove('active');
-  var nl = document.getElementById('nl-'+page);
-  if(nl) nl.classList.add('active');
-
-  document.documentElement.scrollTop=0;
-  document.body.scrollTop=0;
-
-  if(page==='home') renderHome();
-  else if(page==='exh') renderExh(LIVE_EXH, null);
-  else if(page==='opp') renderOpp(LIVE_OPP, null);
-  revealAll();
-}
-
-// ── SCROLL REVEAL ──
-function revealAll(){
-  setTimeout(function(){
-    var els = document.querySelectorAll('.reveal');
-    for(var j=0;j<els.length;j++) els[j].classList.add('visible');
-  },100);
-}
-window.addEventListener('scroll',function(){
-  var els = document.querySelectorAll('.reveal');
-  for(var j=0;j<els.length;j++){
-    var r = els[j].getBoundingClientRect();
-    if(r.top < window.innerHeight - 60) els[j].classList.add('visible');
-  }
-});
-
-// ── DAYS LEFT ──
 function daysLeft(iso){
   if(!iso) return null;
-  return Math.round((new Date(iso)-today)/(1000*60*60*24));
+  return Math.round((new Date(iso) - today) / 86400000);
 }
 
-// ── EXH ROW ──
 function exhRow(e, compact){
   var dl = daysLeft(e.end);
-  var closingSoon = (dl!==null && dl<=14) ? '<div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:#3a0c0c;margin-top:4px">Closing soon</div>' : '';
-  var badge = e.must ? '<div class="exh-must">Must&ndash;see</div>' : '<div class="exh-tag-pill">'+e.tag+'</div>';
+  var badge = e.must ? '<div class="exh-must">Must-see</div>' : '<div class="exh-tag-pill">'+e.tag+'</div>';
   var desc = compact ? '' : '<div class="exh-desc">'+e.desc+'</div>';
-  return '<div class="exh-row" onclick="openExh('+e.id+')">'
-    +'<div class="exh-left">'
-    +'<div class="exh-city">'+e.city+'</div>'
-    +'<div class="exh-venue">'+e.venue+'</div>'
-    +badge
-    +'</div>'
-    +'<div class="exh-mid">'
-    +'<div class="exh-title">'+e.title+'</div>'
-    +desc
-    +'</div>'
-    +'<div class="exh-right">'
-    +'<div class="exh-dates">'+e.dates+'</div>'
-    +closingSoon
-    +'<div class="exh-arrow">&rarr;</div>'
-    +'</div>'
-    +'</div>';
+  var soon = (dl !== null && dl <= 14) ? '<div style="font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;color:#3a0c0c;margin-top:4px">Closing soon</div>' : '';
+  return '<div class="exh-row" data-exh="'+e.id+'">'
+    + '<div class="exh-left"><div class="exh-city">'+e.city+'</div><div class="exh-venue">'+e.venue+'</div>'+badge+'</div>'
+    + '<div class="exh-mid"><div class="exh-title">'+e.title+'</div>'+desc+'</div>'
+    + '<div class="exh-right"><div class="exh-dates">'+e.dates+'</div>'+soon+'<div class="exh-arrow">&#8594;</div></div>'
+    + '</div>';
 }
 
-// ── OPP ROW (desktop) ──
 function oppRow(o){
-  var dlClass = o.deadline==='Rolling' ? 'rolling' : o.urgent ? 'soon' : 'normal';
-  return '<div class="opp-row" onclick="openOpp('+o.id+')">'
-    +'<div><div class="opp-title">'+o.title+'</div><div class="opp-title-sub">'+o.org+'</div></div>'
-    +'<div class="opp-type">'+o.type+'</div>'
-    +'<div class="opp-award">'+o.award+'</div>'
-    +'<div class="opp-dl '+dlClass+'">'+o.deadline+'</div>'
-    +'</div>';
+  var cls = o.deadline==='Rolling' ? 'rolling' : o.urgent ? 'soon' : 'normal';
+  return '<div class="opp-row" data-opp="'+o.id+'">'
+    + '<div><div class="opp-title">'+o.title+'</div><div class="opp-title-sub">'+o.org+'</div></div>'
+    + '<div class="opp-type">'+o.type+'</div>'
+    + '<div class="opp-award">'+o.award+'</div>'
+    + '<div class="opp-dl '+cls+'">'+o.deadline+'</div>'
+    + '</div>';
 }
 
-// ── OPP CARD (mobile) ──
 function oppMob(o){
-  var dlClass = o.deadline==='Rolling' ? 'rolling' : o.urgent ? 'soon' : 'normal';
-  return '<div class="opp-card-mob" onclick="openOpp('+o.id+')">'
-    +'<div class="opp-card-mob-top">'
-    +'<div class="opp-card-mob-title">'+o.title+'</div>'
-    +'<div class="opp-card-mob-dl '+dlClass+'">'+o.deadline+'</div>'
-    +'</div>'
-    +'<div class="opp-card-mob-foot">'
-    +'<div class="opp-card-mob-org">'+o.org+'</div>'
-    +'<div class="opp-card-mob-type">'+o.type+'</div>'
-    +'</div>'
-    +'</div>';
+  var cls = o.deadline==='Rolling' ? 'rolling' : o.urgent ? 'soon' : 'normal';
+  return '<div class="opp-card-mob" data-opp="'+o.id+'">'
+    + '<div class="opp-card-mob-top"><div class="opp-card-mob-title">'+o.title+'</div><div class="opp-card-mob-dl '+cls+'">'+o.deadline+'</div></div>'
+    + '<div class="opp-card-mob-foot"><div class="opp-card-mob-org">'+o.org+'</div><div class="opp-card-mob-type">'+o.type+'</div></div>'
+    + '</div>';
 }
 
-// ── RENDER HOME ──
+function showPage(page){
+  var pids = ['p-home','p-exh','p-opp','p-about','p-legal'];
+  var i;
+  for(i=0;i<pids.length;i++){
+    var el = document.getElementById(pids[i]);
+    if(el) el.style.display = 'none';
+  }
+  var t = document.getElementById('p-'+page);
+  if(t) t.style.display = 'block';
+
+  var nids = ['nl-home','nl-exh','nl-opp','nl-about'];
+  for(i=0;i<nids.length;i++){
+    var n = document.getElementById(nids[i]);
+    if(n) n.classList.remove('active');
+  }
+  var a = document.getElementById('nl-'+page);
+  if(a) a.classList.add('active');
+
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  if(page==='exh') renderExh(null);
+  else if(page==='opp') renderOpp(null);
+  else if(page==='home') renderHome();
+}
+
 function renderHome(){
   var must = LIVE_EXH.filter(function(e){return e.must;}).slice(0,4);
-  var hmust = document.getElementById('home-must');
-  if(hmust) hmust.innerHTML = must.map(function(e){return exhRow(e,true);}).join('');
+  var hm = document.getElementById('home-must');
+  if(hm) hm.innerHTML = must.map(function(e){return exhRow(e,true);}).join('');
 
-  var sorted = LIVE_OPP.filter(function(o){return o.iso;}).slice();
-  sorted.sort(function(a,b){return new Date(a.iso)-new Date(b.iso);});
-  var top4 = sorted.slice(0,4);
-
-  var hopp = document.getElementById('home-opp-list');
-  if(hopp) hopp.innerHTML = top4.map(function(o){return oppRow(o);}).join('');
-  var hmob = document.getElementById('home-opp-mob');
-  if(hmob) hmob.innerHTML = top4.map(function(o){return oppMob(o);}).join('');
+  var s = LIVE_OPP.filter(function(o){return o.iso;}).slice().sort(function(a,b){return new Date(a.iso)-new Date(b.iso);}).slice(0,4);
+  var ho = document.getElementById('home-opp-list');
+  if(ho) ho.innerHTML = s.map(oppRow).join('');
+  var hm2 = document.getElementById('home-opp-mob');
+  if(hm2) hm2.innerHTML = s.map(oppMob).join('');
 }
 
-// ── RENDER EXHIBITIONS ──
-function renderExh(data, filter){
-  var citySet={};
-  data.forEach(function(e){citySet[e.city]=1;});
-  var cities=['All'].concat(Object.keys(citySet).sort());
-  var btns='';
-  cities.forEach(function(city){
-    var active = (filter===city || (city==='All' && !filter)) ? ' active' : '';
-    var label = city==='All' ? 'All cities' : city;
-    btns += '<button class="filter-btn'+active+'" data-city="'+city+'">'+label+'</button>';
-  });
+function renderExh(filter){
+  var citySet = {};
+  LIVE_EXH.forEach(function(e){ citySet[e.city]=1; });
+  var cities = ['All'].concat(Object.keys(citySet).sort());
   var ef = document.getElementById('exh-filters');
   if(ef){
-    ef.innerHTML = btns;
-    ef.onclick = function(ev){
-      var btn = ev.target;
-      if(!btn || btn.tagName !== 'BUTTON') return;
-      var city = btn.getAttribute('data-city');
-      renderExh(LIVE_EXH, city==='All' ? null : city);
-    };
+    ef.innerHTML = cities.map(function(city){
+      var a = (!filter&&city==='All')||(filter===city) ? ' active':'';
+      return '<button class="filter-btn'+a+'" data-city="'+(city==='All'?'':city)+'">'+(city==='All'?'All cities':city)+'</button>';
+    }).join('');
   }
-  var filtered = filter ? data.filter(function(e){return e.city===filter;}) : data;
+  var filtered = filter ? LIVE_EXH.filter(function(e){return e.city===filter;}) : LIVE_EXH;
   var ec = document.getElementById('exh-count');
   if(ec) ec.textContent = filtered.length+' exhibitions';
   var el = document.getElementById('exh-list');
   if(el) el.innerHTML = filtered.map(function(e){return exhRow(e,false);}).join('');
-  revealAll();
 }
 
-// ── RENDER OPPORTUNITIES ──
-function renderOpp(data, filter){
-  var typeSet={};
-  data.forEach(function(o){typeSet[o.type]=1;});
-  var types=['All'].concat(Object.keys(typeSet).sort());
-  var btns='';
-  types.forEach(function(t){
-    var active = (filter===t || (t==='All' && !filter)) ? ' active' : '';
-    var label = t==='All' ? 'All types' : t;
-    btns += '<button class="filter-btn'+active+'" data-type="'+t+'">'+label+'</button>';
-  });
+function renderOpp(filter){
+  var typeSet = {};
+  LIVE_OPP.forEach(function(o){ typeSet[o.type]=1; });
+  var types = ['All'].concat(Object.keys(typeSet).sort());
   var of = document.getElementById('opp-filters');
   if(of){
-    of.innerHTML = btns;
-    of.onclick = function(ev){
-      var btn = ev.target;
-      if(!btn || btn.tagName !== 'BUTTON') return;
-      var t = btn.getAttribute('data-type');
-      renderOpp(LIVE_OPP, t==='All' ? null : t);
-    };
+    of.innerHTML = types.map(function(t){
+      var a = (!filter&&t==='All')||(filter===t) ? ' active':'';
+      return '<button class="filter-btn'+a+'" data-type="'+(t==='All'?'':t)+'">'+(t==='All'?'All types':t)+'</button>';
+    }).join('');
   }
-  var filtered = filter ? data.filter(function(o){return o.type===filter;}) : data;
+  var filtered = filter ? LIVE_OPP.filter(function(o){return o.type===filter;}) : LIVE_OPP;
   var oc = document.getElementById('opp-count');
   if(oc) oc.textContent = filtered.length+' opportunities';
   var ol = document.getElementById('opp-list');
-  if(ol) ol.innerHTML = filtered.map(function(o){return oppRow(o);}).join('');
+  if(ol) ol.innerHTML = filtered.map(oppRow).join('');
   var om = document.getElementById('opp-mob-list');
-  if(om) om.innerHTML = filtered.map(function(o){return oppMob(o);}).join('');
-  revealAll();
+  if(om) om.innerHTML = filtered.map(oppMob).join('');
 }
 
-// ── OPEN EXHIBITION MODAL ──
-function openExh(id){
-  var e = null;
-  for(var j=0;j<EXH.length;j++){ if(EXH[j].id===id){e=EXH[j];break;} }
-  if(!e) return;
-  document.getElementById('modal-eyebrow').textContent = e.city+' · '+e.country;
-  document.getElementById('modal-title').textContent = e.title;
-  document.getElementById('modal-meta').innerHTML =
-    '<div class="modal-meta-item"><label>Venue</label><span>'+e.venue+'</span></div>'
-    +'<div class="modal-meta-item"><label>Dates</label><span>'+e.dates+'</span></div>'
-    +'<div class="modal-meta-item"><label>Category</label><span>'+e.tag+'</span></div>'
-    +'<div class="modal-meta-item"><label>Verified</label><span>'+e.verified+'</span></div>';
-  document.getElementById('modal-desc').textContent = e.desc;
-  var mb = document.getElementById('modal-btn');
-  mb.textContent = 'Visit exhibition →';
-  mb.onclick = function(){ window.open(e.url,'_blank'); };
-  document.getElementById('overlay').style.display='flex';
-  document.body.style.overflow='hidden';
+function openModal(type, id){
+  var overlay = document.getElementById('overlay');
+  if(!overlay) return;
+  var item = null;
+  var i;
+  if(type==='exh'){
+    for(i=0;i<EXH.length;i++){ if(EXH[i].id===id){item=EXH[i];break;} }
+    if(!item) return;
+    document.getElementById('modal-eyebrow').textContent = item.city+' - '+item.country;
+    document.getElementById('modal-title').textContent = item.title;
+    document.getElementById('modal-meta').innerHTML =
+      '<div class="modal-meta-item"><label>Venue</label><span>'+item.venue+'</span></div>'
+      +'<div class="modal-meta-item"><label>Dates</label><span>'+item.dates+'</span></div>'
+      +'<div class="modal-meta-item"><label>Category</label><span>'+item.tag+'</span></div>'
+      +'<div class="modal-meta-item"><label>Verified</label><span>'+item.verified+'</span></div>';
+    document.getElementById('modal-desc').textContent = item.desc;
+    document.getElementById('modal-action-btn').textContent = 'Visit exhibition';
+    document.getElementById('modal-action-btn').setAttribute('data-url', item.url);
+  } else {
+    for(i=0;i<OPP.length;i++){ if(OPP[i].id===id){item=OPP[i];break;} }
+    if(!item) return;
+    document.getElementById('modal-eyebrow').textContent = item.type+' - '+item.country;
+    document.getElementById('modal-title').textContent = item.title;
+    document.getElementById('modal-meta').innerHTML =
+      '<div class="modal-meta-item"><label>Organisation</label><span>'+item.org+'</span></div>'
+      +'<div class="modal-meta-item"><label>Deadline</label><span>'+item.deadline+'</span></div>'
+      +'<div class="modal-meta-item"><label>Award</label><span>'+item.award+'</span></div>'
+      +'<div class="modal-meta-item"><label>Type</label><span>'+item.type+'</span></div>';
+    document.getElementById('modal-desc').textContent = item.desc;
+    document.getElementById('modal-action-btn').textContent = 'Apply now';
+    document.getElementById('modal-action-btn').setAttribute('data-url', item.url);
+  }
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
 }
 
-// ── OPEN OPPORTUNITY MODAL ──
-function openOpp(id){
-  var o = null;
-  for(var j=0;j<OPP.length;j++){ if(OPP[j].id===id){o=OPP[j];break;} }
-  if(!o) return;
-  document.getElementById('modal-eyebrow').textContent = o.type+' · '+o.country;
-  document.getElementById('modal-title').textContent = o.title;
-  document.getElementById('modal-meta').innerHTML =
-    '<div class="modal-meta-item"><label>Organisation</label><span>'+o.org+'</span></div>'
-    +'<div class="modal-meta-item"><label>Deadline</label><span>'+o.deadline+'</span></div>'
-    +'<div class="modal-meta-item"><label>Award</label><span>'+o.award+'</span></div>'
-    +'<div class="modal-meta-item"><label>Type</label><span>'+o.type+'</span></div>';
-  document.getElementById('modal-desc').textContent = o.desc;
-  var mb = document.getElementById('modal-btn');
-  mb.textContent = 'Apply now →';
-  mb.onclick = function(){ window.open(o.url,'_blank'); };
-  document.getElementById('overlay').style.display='flex';
-  document.body.style.overflow='hidden';
-}
-
-// ── CLOSE MODAL ──
 function closeModal(){
-  document.getElementById('overlay').style.display='none';
-  document.body.style.overflow='';
+  var overlay = document.getElementById('overlay');
+  if(overlay) overlay.style.display = 'none';
+  document.body.style.overflow = '';
 }
-document.getElementById('overlay').addEventListener('click',function(ev){
-  if(ev.target===this) closeModal();
+
+// ALL CLICK EVENTS - single listener, no inline onclick
+document.addEventListener('click', function(ev){
+  var t = ev.target;
+
+  // Nav links
+  if(t.id==='nl-home'||t.id==='btn-home-logo') { showPage('home'); return; }
+  if(t.id==='nl-exh') { showPage('exh'); return; }
+  if(t.id==='nl-opp') { showPage('opp'); return; }
+  if(t.id==='nl-about') { showPage('about'); return; }
+
+  // Hero buttons
+  if(t.id==='btn-exh') { showPage('exh'); return; }
+  if(t.id==='btn-opp') { showPage('opp'); return; }
+  if(t.id==='btn-all-opp') { showPage('opp'); return; }
+
+  // Footer links
+  if(t.id==='ft-home') { showPage('home'); return; }
+  if(t.id==='ft-exh') { showPage('exh'); return; }
+  if(t.id==='ft-opp') { showPage('opp'); return; }
+  if(t.id==='ft-about') { showPage('about'); return; }
+  if(t.id==='ft-legal') { showPage('legal'); return; }
+
+  // Modal close
+  if(t.id==='modal-close-btn'||t.id==='overlay') { closeModal(); return; }
+
+  // Modal action button
+  if(t.id==='modal-action-btn') {
+    var url = t.getAttribute('data-url');
+    if(url) window.open(url,'_blank');
+    return;
+  }
+
+  // Newsletter
+  if(t.id==='nl-submit-btn') { nlsub(); return; }
+
+  // Filter buttons
+  if(t.classList.contains('filter-btn')) {
+    var city = t.getAttribute('data-city');
+    var type = t.getAttribute('data-type');
+    if(city!==null) { renderExh(city||null); return; }
+    if(type!==null) { renderOpp(type||null); return; }
+  }
+
+  // Walk up for data-exh / data-opp
+  var el = t;
+  while(el && el !== document.body) {
+    if(el.getAttribute){
+      var exhId = el.getAttribute('data-exh');
+      var oppId = el.getAttribute('data-opp');
+      if(exhId) { openModal('exh', parseInt(exhId)); return; }
+      if(oppId) { openModal('opp', parseInt(oppId)); return; }
+    }
+    el = el.parentNode;
+  }
 });
 
-// ── NEWSLETTER ──
+// Newsletter submit
 function nlsub(){
   var email = document.getElementById('nl-email').value.trim();
   if(!email || email.indexOf('@')<0) return;
-  var btn = document.querySelector('.nl-submit');
+  var btn = document.getElementById('nl-submit-btn');
   if(btn){ btn.textContent='...'; btn.disabled=true; }
   fetch('https://artatlas.beehiiv.com/subscribe',{
     method:'POST',
@@ -668,23 +637,24 @@ function nlsub(){
     mode:'no-cors'
   }).finally(function(){
     var box = document.getElementById('nl-box');
-    if(box) box.innerHTML='<div style="text-align:center;padding:20px 0">'
-      +'<div style="font-size:32px;font-style:italic;color:rgba(26,8,8,0.7);margin-bottom:12px">You're in. ✶</div>'
-      +'<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(26,8,8,0.3)">Welcome to Artatlas</div>'
-      +'</div>';
+    if(box) box.innerHTML = '<div style="text-align:center;padding:40px 0">'
+      + '<div style="font-size:32px;font-style:italic;color:rgba(26,8,8,0.5);margin-bottom:12px">You're in.</div>'
+      + '<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(26,8,8,0.2)">Welcome to Artatlas</div>'
+      + '</div>';
   });
 }
 
-// ── INIT ──
-var allPages = ['p-home','p-exh','p-opp','p-about','p-legal'];
-for(var k=0;k<allPages.length;k++){
-  var pg = document.getElementById(allPages[k]);
-  if(pg) pg.style.display='none';
-}
-document.getElementById('p-home').style.display='block';
-document.getElementById('overlay').style.display='none';
-renderHome();
-revealAll();
+// INIT
+(function(){
+  var pids = ['p-home','p-exh','p-opp','p-about','p-legal'];
+  var i;
+  for(i=0;i<pids.length;i++){
+    var el = document.getElementById(pids[i]);
+    if(el) el.style.display='none';
+  }
+  document.getElementById('p-home').style.display='block';
+  renderHome();
+})();
 </script>
 </body>
 </html>
