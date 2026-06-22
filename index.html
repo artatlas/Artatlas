@@ -356,7 +356,7 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 </footer>
 
 <script>
-var EXH=[
+window.EXH=[
   {id:1,title:"Matisse. 1941-1954",venue:"Grand Palais x Centre Pompidou",city:"Paris",country:"France",dates:"24 Mar - 26 Jul 2026",tag:"Painting",must:true,end:"2026-07-26",verified:"Jun 2026",desc:"Over 230 works from Matisse's final period including the monumental cut-outs and the Jazz book. A landmark retrospective at the newly reopened Grand Palais.",url:"https://www.grandpalais.fr"},
   {id:2,title:"Venice Biennale - In Minor Keys",venue:"Giardini and Arsenale",city:"Venice",country:"Italy",dates:"10 May - 22 Nov 2026",tag:"Contemporary Art",must:true,end:"2026-11-22",verified:"Jun 2026",desc:"Curated by the late Koyo Kouoh - the first African woman in the role. 90 countries, 110 artists. The most important contemporary art event of 2026.",url:"https://www.labiennale.org"},
   {id:3,title:"Frida Kahlo",venue:"Tate Modern",city:"London",country:"UK",dates:"25 Jun 2026 - 4 Jan 2027",tag:"Painting",must:true,end:"2027-01-04",verified:"Jun 2026",desc:"The most comprehensive Frida Kahlo retrospective ever staged in Europe. Over 130 works tracing her life, politics and enduring visual power.",url:"https://www.tate.org.uk"},
@@ -385,7 +385,7 @@ var EXH=[
   {id:26,title:"Ewa Juszkiewicz",venue:"Thyssen-Bornemisza Museum",city:"Madrid",country:"Spain",dates:"26 May - 6 Sep 2026",tag:"Painting",must:false,end:"2026-09-06",verified:"Jun 2026",desc:"First major museum retrospective of the Polish painter known for obscured female portraits. A dialogue between Old Masters and contemporary feminist painting.",url:"https://www.museothyssen.org"}
 ];
 
-var OPP=[
+window.OPP=[
   {id:1,title:"Ucross Foundation Residency",org:"Ucross Foundation",deadline:"15 Jul 2026",iso:"2026-07-15",type:"Residency",award:"Fully funded",country:"USA",urgent:false,desc:"Spring cycle open May 1 - July 15. Uninterrupted time on 20,000 Wyoming acres. Studio, housing and meals included. All disciplines welcome.",url:"https://ucross.org"},
   {id:2,title:"Eliza Moore Fellowship",org:"Oak Spring Garden Foundation",deadline:"31 May 2026",iso:"2026-05-31",type:"Grant",award:"$10,000",country:"International",urgent:true,desc:"Annual $10,000 for one early-career artist developing work on plants, gardens or landscapes. 2-5 week stay at Oak Spring, Virginia.",url:"https://osgf.org"},
   {id:3,title:"YICCA International Art Prize",org:"YICCA",deadline:"31 May 2026",iso:"2026-05-31",type:"Open Call",award:"4,500 EUR pool",country:"International",urgent:true,desc:"Open to all media, geared toward emerging artists. International visibility, online exhibition and prize money.",url:"https://yicca.org"},
@@ -412,8 +412,8 @@ var OPP=[
 
 
 var today = new Date();
-var LIVE_EXH = EXH.filter(function(e){ return !e.end || new Date(e.end) >= today; });
-var LIVE_OPP = OPP.filter(function(o){ return !o.iso || new Date(o.iso) >= today; });
+var LIVE_EXH = window.EXH.filter(function(e){ return !e.end || new Date(e.end) >= today; });
+var LIVE_OPP = window.OPP.filter(function(o){ return !o.iso || new Date(o.iso) >= today; });
 
 function daysLeft(iso){
   if(!iso) return null;
@@ -532,7 +532,7 @@ function openModal(type, id){
   var item = null;
   var i;
   if(type==='exh'){
-    for(i=0;i<EXH.length;i++){ if(EXH[i].id===id){item=EXH[i];break;} }
+    for(i=0;i<window.EXH.length;i++){ if(EXH[i].id===id){item=EXH[i];break;} }
     if(!item) return;
     document.getElementById('modal-eyebrow').textContent = item.city+' - '+item.country;
     document.getElementById('modal-title').textContent = item.title;
@@ -545,7 +545,7 @@ function openModal(type, id){
     document.getElementById('modal-action-btn').textContent = 'Visit exhibition';
     document.getElementById('modal-action-btn').setAttribute('data-url', item.url);
   } else {
-    for(i=0;i<OPP.length;i++){ if(OPP[i].id===id){item=OPP[i];break;} }
+    for(i=0;i<window.OPP.length;i++){ if(OPP[i].id===id){item=OPP[i];break;} }
     if(!item) return;
     document.getElementById('modal-eyebrow').textContent = item.type+' - '+item.country;
     document.getElementById('modal-title').textContent = item.title;
@@ -638,7 +638,7 @@ function nlsub(){
   }).finally(function(){
     var box = document.getElementById('nl-box');
     if(box) box.innerHTML = '<div style="text-align:center;padding:40px 0">'
-      + '<div style="font-size:32px;font-style:italic;color:rgba(26,8,8,0.5);margin-bottom:12px">You're in.</div>'
+      + '<div style="font-size:32px;font-style:italic;color:rgba(26,8,8,0.5);margin-bottom:12px">You are in.</div>'
       + '<div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(26,8,8,0.2)">Welcome to Artatlas</div>'
       + '</div>';
   });
