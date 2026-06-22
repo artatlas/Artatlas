@@ -202,6 +202,7 @@ footer{background:#1a0808;padding:60px 40px;display:flex;justify-content:space-b
     <span class="nav-link" id="nl-exh" onclick="go('exh')">Exhibitions</span>
     <span class="nav-link" id="nl-opp" onclick="go('opp')">Opportunities</span>
     <span class="nav-link" id="nl-about" onclick="go('about')">About</span>
+    <span class="nav-link" id="nl-legal" onclick="go('legal')" style="display:none">Legal</span>
   </div>
 </nav>
 
@@ -533,15 +534,24 @@ function oppMob(o){
 var exhFilter = null;
 function renderExh(data, filter){
   exhFilter = filter;
-  // Build city filters
-  var cities = ['All'].concat([...new Set(data.map(function(e){return e.city;}))].sort());
-  document.getElementById('exh-filters').innerHTML = cities.map(function(city){
-    return '<button class="filter-btn'+(filter===city||(city==='All'&&!filter)?' active':'')
-      +'" onclick="renderExh(LIVE_EXH,''+city+'')">'+(city==='All'?'All cities':city)+'</button>';
-  }).join('');
-  var filtered = filter?data.filter(function(e){return e.city===filter;}):data;
-  document.getElementById('exh-count').textContent = filtered.length + ' exhibitions';
-  document.getElementById('exh-list').innerHTML = filtered.map(function(e){return exhRow(e,false);}).join('');
+  var citySet={};
+  data.forEach(function(e){citySet[e.city]=1;});
+  var cities=['All'].concat(Object.keys(citySet).sort());
+  var btns='';
+  cities.forEach(function(city){
+    var isActive=(filter===city||(city==='All'&&!filter));
+    btns+='<button class="filter-btn'+(isActive?' active':'')+'" data-city="'+city+'">'+(city==='All'?'All cities':city)+'</button>';
+  });
+  document.getElementById('exh-filters').innerHTML=btns;
+  document.getElementById('exh-filters').onclick=function(ev){
+    var btn=ev.target;
+    if(!btn||btn.tagName!=='BUTTON') return;
+    var city=btn.getAttribute('data-city');
+    renderExh(LIVE_EXH, city==='All'?null:city);
+  };
+  var filtered=filter?data.filter(function(e){return e.city===filter;}):data;
+  document.getElementById('exh-count').textContent=filtered.length+' exhibitions';
+  document.getElementById('exh-list').innerHTML=filtered.map(function(e){return exhRow(e,false);}).join('');
   revealAll();
 }
 
@@ -549,15 +559,25 @@ function renderExh(data, filter){
 var oppFilter = null;
 function renderOpp(data, filter){
   oppFilter = filter;
-  var types = ['All'].concat([...new Set(data.map(function(o){return o.type;}))].sort());
-  document.getElementById('opp-filters').innerHTML = types.map(function(t){
-    return '<button class="filter-btn'+(filter===t||(t==='All'&&!filter)?' active':'')
-      +'" onclick="renderOpp(LIVE_OPP,''+t+'')">'+(t==='All'?'All types':t)+'</button>';
-  }).join('');
-  var filtered = filter?data.filter(function(o){return o.type===filter;}):data;
-  document.getElementById('opp-count').textContent = filtered.length + ' opportunities';
-  document.getElementById('opp-list').innerHTML = filtered.map(function(o){return oppRow(o);}).join('');
-  document.getElementById('opp-mob-list').innerHTML = filtered.map(function(o){return oppMob(o);}).join('');
+  var typeSet={};
+  data.forEach(function(o){typeSet[o.type]=1;});
+  var types=['All'].concat(Object.keys(typeSet).sort());
+  var btns='';
+  types.forEach(function(t){
+    var isActive=(filter===t||(t==='All'&&!filter));
+    btns+='<button class="filter-btn'+(isActive?' active':'')+'" data-type="'+t+'">'+(t==='All'?'All types':t)+'</button>';
+  });
+  document.getElementById('opp-filters').innerHTML=btns;
+  document.getElementById('opp-filters').onclick=function(ev){
+    var btn=ev.target;
+    if(!btn||btn.tagName!=='BUTTON') return;
+    var t=btn.getAttribute('data-type');
+    renderOpp(LIVE_OPP, t==='All'?null:t);
+  };
+  var filtered=filter?data.filter(function(o){return o.type===filter;}):data;
+  document.getElementById('opp-count').textContent=filtered.length+' opportunities';
+  document.getElementById('opp-list').innerHTML=filtered.map(function(o){return oppRow(o);}).join('');
+  document.getElementById('opp-mob-list').innerHTML=filtered.map(function(o){return oppMob(o);}).join('');
   revealAll();
 }
 
@@ -597,10 +617,13 @@ function openOpp(id){
 }
 
 function closeModal(e){
-  if(e && e.target !== document.getElementById('overlay')) return;
+  if(e && e.target!==document.getElementById('overlay')) return;
   document.getElementById('overlay').classList.remove('open');
   document.body.style.overflow='';
 }
+document.getElementById('overlay').addEventListener('click',function(e){
+  if(e.target===this){closeModal(e);}
+});
 
 // ── NEWSLETTER ──
 function nlsub(){
