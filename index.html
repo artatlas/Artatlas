@@ -190,7 +190,6 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 
 /* ── PAGE VISIBILITY ── */
 .page{display:none}
-.page.active{display:block}
 </style>
 </head>
 <body>
@@ -207,7 +206,7 @@ footer{background:#2a0a0a;padding:60px 40px;display:flex;justify-content:space-b
 </nav>
 
 <!-- HOME -->
-<div class="page active" id="p-home">
+<div class="page" id="p-home">
 
   <div class="hero">
     <svg class="hero-pattern" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
@@ -436,17 +435,27 @@ var LIVE_OPP = OPP.filter(function(o){ return !o.iso || new Date(o.iso) >= today
 
 // ── NAVIGATION ──
 function go(page){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
-  document.querySelectorAll('.nav-link').forEach(function(l){l.classList.remove('active')});
+  // Hide all pages
+  var pages = document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++) pages[i].style.display='none';
+  // Remove active from nav
+  var navlinks = document.querySelectorAll('.nav-link');
+  for(var i=0;i<navlinks.length;i++) navlinks[i].classList.remove('active');
+  // Show target page
   var pid = page==='home'?'p-home':page==='exh'?'p-exh':page==='opp'?'p-opp':page==='about'?'p-about':'p-legal';
-  var nlid = 'nl-'+page;
-  document.getElementById(pid).classList.add('active');
-  var nl = document.getElementById(nlid);
+  var target = document.getElementById(pid);
+  if(target) target.style.display='block';
+  // Activate nav link
+  var nl = document.getElementById('nl-'+page);
   if(nl) nl.classList.add('active');
+  // Scroll to top
   window.scrollTo(0,0);
+  document.body.scrollTop=0;
+  document.documentElement.scrollTop=0;
+  // Render content
   if(page==='exh') renderExh(LIVE_EXH, null);
-  if(page==='opp') renderOpp(LIVE_OPP, null);
-  if(page==='home') renderHome();
+  else if(page==='opp') renderOpp(LIVE_OPP, null);
+  else if(page==='home') renderHome();
   revealAll();
 }
 
@@ -645,6 +654,10 @@ function nlsub(){
 }
 
 // ── INIT ──
+// Show home page on load
+var allPages = document.querySelectorAll('.page');
+for(var i=0;i<allPages.length;i++) allPages[i].style.display='none';
+document.getElementById('p-home').style.display='block';
 renderHome();
 revealAll();
 </script>
